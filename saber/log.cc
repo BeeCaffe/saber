@@ -210,8 +210,8 @@ saber::FileAppender::FileAppender(LogLevel::Level level,LogFormatter::ptr format
 	}
 	std::string dir=m_file.substr(0,last_pos+1);
 	std::string filename=m_file.substr(last_pos+1);
-	saber::s_mkdirs(dir);
-	saber::s_creat(m_file);
+    saber::Mkdirs(dir);
+    saber::Creat(m_file);
 
 }
 
@@ -226,8 +226,8 @@ saber::FileAppender::FileAppender(std::string file):m_file(file){
 	}
 	std::string dir=m_file.substr(0,last_pos+1);
 	std::string filename=m_file.substr(last_pos+1);
-	saber::s_mkdirs(dir);
-	saber::s_creat(m_file);
+    saber::Mkdirs(dir);
+    saber::Creat(m_file);
 }
 
 

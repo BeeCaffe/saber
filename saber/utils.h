@@ -10,21 +10,21 @@ namespace saber{
 	/**
 	 *@brief file ralated functions
 	 */
-	void s_mkdir(std::string &file);
+	void Mkdir(std::string &file);
 
-	void s_mkdirs(std::string &file);
+	void Mkdirs(std::string &file);
 	
-	void s_creat(std::string &file);
+	void Creat(std::string &file);
 
 	/**
 	 *@brief thread related function
 	 */
 	
-	pid_t s_getPid();
+	pid_t GetPid();
 
-	uint32_t s_getElapse();
+	uint32_t GetElapse();
 
-	uint32_t s_getFiberId();
+	uint32_t GetFiberId();
 
 };
 #endif

@@ -37,7 +37,7 @@ namespace saber{
 
 ////print log, before that you should set logger's configurations ahead
 #define SABER_LOG(logger,level,msg)\
-	{LogEvent::ptr event(new LogEvent(__FILE__,__LINE__,level,saber::s_getPid(),saber::s_getFiberId(),saber::s_getElapse(),time(0),"no thread name",logger,#msg));\
+	{LogEvent::ptr event(new LogEvent(__FILE__,__LINE__,level,saber::GetPid(),saber::GetFiberId(),saber::GetElapse(),time(0),"no thread name",logger,#msg));\
 	if (level>=logger->getLevel())logger->log(level,event);\
 	}
 
