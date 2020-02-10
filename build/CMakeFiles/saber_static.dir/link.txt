@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libsaber.a  CMakeFiles/saber_static.dir/saber/log.cc.o CMakeFiles/saber_static.dir/saber/utils.cc.o
+/usr/bin/ranlib ../lib/libsaber.a

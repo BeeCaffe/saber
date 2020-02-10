@@ -1,0 +1,1 @@
+2020-02-10 10:47:44	4221	no thread name	0	[FATAL]	[TestLog]	/home/beecaffe/src/saber/tests/log_test.cc:27	"this is fatal"

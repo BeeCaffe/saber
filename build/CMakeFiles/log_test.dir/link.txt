@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   CMakeFiles/log_test.dir/tests/log_test.cc.o  -o ../bin/log_test -Wl,-rpath,/home/beecaffe/src/saber/lib ../lib/libsaber.so 

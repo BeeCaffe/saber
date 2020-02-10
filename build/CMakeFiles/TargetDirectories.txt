@@ -1,0 +1,5 @@
+/home/beecaffe/src/saber/build/CMakeFiles/rebuild_cache.dir
+/home/beecaffe/src/saber/build/CMakeFiles/edit_cache.dir
+/home/beecaffe/src/saber/build/CMakeFiles/log_test.dir
+/home/beecaffe/src/saber/build/CMakeFiles/saber.dir
+/home/beecaffe/src/saber/build/CMakeFiles/saber_static.dir
