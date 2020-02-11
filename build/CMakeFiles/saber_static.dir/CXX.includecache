@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/beecaffe/src/saber/saber/json/json.cc
+json.h
+/home/beecaffe/src/saber/saber/json/json.h
+
+/home/beecaffe/src/saber/saber/json/json.h
+string
+-
+vector
+-
+../log.h
+/home/beecaffe/src/saber/saber/log.h
+sstream
+-
+iostream
+-
+
 /home/beecaffe/src/saber/saber/log.cc
 log.h
 /home/beecaffe/src/saber/saber/log.h

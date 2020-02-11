@@ -11,13 +11,12 @@ saber::LogEvent::LogEvent(std::string file,
 						  uint32_t elapse,
 					 	  time_t time,
 						  std::string thread_name,
-					 	  std::shared_ptr<Logger> logger,
-						  std::string msg):
+					 	  std::shared_ptr<Logger> logger):
 					 m_file(file),m_line(line),
 					 m_level(level),m_threadId(thread_id),
 					 m_fiberId(fiber_id),m_elapse(elapse),
 					 m_time(time),m_threadName(thread_name),
-					 m_logger(logger),m_message(msg){}
+					 m_logger(logger){}
 
 /*
  *@brief class LogFormatter functions
@@ -56,7 +55,7 @@ std::string saber::LogFormatter::parsePattern(std::shared_ptr<LogEvent> &event,c
 						XX('m',pMsg)
 						XX('p',pLevel)
 						XX('t',pthreadId)
-						XX('n',pNewLine)
+					XX('n',pNewLine)
 						XX('f',pFileName)
 						XX('l',pLine)
 						XX('T',pTab)
@@ -99,6 +98,8 @@ std::string LogFormatter::format(std::shared_ptr<saber::Logger> &logger,std::sha
 	
 std::string saber::LogFormatter::pMsg(std::shared_ptr<LogEvent> &event){
 		std::stringstream ss;
+		std::string msg(event->getSS().str());
+		event->setMsg(msg);
 		ss<<event->getMsg();
 	return ss.str();
 }
@@ -302,7 +303,24 @@ void saber::Logger::fatal(LogEvent::ptr &event){
 			log(LogLevel::FATAL,event);
 	}
 }
+/**
+ *@brief class LogConfig functions
+ */
+Logger::ptr& saber::LogConfig::getRootLogger(){
+	LogFormatter::ptr fmt(new LogFormatter());
+	LogLevel::Level level=m_logger->getLevel();
+	std::string log_dir="../log/"+m_logger->getName()+".txt";
+	LogAppender::ptr std_app(new FileAppender(level,fmt,log_dir));
+	LogAppender::ptr file_app(new StdOutAppender(level,fmt));
+	m_logger->addAppender(std_app);
+	m_logger->addAppender(file_app);
+	return m_logger;
+}
 
-
-
+void saber::LogConfig::setFormatter(LogFormatter::ptr &fmt){
+	std::vector<LogAppender::ptr> appenders=m_logger->getAppenders();
+	for(auto item:appenders){
+		item->setFormatter(fmt);
+	}
+}
 

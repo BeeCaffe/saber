@@ -11,56 +11,51 @@
 #include<fstream>
 #include<sys/stat.h>
 #include"utils.h"
+
+////according to name new a logger
+#define SABER_LOG_NEW(name)\
+		saber::LogConfig::ptr(new LogConfig(Logger::ptr(new Logger(LogLevel::DEBUG,#name))))->getRootLogger()
+
+
+////get and set root logger
+#define SABER_LOG_ROOT\
+	saber::LogConfig::ptr(new LogConfig(Logger::ptr(new Logger(LogLevel::DEBUG,"Root"))))->getRootLogger()
+
+
+////print log, before that you should set logger's configurations ahead
+#define SABER_LOG_EVENT(logger,level)\
+	if(level>=logger->getLevel())\
+		saber::LogEventWarp(saber::LogEvent::ptr(new saber::LogEvent(\
+		__FILE__,__LINE__,level,saber::GetPid(),saber::GetFiberId(),\
+		saber::GetElapse(),time(0),"no thread name",logger))).getSS()
+
+//// print debug level log
+#define SABER_LOG_DEBUG(logger)\
+	SABER_LOG_EVENT(logger,LogLevel::DEBUG)
+
+//// print info level log
+#define SABER_LOG_INFO(logger)\
+	SABER_LOG_EVENT(logger,LogLevel::INFO)
+
+////print warn level log
+#define SABER_LOG_WARN(logger)\
+	SABER_LOG_EVENT(logger,LogLevel::WARN)
+
+////print error level log
+#define SABER_LOG_ERROR(logger)\
+	SABER_LOG_EVENT(logger,LogLevel::ERROR)
+
+////print fatal level log
+#define SABER_LOG_FATAL(logger)\
+	SABER_LOG_EVENT(logger,LogLevel::FATAL)
+	
 namespace saber{
 
 	class Logger;
 
 	class LogEvent;
-	
 
-#define SABER_LOG_FORMATTER() std::shared_ptr<LogFormatter> fmt(new LogFormatter());
 
-#define SABER_LOG_STDAPPENDER(level,fmt) std::shared_ptr<LogAppender> std_app(new StdOutAppender(level,fmt));
-
-#define SABER_LOG_FILEAPPENDER(level,fmt,file) std::shared_ptr<LogAppender> file_app(new FileAppender(level,fmt,#file));
-
-////logger -- logger
-////level -- log level
-////logdir -- where to save log, logdir should be a string with out "".
-////set logger's format and appende
-#define SABER_LOG_CONF(logger,level,logdir)\
-	SABER_LOG_FORMATTER()\
-	SABER_LOG_STDAPPENDER(level,fmt)\
-	SABER_LOG_FILEAPPENDER(level,fmt,logdir)\
-	logger->addAppender(std_app);\
-	logger->addAppender(file_app);
-
-////print log, before that you should set logger's configurations ahead
-#define SABER_LOG(logger,level,msg)\
-	{LogEvent::ptr event(new LogEvent(__FILE__,__LINE__,level,saber::GetPid(),saber::GetFiberId(),saber::GetElapse(),time(0),"no thread name",logger,#msg));\
-	if (level>=logger->getLevel())logger->log(level,event);\
-	}
-
-//// print debug level log
-#define SABER_LOG_DEBUG(logger,msg)\
-	SABER_LOG(logger,LogLevel::DEBUG,msg)
-
-//// print info level log
-#define SABER_LOG_INFO(logger,msg)\
-	SABER_LOG(logger,LogLevel::INFO,msg)
-
-////print warn level log
-#define SABER_LOG_WARN(logger,msg)\
-	SABER_LOG(logger,LogLevel::WARN,msg)
-
-////print error level log
-#define SABER_LOG_ERROR(logger,msg)\
-	SABER_LOG(logger,LogLevel::ERROR,msg)
-
-////print fatal level log
-#define SABER_LOG_FATAL(logger,msg)\
-	SABER_LOG(logger,LogLevel::FATAL,msg)
-	
 	/*
 	 *@brief class LogLvel
 	 */
@@ -81,35 +76,68 @@ namespace saber{
 	class LogEvent{
 		public:
 			typedef std::shared_ptr<LogEvent> ptr;
+			
 			LogEvent(std::string m_file,uint32_t line,
 					 LogLevel::Level level,uint32_t thread_id,
 					 uint32_t fiber_id,uint32_t elapse,
 					 time_t time,std::string thread_name,
-					 std::shared_ptr<Logger> logger,std::string message);
+					 std::shared_ptr<Logger> logger);
 			
 			~LogEvent(){};
 			
 			const std::string getFile() const {return m_file;}
+
 			const uint32_t getThreadId() const {return m_threadId;}
+
 			const uint32_t getFiberId() const{return m_fiberId;}
+
 			const uint32_t getElapse() const {return m_elapse;}
+
 			time_t getTime() {return m_time;}
+
 			const uint32_t getLine() const {return m_line;}
+
 			const std::string getThreadName() const{return m_threadName;}
+
 			const std::shared_ptr<Logger> getLogger() const {return m_logger;}
+
 			const LogLevel::Level getLevel() const {return m_level;}
+
 			const std::string getMsg() const {return m_message;}
+
+			std::stringstream& getSS() {return m_ss;}
+
+			void setMsg(std::string& msg){m_message=msg;}
+			
+			const bool getHasPirnt() const {return hasPirnt;}
+
+			void setHasPrint(bool status){hasPirnt=status;}
+
 		private:
+
 			std::string m_file;		//file name
+			
 			uint32_t m_threadId=0;	//thread id
+			
 			uint32_t m_fiberId=0;	//fiber id
+			
 			uint32_t m_elapse=0;	//elapse
+			
 			time_t m_time=0;		//time 
+			
 			uint32_t m_line=0;		//line
+			
 			std::string m_threadName;//thread name
+			
 			std::shared_ptr<Logger> m_logger;//logger
+			
 			LogLevel::Level m_level=LogLevel::DEBUG;//log level
+			
 			std::string m_message;	//log content
+			
+			std::stringstream m_ss;
+
+			bool hasPirnt=false;
 	};
 	/*
 	 *@brief class LogFormatter
@@ -206,7 +234,7 @@ namespace saber{
 	/*
 	 *@brief class Logger
 	 */
-	class Logger{
+	class Logger:public std::enable_shared_from_this<Logger>{
 		public:
 				typedef std::shared_ptr<Logger> ptr;
 
@@ -219,6 +247,8 @@ namespace saber{
 				void addAppender(LogAppender::ptr &appender){
 					m_appenders.push_back(appender);
 				}
+
+				std::vector<LogAppender::ptr> getAppenders(){return m_appenders;}
 				
 				void delAppender();
 
@@ -238,12 +268,65 @@ namespace saber{
 
 				const LogLevel::Level getLevel() const {return m_level;}
 
+				LogLevel::Level getLevel(){return m_level;}
+
+				std::string getName(){return m_name;}
+
+				Logger(const Logger::ptr logger):m_name(logger->getName()),m_appenders(logger->getAppenders()),m_level(logger->getLevel()){}
+				
 		private:
 			std::string m_name="root";
 
 			std::vector<LogAppender::ptr> m_appenders;
 
 			LogLevel::Level m_level=LogLevel::DEBUG;
+	};
+
+	class LogEventWarp{
+	
+		public:
+
+			typedef	std::shared_ptr<LogEventWarp> ptr;
+
+			LogEventWarp(LogEvent::ptr event):m_event(event){}
+
+			~LogEventWarp(){
+					if(!m_event->getHasPirnt()){
+
+						m_event->getLogger()->log(m_event->getLevel(),m_event);
+						m_event->setHasPrint(true);
+					}
+			}
+
+			std::stringstream& getSS(){return m_event->getSS();};
+			
+			LogEvent::ptr getEvent(){return m_event;}
+
+		private:
+
+			LogEvent::ptr m_event;
+	};
+
+	class LogConfig{
+		public:
+				typedef std::shared_ptr<LogConfig> ptr;
+
+				LogConfig(Logger::ptr logger):m_logger(logger){}
+
+				~LogConfig(){};
+				
+				Logger::ptr getLogger(){return m_logger;}
+
+				void addAppender(LogAppender::ptr &app){m_logger->addAppender(app);}
+				void setFormatter(LogFormatter::ptr &fmt);
+
+				Logger::ptr& getRootLogger();
+		private:
+				
+
+				Logger::ptr m_logger;
+
+
 	};
 
 };

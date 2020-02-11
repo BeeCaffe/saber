@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   CMakeFiles/json_test.dir/tests/json_test.cc.o  -o ../bin/json_test -Wl,-rpath,/home/beecaffe/src/saber/lib ../lib/libsaber.so 
