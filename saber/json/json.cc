@@ -40,7 +40,7 @@ std::stringstream saber::JsonObject<T>::toSString(){
 		return ss;
 }*/
 
-template<class T>
+/*template<class T>
 std::string saber::JsonObject<T>::parseNode(JsonNode<T>* cur){
 		std::stringstream ss;
 		if(cur==nullptr) return "";
@@ -101,5 +101,5 @@ std::string saber::JsonObject<T>::parseNode(JsonNode<T>* cur){
 				ss<<parseNode(cur);
 		}
 		return ss.str();
-}
+}*/
 

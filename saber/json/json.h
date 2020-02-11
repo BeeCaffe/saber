@@ -65,6 +65,10 @@ namespace saber{
 
 		void popFront();
 
+		const bool isVisited(){return m_flag;}
+
+		void setVisited(bool flag){m_flag=flag;}
+
 	protected:
 
 		JsonNode::ptr m_prev=nullptr;
@@ -77,13 +81,14 @@ namespace saber{
 
 		std::string m_key="root";
 
+		bool m_flag=false;
+
 	};
 
-	template<class T>
-	class JsonInt:public JsonNode<T>{
+	class JsonInt:public JsonNode<int>{
 	public:
 			
-			typedef JsonInt<T>* ptr;
+			typedef JsonInt* ptr;
 			
 			JsonInt(std::string key,int32_t val):JsonNode<int>(key,JsonType::Type::Int),m_data(val){}
 
@@ -101,13 +106,12 @@ namespace saber{
 			int32_t m_data=0;
 	};	
 	
-	template<class T>
-	class JsonDouble:public JsonNode<T>{
+	class JsonDouble:public JsonNode<int>{
 	public:
 
-			typedef JsonDouble<T>* ptr;
+			typedef JsonDouble* ptr;
 
-			JsonDouble(std::string key,double val):JsonNode<T>(key,JsonType::Type::Double),m_data(val){}
+			JsonDouble(std::string key,double val):JsonNode<int>(key,JsonType::Type::Double),m_data(val){}
 
 			~JsonDouble(){}
 
@@ -122,13 +126,12 @@ namespace saber{
 			double m_data;
 	};
 
-	template<class T>
-	class JsonString:public JsonNode<T>{
+	class JsonString:public JsonNode<int>{
 	public:
 
-			typedef JsonString<T>* ptr;
+			typedef JsonString* ptr;
 
-			JsonString(std::string key,std::string val):JsonNode<T>(key,JsonType::Type::String),m_data(val){}
+			JsonString(std::string key,std::string val):JsonNode<int>(key,JsonType::Type::String),m_data(val){}
 
 
 			////getter and setter
@@ -157,36 +160,112 @@ namespace saber{
 			std::vector<T> m_data;
 	};
 	
-	template<class T>
-	class JsonObject:public JsonNode<T>{
+	class JsonObject:public JsonNode<int>{
 	public:
 
-			typedef JsonObject<T>* ptr;
+			typedef JsonObject* ptr;
 
-			JsonObject(std::string key,JsonNode<T>* root):JsonNode<T>(key,JsonType::Type::Object),m_root(root){
+			JsonObject(std::string key,JsonNode<int>* root):JsonNode<int>(key,JsonType::Type::Object),m_root(root){
 			}
 			
 			////getter and setter
-			const JsonNode<T>* getData() const {return m_root;}
+			JsonNode<int>* getData() {return m_root;}
 
-			void setData(JsonNode<T>* val){m_root=val;}
+			void setData(JsonNode<int>* val){m_root=val;}
 
 			std::stringstream toSString(){
 				std::stringstream ss;
 				ss<<"{\n";
-				ss<<parseNode(this->getChild());
+				ss<<parseNode(this->getData());
 				ss<<"}\n";
 				return ss;
 			}
 
-			std::string parseNode(JsonNode<T>* node);
-
+			std::string parseNode(JsonNode<int>* cur);
+			
+			void InitTree();
+		
 	private:
 
-			JsonNode<T>* m_root;
+			JsonNode<int>* m_root;
 
 	};
 
 
+	/**
+	 *class JsonObject functions
+	 */
+	std::string JsonObject::parseNode(JsonNode<int>* cur){
+				std::stringstream ss;
+				if(cur==nullptr) return "";
+				JsonType::Type type=cur->getType();
+				////parse one node
+				switch(type){
+						case JsonType::Type::Int:
+						ss<<"\""<<cur->getKey()<<"\"";
+						ss<<":";
+						ss<<dynamic_cast<JsonInt::ptr>(cur)->getData();
+						ss<<",\n";
+						break;
+						
+						case JsonType::Type::Double:
+						ss<<"\""<<cur->getKey()<<"\"";
+						ss<<":";
+						ss<<dynamic_cast<JsonDouble::ptr >(cur)->getData();
+						ss<<",\n";
+						break;
+
+						case JsonType::Type::String:
+						ss<<"\""<<cur->getKey()<<"\"";
+						ss<<":";
+						ss<<"\""<<dynamic_cast<JsonString::ptr>(cur)->getData()<<"\"";
+						ss<<",\n";
+						break;
+						
+						case JsonType::Type::Array:{
+							ss<<"\""<<cur->getKey()<<"\"";
+							ss<<":";
+							auto array=dynamic_cast<typename JsonArray<JsonNode::ValueType >::ptr>(cur)->getData();
+							ss<<"[";
+							for(auto item:array){
+							ss<<item<<",";
+						} 
+							ss<<"]";
+							ss<<",\n";
+												   }
+							break;
+
+						case JsonType::Type::Object:
+							ss<<"\""<<cur->getKey()<<"\"";
+							ss<<":\n{\n";
+							ss<<parseNode(dynamic_cast<JsonObject::ptr >(cur)->getData());
+							ss<<"},\n";
+							break;
+
+						default:
+							{SABER_LOG_DEBUG(SABER_LOG_ROOT)<<"Json Node should not be unknown type";}
+							break;
+				}
+
+				////parse child
+				if(!cur->getChild()->isVisited()) ss<<parseNode(cur->getChild());
+				////parse brother
+				while(cur->getNext()!=nullptr){ 
+						if(!cur->isVisited()){
+							cur=cur->getNext();
+							ss<<parseNode(cur);
+							cur->setVisited(true);
+						}
+				}
+				return ss.str();
+
+			}
+
+
 };
+
+void saber::JsonObject::InitTree(){
+	
+}
+
 #endif
