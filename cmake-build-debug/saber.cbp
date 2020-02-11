@@ -163,7 +163,57 @@
 					<DistClean command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="json_test">
+				<Option output="D:/ClionProjects/saber/bin/json_test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/ClionProjects/saber/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 json_test"/>
+					<CompileFile command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="json_test/fast">
+				<Option output="D:/ClionProjects/saber/bin/json_test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/ClionProjects/saber/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/MinGw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 json_test/fast"/>
+					<CompileFile command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGw/mingw64/bin/mingw32-make.exe -f &quot;D:/ClionProjects/saber/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
+		<Unit filename="D:/ClionProjects/saber/saber/json/json.cc">
+			<Option target="saber"/>
+			<Option target="saber_static"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/saber/saber/json/json.h">
+			<Option target="saber"/>
+			<Option target="saber_static"/>
+		</Unit>
 		<Unit filename="D:/ClionProjects/saber/saber/log.cc">
 			<Option target="saber"/>
 			<Option target="saber_static"/>
@@ -179,6 +229,9 @@
 		<Unit filename="D:/ClionProjects/saber/saber/utils.h">
 			<Option target="saber"/>
 			<Option target="saber_static"/>
+		</Unit>
+		<Unit filename="D:/ClionProjects/saber/tests/json_test.cc">
+			<Option target="json_test"/>
 		</Unit>
 		<Unit filename="D:/ClionProjects/saber/tests/log_test.cc">
 			<Option target="log_test"/>

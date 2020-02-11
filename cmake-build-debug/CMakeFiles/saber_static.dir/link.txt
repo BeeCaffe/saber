@@ -1,2 +1,2 @@
-C:\MinGw\mingw64\bin\ar.exe qc ..\lib\libsaber.a  CMakeFiles/saber_static.dir/saber/log.cc.obj CMakeFiles/saber_static.dir/saber/utils.cc.obj
+C:\MinGw\mingw64\bin\ar.exe qc ..\lib\libsaber.a  CMakeFiles/saber_static.dir/saber/log.cc.obj CMakeFiles/saber_static.dir/saber/utils.cc.obj CMakeFiles/saber_static.dir/saber/json/json.cc.obj
 C:\MinGw\mingw64\bin\ranlib.exe ..\lib\libsaber.a

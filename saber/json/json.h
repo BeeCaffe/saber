@@ -6,6 +6,7 @@
 #include<sstream>
 #include<iostream>
 namespace saber{
+    class JsonObject;
 	class JsonType{
 	public:
 			enum Type{
@@ -13,18 +14,18 @@ namespace saber{
 				Int=1,
 				Double=2,
 				String=3,
-				Array=4,
-				Object=5,
+				IntArray=4,
+				StringArray=5,
+				DoubleArray=6,
+				ObjectArray=7,
+				Object=8,
 			};
 	};	
-	
-	template<class T>
+
 	class JsonNode{
 	public:
 
-		typedef	JsonNode<T>* ptr;
-
-		typedef T ValueType;
+		typedef	JsonNode* ptr;
 
 		////constructor and destructor
 
@@ -57,9 +58,9 @@ namespace saber{
 		void setKey(std::string key){m_key=key;}
 		////push and pop
 		
-		void pushBack(JsonNode<T>::ptr node);
+		void pushBack(JsonNode::ptr node);
 
-		void pushFront(JsonNode<T>::ptr node);
+		void pushFront(JsonNode::ptr node);
 
 		void popBack();
 
@@ -85,12 +86,12 @@ namespace saber{
 
 	};
 
-	class JsonInt:public JsonNode<int>{
+	class JsonInt:public JsonNode{
 	public:
 			
 			typedef JsonInt* ptr;
 			
-			JsonInt(std::string key,int32_t val):JsonNode<int>(key,JsonType::Type::Int),m_data(val){}
+			JsonInt(std::string key,int32_t val):JsonNode(key,JsonType::Type::Int),m_data(val){}
 
 
 			~JsonInt(){}
@@ -106,12 +107,12 @@ namespace saber{
 			int32_t m_data=0;
 	};	
 	
-	class JsonDouble:public JsonNode<int>{
+	class JsonDouble:public JsonNode{
 	public:
 
 			typedef JsonDouble* ptr;
 
-			JsonDouble(std::string key,double val):JsonNode<int>(key,JsonType::Type::Double),m_data(val){}
+			JsonDouble(std::string key,double val):JsonNode(key,JsonType::Type::Double),m_data(val){}
 
 			~JsonDouble(){}
 
@@ -126,12 +127,12 @@ namespace saber{
 			double m_data;
 	};
 
-	class JsonString:public JsonNode<int>{
+	class JsonString:public JsonNode{
 	public:
 
 			typedef JsonString* ptr;
 
-			JsonString(std::string key,std::string val):JsonNode<int>(key,JsonType::Type::String),m_data(val){}
+			JsonString(std::string key,std::string val):JsonNode(key,JsonType::Type::String),m_data(val){}
 
 
 			////getter and setter
@@ -143,35 +144,90 @@ namespace saber{
 			std::string m_data;
 	};
 
-	template<class T>
-	class JsonArray:public JsonNode<T>{
+	class JsonIntArray:public JsonNode{
 	public:
-			typedef JsonArray<T>* ptr;
+			typedef JsonIntArray* ptr;
 
-			JsonArray(std::string key,std::vector<T> val):JsonNode<T>(key,JsonType::Type::Array),m_data(val){}
+			JsonIntArray(std::string key,std::vector<int> array):JsonNode(key,JsonType::Type::IntArray),m_data(array)
+			{}
 
-			~JsonArray(){}
+			~JsonIntArray(){}
 			////getter and setter
-			const std::vector<T>& getData() const {return m_data;}
 
-			void setData(std::vector<T> val){m_data=val;}
-	
-	private:
-			std::vector<T> m_data;
+			std::vector<int32_t>& getData(){return m_data;}
+
+			void setData(std::vector<int32_t>& array){m_data=array;}
+    private:
+
+	    std::vector<int32_t> m_data;
 	};
-	
-	class JsonObject:public JsonNode<int>{
+
+    class JsonDoubleArray:public JsonNode{
+    public:
+        typedef JsonDoubleArray* ptr;
+
+        JsonDoubleArray(std::string key,std::vector<double> array):JsonNode(key,JsonType::Type::IntArray),m_data(array)
+        {}
+
+        ~JsonDoubleArray(){}
+        ////getter and setter
+
+        std::vector<double >& getData(){return m_data;}
+
+        void setData(std::vector<double >& array){m_data=array;}
+    private:
+
+        std::vector<double > m_data;
+    };
+
+    class JsonStringArray:public JsonNode{
+    public:
+        typedef JsonStringArray* ptr;
+
+        JsonStringArray(std::string key,std::vector<std::string> array):JsonNode(key,JsonType::Type::IntArray),m_data(array)
+        {}
+
+        ~JsonStringArray(){}
+        ////getter and setter
+
+        std::vector<std::string>& getData(){return m_data;}
+
+        void setData(std::vector<std::string>& array){m_data=array;}
+    private:
+
+        std::vector<std::string> m_data;
+    };
+
+    class JsonObjectArray:public JsonNode{
+    public:
+        typedef JsonObjectArray* ptr;
+
+        JsonObjectArray(std::string key,std::vector<JsonObject> array):JsonNode(key,JsonType::Type::ObjectArray),m_data(array)
+        {}
+
+        ~JsonObjectArray(){}
+        ////getter and setter
+
+        std::vector<JsonObject>& getData(){return m_data;}
+
+        void setData(std::vector<JsonObject>& array){m_data=array;}
+    private:
+
+        std::vector<JsonObject> m_data;
+    };
+
+	class JsonObject:public JsonNode{
 	public:
 
 			typedef JsonObject* ptr;
 
-			JsonObject(std::string key,JsonNode<int>* root):JsonNode<int>(key,JsonType::Type::Object),m_root(root){
+			JsonObject(std::string key,JsonNode* root):JsonNode(key,JsonType::Type::Object),m_root(root){
 			}
 			
 			////getter and setter
-			JsonNode<int>* getData() {return m_root;}
+			JsonNode* getData() {return m_root;}
 
-			void setData(JsonNode<int>* val){m_root=val;}
+			void setData(JsonNode* val){m_root=val;}
 
 			std::stringstream toSString(){
 				std::stringstream ss;
@@ -181,21 +237,20 @@ namespace saber{
 				return ss;
 			}
 
-			std::string parseNode(JsonNode<int>* cur);
+			std::string parseNode(JsonNode* cur);
 			
 			void InitTree();
 		
 	private:
 
-			JsonNode<int>* m_root;
-
+			JsonNode* m_root;
 	};
 
 
 	/**
 	 *class JsonObject functions
 	 */
-	std::string JsonObject::parseNode(JsonNode<int>* cur){
+	std::string JsonObject::parseNode(JsonNode* cur){
 				std::stringstream ss;
 				if(cur==nullptr) return "";
 				JsonType::Type type=cur->getType();
@@ -222,19 +277,51 @@ namespace saber{
 						ss<<",\n";
 						break;
 						
-						case JsonType::Type::Array:{
+						case JsonType::Type::IntArray:{
 							ss<<"\""<<cur->getKey()<<"\"";
 							ss<<":";
-							auto array=dynamic_cast<typename JsonArray<JsonNode::ValueType >::ptr>(cur)->getData();
+							auto array=dynamic_cast<JsonIntArray::ptr>(cur)->getData();
 							ss<<"[";
 							for(auto item:array){
 							ss<<item<<",";
 						} 
 							ss<<"]";
-							ss<<",\n";
-												   }
+							ss<<",\n";}
 							break;
 
+                        case JsonType::Type::DoubleArray:{
+                            ss<<"\""<<cur->getKey()<<"\"";
+                            ss<<":";
+                            auto array=dynamic_cast<JsonDoubleArray::ptr>(cur)->getData();
+                            ss<<"[";
+                            for(auto item:array){
+                                ss<<item<<",";
+                            }
+                            ss<<"]";
+                            ss<<",\n";}
+                            break;
+                        case JsonType::Type::StringArray:{
+                            ss<<"\""<<cur->getKey()<<"\"";
+                            ss<<":";
+                            auto array=dynamic_cast<JsonStringArray::ptr>(cur)->getData();
+                            ss<<"[";
+                            for(auto item:array){
+                                ss<<item<<",";
+                            }
+                            ss<<"]";
+                            ss<<",\n";}
+                            break;
+                        case JsonType::Type::ObjectArray:{
+                            ss<<"\""<<cur->getKey()<<"\"";
+                            ss<<":";
+                            auto array=dynamic_cast<JsonObjectArray::ptr>(cur)->getData();
+                            ss<<"[";
+                            for(auto item:array){
+                                ss<<parseNode(dynamic_cast<JsonObject::ptr>(cur)->getData())<<",";
+                            }
+                            ss<<"]";
+                            ss<<",\n";}
+                            break;
 						case JsonType::Type::Object:
 							ss<<"\""<<cur->getKey()<<"\"";
 							ss<<":\n{\n";

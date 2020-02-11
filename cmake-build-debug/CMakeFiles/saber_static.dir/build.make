@@ -82,19 +82,34 @@ CMakeFiles/saber_static.dir/saber/utils.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber_static.dir/saber/utils.cc.s"
 	C:\MinGw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ClionProjects\saber\saber\utils.cc -o CMakeFiles\saber_static.dir\saber\utils.cc.s
 
+CMakeFiles/saber_static.dir/saber/json/json.cc.obj: CMakeFiles/saber_static.dir/flags.make
+CMakeFiles/saber_static.dir/saber/json/json.cc.obj: ../saber/json/json.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\ClionProjects\saber\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/saber_static.dir/saber/json/json.cc.obj"
+	C:\MinGw\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\saber_static.dir\saber\json\json.cc.obj -c D:\ClionProjects\saber\saber\json\json.cc
+
+CMakeFiles/saber_static.dir/saber/json/json.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber_static.dir/saber/json/json.cc.i"
+	C:\MinGw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ClionProjects\saber\saber\json\json.cc > CMakeFiles\saber_static.dir\saber\json\json.cc.i
+
+CMakeFiles/saber_static.dir/saber/json/json.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber_static.dir/saber/json/json.cc.s"
+	C:\MinGw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ClionProjects\saber\saber\json\json.cc -o CMakeFiles\saber_static.dir\saber\json\json.cc.s
+
 # Object files for target saber_static
 saber_static_OBJECTS = \
 "CMakeFiles/saber_static.dir/saber/log.cc.obj" \
-"CMakeFiles/saber_static.dir/saber/utils.cc.obj"
+"CMakeFiles/saber_static.dir/saber/utils.cc.obj" \
+"CMakeFiles/saber_static.dir/saber/json/json.cc.obj"
 
 # External object files for target saber_static
 saber_static_EXTERNAL_OBJECTS =
 
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/log.cc.obj
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/utils.cc.obj
+../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/json/json.cc.obj
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/build.make
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\ClionProjects\saber\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ..\lib\libsaber.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\ClionProjects\saber\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ..\lib\libsaber.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\saber_static.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\saber_static.dir\link.txt --verbose=$(VERBOSE)
 

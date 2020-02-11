@@ -4,9 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/ClionProjects/saber/saber/json/json.cc" "D:/ClionProjects/saber/cmake-build-debug/CMakeFiles/saber_static.dir/saber/json/json.cc.obj"
-  "D:/ClionProjects/saber/saber/log.cc" "D:/ClionProjects/saber/cmake-build-debug/CMakeFiles/saber_static.dir/saber/log.cc.obj"
-  "D:/ClionProjects/saber/saber/utils.cc" "D:/ClionProjects/saber/cmake-build-debug/CMakeFiles/saber_static.dir/saber/utils.cc.obj"
+  "D:/ClionProjects/saber/tests/json_test.cc" "D:/ClionProjects/saber/cmake-build-debug/CMakeFiles/json_test.dir/tests/json_test.cc.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "D:/ClionProjects/saber/cmake-build-debug/CMakeFiles/saber.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -148,6 +148,49 @@ saber_static/fast:
 	$(MAKE) -f CMakeFiles\saber_static.dir\build.make CMakeFiles/saber_static.dir/build
 .PHONY : saber_static/fast
 
+#=============================================================================
+# Target rules for targets named json_test
+
+# Build rule for target.
+json_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 json_test
+.PHONY : json_test
+
+# fast build rule for target.
+json_test/fast:
+	$(MAKE) -f CMakeFiles\json_test.dir\build.make CMakeFiles/json_test.dir/build
+.PHONY : json_test/fast
+
+saber/json/json.obj: saber/json/json.cc.obj
+
+.PHONY : saber/json/json.obj
+
+# target to build an object file
+saber/json/json.cc.obj:
+	$(MAKE) -f CMakeFiles\saber.dir\build.make CMakeFiles/saber.dir/saber/json/json.cc.obj
+	$(MAKE) -f CMakeFiles\saber_static.dir\build.make CMakeFiles/saber_static.dir/saber/json/json.cc.obj
+.PHONY : saber/json/json.cc.obj
+
+saber/json/json.i: saber/json/json.cc.i
+
+.PHONY : saber/json/json.i
+
+# target to preprocess a source file
+saber/json/json.cc.i:
+	$(MAKE) -f CMakeFiles\saber.dir\build.make CMakeFiles/saber.dir/saber/json/json.cc.i
+	$(MAKE) -f CMakeFiles\saber_static.dir\build.make CMakeFiles/saber_static.dir/saber/json/json.cc.i
+.PHONY : saber/json/json.cc.i
+
+saber/json/json.s: saber/json/json.cc.s
+
+.PHONY : saber/json/json.s
+
+# target to generate assembly for a file
+saber/json/json.cc.s:
+	$(MAKE) -f CMakeFiles\saber.dir\build.make CMakeFiles/saber.dir/saber/json/json.cc.s
+	$(MAKE) -f CMakeFiles\saber_static.dir\build.make CMakeFiles/saber_static.dir/saber/json/json.cc.s
+.PHONY : saber/json/json.cc.s
+
 saber/log.obj: saber/log.cc.obj
 
 .PHONY : saber/log.obj
@@ -208,6 +251,33 @@ saber/utils.cc.s:
 	$(MAKE) -f CMakeFiles\saber_static.dir\build.make CMakeFiles/saber_static.dir/saber/utils.cc.s
 .PHONY : saber/utils.cc.s
 
+tests/json_test.obj: tests/json_test.cc.obj
+
+.PHONY : tests/json_test.obj
+
+# target to build an object file
+tests/json_test.cc.obj:
+	$(MAKE) -f CMakeFiles\json_test.dir\build.make CMakeFiles/json_test.dir/tests/json_test.cc.obj
+.PHONY : tests/json_test.cc.obj
+
+tests/json_test.i: tests/json_test.cc.i
+
+.PHONY : tests/json_test.i
+
+# target to preprocess a source file
+tests/json_test.cc.i:
+	$(MAKE) -f CMakeFiles\json_test.dir\build.make CMakeFiles/json_test.dir/tests/json_test.cc.i
+.PHONY : tests/json_test.cc.i
+
+tests/json_test.s: tests/json_test.cc.s
+
+.PHONY : tests/json_test.s
+
+# target to generate assembly for a file
+tests/json_test.cc.s:
+	$(MAKE) -f CMakeFiles\json_test.dir\build.make CMakeFiles/json_test.dir/tests/json_test.cc.s
+.PHONY : tests/json_test.cc.s
+
 tests/log_test.obj: tests/log_test.cc.obj
 
 .PHONY : tests/log_test.obj
@@ -246,12 +316,19 @@ help:
 	@echo ... rebuild_cache
 	@echo ... saber_static
 	@echo ... edit_cache
+	@echo ... json_test
+	@echo ... saber/json/json.obj
+	@echo ... saber/json/json.i
+	@echo ... saber/json/json.s
 	@echo ... saber/log.obj
 	@echo ... saber/log.i
 	@echo ... saber/log.s
 	@echo ... saber/utils.obj
 	@echo ... saber/utils.i
 	@echo ... saber/utils.s
+	@echo ... tests/json_test.obj
+	@echo ... tests/json_test.i
+	@echo ... tests/json_test.s
 	@echo ... tests/log_test.obj
 	@echo ... tests/log_test.i
 	@echo ... tests/log_test.s

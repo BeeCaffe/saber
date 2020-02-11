@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "../lib/libsaber.a"
   "../lib/libsaber.pdb"
+  "CMakeFiles/saber_static.dir/saber/json/json.cc.obj"
   "CMakeFiles/saber_static.dir/saber/log.cc.obj"
   "CMakeFiles/saber_static.dir/saber/utils.cc.obj"
 )
