@@ -7,28 +7,26 @@
 #IncludeRegexTransform: 
 
 /home/beecaffe/src/saber/saber/log.h
-string
--
-vector
--
-memory
--
-time.h
--
-stdio.h
+iostream
 -
 sstream
 -
-string.h
+memory
 -
-iostream
+ctime
+-
+vector
 -
 fstream
 -
-sys/stat.h
--
 utils.h
 /home/beecaffe/src/saber/saber/utils.h
+map
+-
+singleton.h
+/home/beecaffe/src/saber/saber/singleton.h
+
+/home/beecaffe/src/saber/saber/singleton.h
 
 /home/beecaffe/src/saber/saber/utils.h
 sys/stat.h
@@ -50,5 +48,7 @@ fcntl.h
 string
 -
 iostream
+-
+ctime
 -
 

@@ -1,32 +1,39 @@
 #include"../saber/log.h"
 #include<string>
 #include<iostream>
+#include<ctime>
 using namespace saber;
 int main(){
+		//test 1
 		/*
-		 * test 1
-		std::shared_ptr<Logger>  logger(new Logger("MyLog"));
-		
-		std::shared_ptr<LogFormatter> fmt(new LogFormatter());
-		
-		//std::shared_ptr<LogEvent> event(new LogEvent(__FILE__,__LINE__,LogLevel::Level::DEBUG,0,0,0,0,"thread 1",logger,"false"));
-		LOG_EVENT(logger,LogLevel::DEBUG);
-
-		LogAppender::ptr std_app(new StdOutAppender(LogLevel::DEBUG,fmt));
-		LogAppender::ptr file_app(new FileAppender(LogLevel::DEBUG,fmt,"../log/mynewlog.txt"));
-
+		Logger::ptr logger(new Logger("root"));
+		LogLevel::Level level=LogLevel::Level::DEBUG;
+		LogFormatter::ptr fmt(new LogFormatter());
+		logger->setFormatter(fmt);
+		LogAppender::ptr std_app(new StdOutAppender());
+		LogAppender::ptr file_app(new FileAppender("../log/root.txt"));
+		LogEvent::ptr event1(new LogEvent(level,__LINE__,__FILE__,0,0,time(0),0,logger,"id4"));		
+		LogEvent::ptr event2(new LogEvent(level,__LINE__,__FILE__,0,0,time(0),0,logger,"id3"));
 		logger->addAppender(std_app);
 		logger->addAppender(file_app);
-		logger->debug(event);
-		*/
-		/*
-		 * test 2
-		Logger::ptr log(new Logger(LogLevel::DEBUG,"TestLog"));
-		saber::LogConfig::ptr logger(new LogConfig(log));
-		Logger::ptr root(new Logger(logger->getRootLogger()));
-		SABER_LOG_DEBUG(root)<<"this is a test";
-		*/
-		SABER_LOG_DEBUG(SABER_LOG_ROOT)<<"hello world";
-	return 0;
+		event1->getMsg()<<"hello world";
+		LogEventWarp(LogEvent::ptr(new LogEvent(level,__LINE__,__FILE__,0,0,time(0),0,logger,"id4"))).getMsg()<<"I am leiqinghua";
+		LogManager::ptr mgr(new LogManager());
+		Logger::ptr root(mgr->getRoot());*/
+
+		//test 2
+		//LOG_DEBUG(LOG_ROOT)<<"HELLO WORLD";
+		//LOG_DEBUG(LOG_ROOT)<<"I am Lei qinghua";
+		//LOG_DEBUG(LOG_ROOT)<<"HELLO WORLD";
+		//LOG_DEBUG(LOG_ROOT)<<"HELLO WORLD";
+		//LOG_DEBUG(LOG_ROOT)<<"HELLO WORLD";
+		/*Logger::ptr logger(LogMng::Instance()->getLogger("log"));
+		LogLevel::Level level=LogLevel::Level::INFO;
+		if(level>=logger->getLevel()){
+		LogEventWarp(LogEvent::ptr(new LogEvent(level,__LINE__,__FILE__,saber::GetPid(),saber::GetFiberId(),time(0),saber::GetElapse(),logger,"no name"))).getMsg()<<"New test";
+		}*/
+		//test 3
+		LOG_INFO(LOG_NEW("log"))<<"HELLO WORLD";
+		return 0;
 }
 

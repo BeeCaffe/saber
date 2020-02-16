@@ -1,0 +1,237 @@
+#include"json.h"
+void saber::JsonNode::pushBack(JsonNode::ptr node){
+	JsonNode::ptr cur=this;
+	while(cur->getNext()!=nullptr) cur=cur->getNext();
+	cur->setNext(node);
+}
+
+void saber::JsonNode::pushFront(JsonNode::ptr node){
+	JsonNode::ptr cur=this;
+	while(cur->getPrev()!=nullptr) cur=cur->getPrev();
+	cur->setPrev(node);
+}
+
+void saber::JsonNode::popBack(){
+	JsonNode::ptr cur=this;
+	while(cur->getNext()!=nullptr) cur=cur->getNext();
+	cur->getPrev()->setNext(nullptr);
+	delete cur;
+}
+
+void saber::JsonNode::popFront(){
+	JsonNode::ptr cur=this;
+	while(cur->getPrev()!=nullptr) cur=cur->getPrev();
+	cur->getNext()->setPrev(nullptr);
+	delete cur;
+}
+
+std::string saber::JsonIntArray::toString(){
+	std::stringstream ss;
+	ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+	ss<<"[";
+	for(int i=0;i<m_data.size();++i){
+		ss<<m_data[i];
+		if(i!=m_data.size()-1) ss<<",";
+	}
+	ss<<"]";
+	return ss.str();
+}
+
+void saber::JsonIntArray::fromString(std::string &str){
+
+}
+
+std::string saber::JsonDoubleArray::toString(){
+std::stringstream ss;
+	ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+	ss<<"[";
+	for(int i=0;i<m_data.size();++i){
+		ss<<m_data[i];
+		if(i!=m_data.size()-1) ss<<",";
+	}
+	ss<<"]";
+	return ss.str();
+
+}
+
+void saber::JsonDoubleArray::fromString(std::string &str){
+
+}
+
+std::string saber::JsonStringArray::toString(){
+std::stringstream ss;
+		ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+				
+	ss<<"[";
+	for(int i=0;i<m_data.size();++i){
+		ss<<"\""<<m_data[i]<<"\"";
+		if(i!=m_data.size()-1) ss<<",";
+	}
+	ss<<"]";
+	return ss.str();
+
+}
+
+void saber::JsonStringArray::fromString(std::string &str){
+
+}
+
+std::string saber::JsonObjectArray::toString(){
+		std::stringstream ss;	
+		ss<<"\""<<getKey()<<"\"";
+		ss<<":";
+		ss<<"[";
+		for(int i=0;i<m_data.size();++i){
+			JsonNode::ptr header=m_data[i]->getChild();
+			if(header->getNext()!=nullptr){
+				ss<<"{";
+				ss<<saber::JsonTree::parse(header->getNext());
+				if(i!=m_data.size()-1){ 
+						ss<<"},";
+				}
+				else ss<<"}";
+			}
+		}
+		ss<<"]";
+		return ss.str();
+}
+
+void saber::JsonObjectArray::fromString(std::string &str){
+
+}
+
+std::string saber::JsonDouble::toString(){
+std::stringstream ss;
+	ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+	ss<<m_data;
+	return ss.str();
+
+}
+
+void saber::JsonDouble::fromString(std::string &str){
+
+}
+
+std::string saber::JsonInt::toString(){
+	std::stringstream ss;
+	ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+	ss<<m_data;
+	return ss.str();
+
+}
+
+void saber::JsonInt::fromString(std::string &str){
+
+}
+
+std::string saber::JsonString::toString(){
+std::stringstream ss;
+	ss<<"\""<<getKey()<<"\"";
+	ss<<":";
+	ss<<"\"";
+	ss<<m_data;
+	ss<<"\"";
+	return ss.str();
+
+
+}
+
+void saber::JsonString::fromString(std::string &str){
+
+}
+
+std::string saber::JsonObject::toString(){
+	std::stringstream ss;
+	ss<<"\""<<getKey()<<"\":";
+	ss<<"\n{\n";
+	ss<<saber::JsonTree::parse(getChild());
+	ss<<"\n}\n";
+	return ss.str();
+
+}
+
+void saber::JsonObject::fromString(std::string &str){
+
+}
+
+/**
+*class JsonTree functions
+*/
+
+std::string saber::JsonTree::parse(JsonNode* cur){
+		std::stringstream ss;
+		if(cur==nullptr) return "\n";
+		////parse one node
+		if(!cur->isVisited()) {
+				ss<<cur->toString();
+				if(cur->getNext()==nullptr) ss<<"";
+				else ss<<",\n";
+		}
+		cur->setVisited(true);
+		////parse brother
+		JsonNode* ptr=cur;
+		while(ptr->getNext()!=nullptr){ 
+				ptr=ptr->getNext();
+				if(!ptr->isVisited()){
+					ss<<parse(ptr);
+				}
+		}
+		ptr=cur;
+		////parse child
+		if(ptr->getChild()!=nullptr){ 					
+				ptr=ptr->getChild();
+				if(!ptr->isVisited()){
+						ss<<parse(ptr);
+
+				}
+		}
+		return ss.str();
+	}
+
+
+std::string saber::JsonTree::toString(){
+	std::stringstream ss;
+	ss<<"{\n";
+	ss<<parse(m_root);
+	ss<<"\n}\n";
+	return ss.str();
+}
+
+void saber::JsonTree::reset(){
+		std::queue<JsonNode*> que;
+		JsonNode* cur=m_root;
+		while(cur!=nullptr){
+			que.push(cur);
+			cur=cur->getNext();
+		}
+		while(!que.empty()){
+			for(int i=que.size()-1;i>=0;--i){
+				JsonNode* tmp=que.front();que.pop();
+				tmp->setVisited(false);
+				if(tmp->getChild()!=nullptr){
+					tmp=tmp->getChild();
+					while(tmp!=nullptr){
+						que.push(tmp);
+						if(tmp->getType()==JsonType::Type::ObjectArray){
+							std::vector<JsonObject*> vec=dynamic_cast<JsonObjectArray*>(tmp)->getData();
+							for(JsonNode* item:vec) que.push(item);
+						}
+						tmp=tmp->getNext();
+					}
+				}
+			}
+		}
+}
+
+void saber::JsonTree::release(){
+		std::queue<JsonNode*> que;
+		que.push(m_data);
+		while(!que.empty()){
+			
+		}
+}

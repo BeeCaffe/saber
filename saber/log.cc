@@ -1,326 +1,290 @@
 #include"log.h"
-using namespace saber;
 /**
- *@brief class LogEvent functions
+ *@brief class LogEvent
  */
-saber::LogEvent::LogEvent(std::string file,
-						  uint32_t line,
-					 	  LogLevel::Level level,
-						  uint32_t thread_id,
-					 	  uint32_t fiber_id,
-						  uint32_t elapse,
-					 	  time_t time,
-						  std::string thread_name,
-					 	  std::shared_ptr<Logger> logger):
-					 m_file(file),m_line(line),
-					 m_level(level),m_threadId(thread_id),
-					 m_fiberId(fiber_id),m_elapse(elapse),
-					 m_time(time),m_threadName(thread_name),
-					 m_logger(logger){}
-
-/*
- *@brief class LogFormatter functions
+////constructor
+saber::LogEvent::LogEvent(LogLevel::Level level,
+							 uint32_t line,
+							 const char* file,
+							 uint32_t thread_id,
+							 uint32_t fiber_id,
+							 uint64_t time,
+							 uint32_t elapse,
+							 std::shared_ptr<Logger> logger,
+							 std::string thread_name):
+							 m_level(level),
+							 m_line(line),
+							 m_file(file),
+							 m_threadId(thread_id),
+							 m_time(time),
+							 m_elapse(elapse),
+							 m_logger(logger),
+						     m_threadName(thread_name){}
+/**
+ *@brief class LogAppender
  */
-saber::LogFormatter::LogFormatter(std::string pattern):
-m_pattern(pattern){}
+/// set formatter of log appender
+void saber::LogAppender::setFormatter(std::shared_ptr<LogFormatter> format){m_formatter=format; }
+
+////print log information to console
+void saber::StdOutAppender::log(LogLevel::Level level,LogEvent::ptr event){
+	if(level>=m_level){
+		std::cout<<m_formatter->format(event);
+	}
+}
+saber::FileAppender::FileAppender(LogLevel::Level level,std::string file):m_file(file),m_level(level){}
+saber::FileAppender::FileAppender(std::string file):m_file(file){}
+void saber::FileAppender::reopen(){
+	if(m_os.is_open()){
+		m_os.close();
+		m_os.open(m_file,std::ios::app);
+	}
+}
+void saber::FileAppender::makeDirs(){
+	int last_pos=0;
+	for(int i=m_file.size()-1;i>=0;--i){
+		if(m_file[i]=='/'){ 
+			last_pos=i;break;
+		}
+	}
+	std::string dir=m_file.substr(0,last_pos+1);
+	std::string filename=m_file.substr(last_pos+1);
+	saber::Mkdirs(dir);
+	saber::Creat(m_file);
+}
+void saber::FileAppender::log(LogLevel::Level level, LogEvent::ptr event) {
+		if(m_os.is_open()) reopen();
+		if(!m_os.is_open()){
+			makeDirs();
+			m_os.open(m_file,std::ios::app);
+		}
+		if(level>=m_level){
+			m_os<<m_formatter->format(event);
+		}
+		m_os.close();
+}
 
 
-std::string saber::LogFormatter::parsePattern(std::shared_ptr<LogEvent> &event,const std::string &pattern,std::shared_ptr<Logger> &logger){
-	if(pattern.empty()) return "";
-	int sz=pattern.size();
+/**
+ *@brief class LogFormatter
+ */
+
+std::string saber::LogFormatter::timeString(LogEvent::ptr event ,std::string pattern){
 	std::stringstream ss;
-	for(int i=0;i<sz;++i){
+	if(pattern.empty()) pattern="%y-%m-%d %H:%M:%S";
+	struct tm* ptm;
+	time_t time=event->getTime();
+	ptm=localtime(&time);
+	for(int i=0;i<pattern.size();++i){
+		switch(pattern[i]){
+			case 'y': ss<<(1900+ptm->tm_year);break;
+			case 'Y': ss<<(1900+ptm->tm_year);break;
+			case 'm': ss<<(1+ptm->tm_mon);break;
+			case 'd': ss<<ptm->tm_mday;break;
+			case 'H': ss<<ptm->tm_hour;break;
+			case 'M': ss<<ptm->tm_min;break;
+			case 'S': ss<<ptm->tm_sec;break;
+			case 's': ss<<ptm->tm_sec;break;
+			case '-': ss<<"-";break;
+			case '\\': ss<<"\\";break;
+			case ':': ss<<":";break;
+			case ' ': ss<<" ";break;
+			case '%': break;
+			default: std::cout<<"<<error>> timeString()-time pattern error"<<"error char is :"<<pattern[i]<<std::endl;
+		}
+	}
+	return ss.str();
+}
+////get event time
+std::string saber::LogFormatter::msgString(LogEvent::ptr event){
+	return event->getMsg().str();
+}
+////get event elapse
+std::string saber::LogFormatter::elapseString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getElapse();
+	return ss.str();
+}
+////get log name
+std::string saber::LogFormatter::logNameString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getLogger()->getName();
+	return ss.str();
+
+}
+////get thread id
+std::string saber::LogFormatter::threadIdString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getThreadId();
+	return ss.str();
+}
+////new line
+std::string saber::LogFormatter::newLineString(LogEvent::ptr event){
+	return "\n";
+}
+////file name
+std::string saber::LogFormatter::fileNameString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getFile();
+	return ss.str();
+
+}
+////line
+std::string saber::LogFormatter::lineString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getLine();
+	return ss.str();
+}
+//// tab
+std::string saber::LogFormatter::tabString(LogEvent::ptr event){
+	return "\t";
+}
+//// fiber id
+std::string saber::LogFormatter::fiberIdString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getFiberId();
+	return ss.str();
+}
+//// thread name
+std::string saber::LogFormatter::threadNameString(LogEvent::ptr event){
+	std::stringstream ss;
+	ss<<event->getThreadName();
+	return ss.str();
+}
+//// log level
+std::string saber::LogFormatter::levelString(LogEvent::ptr event){
+	std::stringstream ss;
+	switch(event->getLevel()){
+			case LogLevel::LogLevel::DEBUG : ss<<"DEBUG";break;
+			case LogLevel::LogLevel::INFO : ss<<"INFO";break;
+			case LogLevel::LogLevel::WARN : ss<<"WARN";break;
+			case LogLevel::LogLevel::ERROR : ss<<"ERROR";break;
+			case LogLevel::LogLevel::FATAL : ss<<"FATAL";break;
+			case LogLevel::LogLevel::UNKNOWN : ss<<"UNKNOWN";break;
+	}
+	return ss.str();
+}
+std::string saber::LogFormatter::format(LogEvent::ptr event){
+	return parsePattern(event,m_pattern);
+}
+std::string saber::LogFormatter::parsePattern(LogEvent::ptr event,std::string &pattern){
+	std::stringstream ss;
+	for(int i=0;i<pattern.size();++i){
 		if(pattern[i]=='%'){
-			if((i+1)<sz&&pattern[i+1]=='%'){ 
-					ss<<"%";
-					continue;
-			}else if(i+1<sz&&pattern[i+1]=='d'){//prase time format
-				if(i+2<sz&&pattern[i+2]=='{'){
-					int n=i+2;
-					while(n<sz&&pattern[n]!='}') ++n;
-					std::string timefmt=pattern.substr(i+3,n-i-3);
-					ss<<pTime(event,timefmt);
-					i=n;
-				}else{
-					ss<<"<<pattern error>>"<<"%d shuld follow with {}\n";
-					return ss.str();
+			char fmt=pattern[i+1];
+			if(fmt=='%'){		   //// %%
+				ss<<"%";i++;continue;
+			}else if(fmt=='d'){	   //// %d
+				int j=i+2;
+				if(pattern[i+2]!='{'){
+					std::cout<<"<<error>> pattern format error 1 ";exit(0);
 				}
-			}else if(i+1<sz){//parse others
-					char ch=pattern[i+1];
-				switch(ch){
-#define XX(curch,func)	case curch: \
-						ss<<func(event); \
-						break;
-
-						XX('m',pMsg)
-						XX('p',pLevel)
-						XX('t',pthreadId)
-					XX('n',pNewLine)
-						XX('f',pFileName)
-						XX('l',pLine)
-						XX('T',pTab)
-						XX('F',pFiberId)
-						XX('N',pThreadName)
-#undef XX
-						case 'c':
-							ss<<pLogName(event,logger);
-							break;
-						default:
-							ss<<"<<pattern error>> pattern string is illegal";
-							break;
-				}
-				++i;
-			}
-
-		}else if(pattern[i]=='['){
-				ss<<"[";
-				int j=i+1;
-				while(j<sz&&pattern[j]!=']') ++j;
-				std::string tmp(parsePattern(event,pattern.substr(i+1,j-i-1),logger));
-				ss<<tmp;
-				ss<<"]";
+				while(j<pattern.size()&&pattern[j]!='}') ++j;
+				ss<<timeString(event,pattern.substr(i+3,j-i-3));
 				i=j;
-				
-		}else if(isspace(pattern[i])){
-			continue;
-		}else{
+			}else{
+				switch(fmt){
+				case 'm':ss<<msgString(event);break;
+				case 'p':ss<<levelString(event);break;
+				case 'r':ss<<elapseString(event);break;
+				case 'c':ss<<logNameString(event);break;
+				case 't':ss<<threadIdString(event);break;
+				case 'n':ss<<newLineString(event);break;
+				case 'f':ss<<fileNameString(event);break;
+				case 'l':ss<<lineString(event);break;
+				case 'T':ss<<tabString(event);break;
+				case 'F':ss<<fiberIdString(event);break;
+				case 'N':ss<<threadNameString(event);break;
+				default : std::cout<<"<<error>> pattern format error 2"<<"char is :"<<fmt<<std::endl;exit(0);break;
+				}
+				i++;
+			}
+		}else if(pattern[i]=='['){ //// [
+			ss<<"[";
+			int j=i;
+			while(j<pattern.size()&&pattern[j]!=']') ++j;
+			if(j==pattern.size()){ 
+				std::cout<<"<<error>> pattern format error 3";exit(0);
+			}
+			std::string tmp(pattern.substr(i+1,j-i-1));
+			ss<<parsePattern(event,tmp);
+			ss<<"]";
+			i=j;
+		}else{ 					   ////others
 			ss<<pattern[i];
 		}
 	}
 	return ss.str();
 }
-
-std::string LogFormatter::format(std::shared_ptr<saber::Logger> &logger,std::shared_ptr<saber::LogEvent> &event){
-	std::stringstream ss;
-	ss<<parsePattern(event,m_pattern,logger);
-	return ss.str();
-}
-	
-std::string saber::LogFormatter::pMsg(std::shared_ptr<LogEvent> &event){
-		std::stringstream ss;
-		std::string msg(event->getSS().str());
-		event->setMsg(msg);
-		ss<<event->getMsg();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pLevel(std::shared_ptr<LogEvent> &event){
-		std::stringstream ss;
-		LogLevel::Level level = event->getLevel();
-		switch(level){
-#define XX(level,str) case level:\
-				ss<<#str;\
-				break;
-
-				XX(0,UNKNOWN)
-				XX(1,DEBUG)
-				XX(2,INFO)
-				XX(3,WARN)
-				XX(4,ERROR)
-				XX(5,FATAL)
-#undef XX
-				default:
-				ss<<"UNKNOWN";
-				break;
-		}
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pElapse(std::shared_ptr<LogEvent> &event){
-		std::stringstream ss;
-		ss<<event->getElapse();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pLogName(std::shared_ptr<LogEvent> &event,std::shared_ptr<Logger> &logger){
-		std::stringstream ss;
-		ss<<logger->getName();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pthreadId(std::shared_ptr<LogEvent> &event){
-		std::stringstream ss;
-		ss<<event->getThreadId();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pNewLine(std::shared_ptr<LogEvent> &event){
-	return "\n";
-}
-
-std::string saber::LogFormatter::pTime(std::shared_ptr<LogEvent> &event,std::string& fmt){
-	if(fmt.empty()){
-		fmt="%Y-%m-%d %H:%M:%S";
-	}
-	struct tm* ptm;
-	time_t cur_time = event->getTime();
-	//time_t cur_time;
-	//time(&cur_time);
-	ptm=localtime(&cur_time);
-	char buf[64];
-	strftime(buf,sizeof(buf),fmt.c_str(),ptm);
-	return std::string(buf,buf+strlen(buf));
-}
-
-std::string saber::LogFormatter::pFileName(std::shared_ptr<LogEvent> &event){
-	std::stringstream ss;
-	ss<<event->getFile();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pLine(std::shared_ptr<LogEvent> &event){
-	std::stringstream ss;
-	ss<<event->getLine();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pTab(std::shared_ptr<LogEvent> &event){
-	return "\t";
-}
-
-std::string saber::LogFormatter::pFiberId(std::shared_ptr<LogEvent> &event){
-	std::stringstream ss;
-	ss<<event->getFiberId();
-	return ss.str();
-}
-
-std::string saber::LogFormatter::pThreadName(std::shared_ptr<LogEvent> &event){
-	std::stringstream ss;
-	ss<<event->getThreadName();
-	return ss.str();
-}
-
 /**
- *@brief class LogAppender,StdOutAppender,FileAppender functions
+ *@brief class Logger
  */
-
-	
-void saber::StdOutAppender::log(std::shared_ptr<Logger> &logger,LogLevel::Level level,LogEvent::ptr &event){
+void saber::Logger::log(LogEvent::ptr event,LogLevel::Level level){
 	if(level>=m_level){
-			std::cout<<m_formatter->format(logger,event);
+		if(this==nullptr) std::cout<<"<<fatal>> logger should not be nullptr"<<std::endl;
+		for(int i=0;i<m_appenders.size();++i){
+			m_appenders[i]->setFormatter(m_formatter);
+			m_appenders[i]->log(level,event);
+		}
 	}
 }
-
-saber::FileAppender::FileAppender(LogLevel::Level level,LogFormatter::ptr formatter,std::string file):LogAppender(level,formatter),m_file(file){
-	int last_pos=0;
-	for(int i=m_file.size()-1;i>=0;--i){
-		if(m_file[i]=='/'){ 
-			last_pos=i;
-			break;
-		}
-	}
-	std::string dir=m_file.substr(0,last_pos+1);
-	std::string filename=m_file.substr(last_pos+1);
-    saber::Mkdirs(dir);
-    saber::Creat(m_file);
-
+void saber::Logger::addAppender(LogAppender::ptr appender){
+	m_appenders.push_back(appender);
 }
-
-
-saber::FileAppender::FileAppender(std::string file):m_file(file){
-	int last_pos=0;
-	for(int i=m_file.size()-1;i>=0;--i){
-		if(m_file[i]=='/'){ 
-			last_pos=i;
-			break;
-		}
-	}
-	std::string dir=m_file.substr(0,last_pos+1);
-	std::string filename=m_file.substr(last_pos+1);
-    saber::Mkdirs(dir);
-    saber::Creat(m_file);
+void saber::Logger::setFormatter(LogFormatter::ptr formatter){
+	m_formatter=formatter;
 }
-
-
-void saber::FileAppender::log(std::shared_ptr<Logger> &logger,LogLevel::Level level, LogEvent::ptr &event){
-	if(level>=m_level){
-		if(m_os.is_open()){
-			m_os.close();
-			m_os.open(m_file,std::ios::app);
-		}
-		m_os.open(m_file,std::ios::app);
-		if(!m_os){
-			std::cout<<"<<error>> file open error";
-			exit(0);
-		}
-		std::string tmp=m_formatter->format(logger,event);
-		m_os<<tmp;
-		m_os.close();
-	}
+void saber::Logger::debug(saber::LogEvent::ptr event){
+	log(event,saber::LogLevel::Level::DEBUG);
+}
+void saber::Logger::info(LogEvent::ptr event){
+	log(event,saber::LogLevel::Level::INFO);
+}
+void saber::Logger::warn(LogEvent::ptr event){
+	log(event,saber::LogLevel::Level::WARN);
+}
+void saber::Logger::error(LogEvent::ptr event){
+	log(event,saber::LogLevel::Level::ERROR);
+}
+void saber::Logger::fatal(LogEvent::ptr event){
+	log(event,saber::LogLevel::Level::FATAL);
 }
 /**
- *@brief class Logger functions
+ *brief class LogManager
  */
-
-void saber::Logger::delAppender(){
-	if(!m_appenders.empty()){
-		m_appenders.pop_back();
-	}
-}
-
-void saber::Logger::clearAppender(){
-	if(!m_appenders.empty()){
-		m_appenders.clear();
-	}
-}
-
-void saber::Logger::log(LogLevel::Level level,LogEvent::ptr &event){
-	if(level>=m_level){			
-		auto self=std::shared_ptr<Logger>(this); 
-		for(auto item:m_appenders){
-			item->log(self,level,event);
-		}
-	}
-}
-
-void saber::Logger::debug(LogEvent::ptr &event){
-	if(LogLevel::DEBUG>=m_level){
-			log(LogLevel::DEBUG,event);
-	}
-}
-
-void saber::Logger::info(LogEvent::ptr &event){
-	if(LogLevel::INFO>=m_level){
-			log(LogLevel::INFO,event);
-	}
-}
-
-void saber::Logger::warn(LogEvent::ptr &event){
-	if(LogLevel::WARN>=m_level){
-			log(LogLevel::WARN,event);
-	}
-
-}
-
-void saber::Logger::error(LogEvent::ptr &event){
-	if(LogLevel::ERROR>=m_level){
-			log(LogLevel::ERROR,event);
-	}
-}
-
-void saber::Logger::fatal(LogEvent::ptr &event){
-	if(LogLevel::FATAL>=m_level){
-			log(LogLevel::FATAL,event);
-	}
-}
-/**
- *@brief class LogConfig functions
- */
-Logger::ptr& saber::LogConfig::getRootLogger(){
+void saber::LogManager::initRoot(){
+	root_logger.reset(new Logger("root"));
 	LogFormatter::ptr fmt(new LogFormatter());
-	LogLevel::Level level=m_logger->getLevel();
-	std::string log_dir="../log/"+m_logger->getName()+".txt";
-	LogAppender::ptr std_app(new FileAppender(level,fmt,log_dir));
-	LogAppender::ptr file_app(new StdOutAppender(level,fmt));
-	m_logger->addAppender(std_app);
-	m_logger->addAppender(file_app);
-	return m_logger;
+	StdOutAppender::ptr std_app(new StdOutAppender());
+	FileAppender::ptr file_app(new FileAppender("../log/root.txt"));
+	root_logger->setFormatter(fmt);
+	root_logger->addAppender(std_app);
+	root_logger->addAppender(file_app);
 }
 
-void saber::LogConfig::setFormatter(LogFormatter::ptr &fmt){
-	std::vector<LogAppender::ptr> appenders=m_logger->getAppenders();
-	for(auto item:appenders){
-		item->setFormatter(fmt);
-	}
+saber::Logger::ptr saber::LogManager::getRoot(){
+	if(root_logger==nullptr) initRoot();
+	return root_logger;
+}
+
+saber::Logger::ptr saber::LogManager::getLogger(std::string log_name){
+	if(m_loggers.find(log_name)!=m_loggers.end()) return m_loggers[log_name];
+	else {
+		LOG_INFO(LOG_ROOT)<<log_name<<" is not exist, but a new log is built";
+		addLogger(log_name);
+		return m_loggers[log_name];
+	} 
+}
+
+void saber::LogManager::addLogger(std::string log_name){
+	Logger::ptr log(new Logger(log_name));
+	LogFormatter::ptr fmt(new LogFormatter());
+	StdOutAppender::ptr std_app(new StdOutAppender());
+	std::string log_path="../log/"+log_name+".txt";
+	FileAppender::ptr file_app(new FileAppender(log_path));
+	log->setFormatter(fmt);
+	log->addAppender(std_app);
+	log->addAppender(file_app);
+	m_loggers[log_name]=log;
 }
 

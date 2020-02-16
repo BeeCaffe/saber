@@ -1,0 +1,3 @@
+[2020-2-14 4:23:30] [INFO] [thread id:1711] (/home/beecaffe/src/saber/tests/log_test.cc:36) - HELLO WORLD
+[2020-2-14 4:25:30] [INFO] [thread id:1794] (/home/beecaffe/src/saber/tests/log_test.cc:36) - HELLO WORLD
+[2020-2-14 4:25:56] [INFO] [thread id:1878] (/home/beecaffe/src/saber/tests/log_test.cc:36) - HELLO WORLD

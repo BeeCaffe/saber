@@ -1,7 +1,0 @@
-2020-02-10 17:57:34	5300	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 17:57:34	5300	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 17:59:15	5371	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 17:59:15	5371	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 18:09:46	5487	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 18:09:46	5487	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:30	hello world
-2020-02-10 18:15:49	5545	no thread name	0	[DEBUG]	[Root]	/home/beecaffe/src/saber/tests/log_test.cc:29	hello world

@@ -1,64 +1,38 @@
 #ifndef __SABER_LOG_H
 #define __SABER_LOG_H
-#include<string>
-#include<vector>
-#include<memory>
-#include<time.h>
-#include<stdio.h>
-#include<sstream>
-#include<string.h>
 #include<iostream>
+#include<sstream>
+#include<memory>
+#include<ctime>
+#include<vector>
 #include<fstream>
-#include<sys/stat.h>
 #include"utils.h"
-
-////according to name new a logger
-#define SABER_LOG_NEW(name)\
-		saber::LogConfig::ptr(new LogConfig(Logger::ptr(new Logger(LogLevel::DEBUG,#name))))->getRootLogger()
-
-
-////get and set root logger
-#define SABER_LOG_ROOT\
-	saber::LogConfig::ptr(new LogConfig(Logger::ptr(new Logger(LogLevel::DEBUG,"Root"))))->getRootLogger()
-
-
-////print log, before that you should set logger's configurations ahead
-#define SABER_LOG_EVENT(logger,level)\
-	if(level>=logger->getLevel())\
-		saber::LogEventWarp(saber::LogEvent::ptr(new saber::LogEvent(\
-		__FILE__,__LINE__,level,saber::GetPid(),saber::GetFiberId(),\
-		saber::GetElapse(),time(0),"no thread name",logger))).getSS()
-
-//// print debug level log
-#define SABER_LOG_DEBUG(logger)\
-	SABER_LOG_EVENT(logger,LogLevel::DEBUG)
-
-//// print info level log
-#define SABER_LOG_INFO(logger)\
-	SABER_LOG_EVENT(logger,LogLevel::INFO)
-
-////print warn level log
-#define SABER_LOG_WARN(logger)\
-	SABER_LOG_EVENT(logger,LogLevel::WARN)
-
-////print error level log
-#define SABER_LOG_ERROR(logger)\
-	SABER_LOG_EVENT(logger,LogLevel::ERROR)
-
-////print fatal level log
-#define SABER_LOG_FATAL(logger)\
-	SABER_LOG_EVENT(logger,LogLevel::FATAL)
-	
+#include<map>
+#include"singleton.h"
 namespace saber{
-
+////get root logger, with only one instance
+#define LOG_ROOT\
+	LogMng::Instance()->getRoot()
+////get a new logger, with only one instance
+#define LOG_NEW(name)\
+	LogMng::Instance()->getLogger(name)
+////call logger
+#define LOG_LOG(logger,level)\
+	if(level>=logger->getLevel())\
+	LogEventWarp(LogEvent::ptr(new LogEvent(level,__LINE__,__FILE__,saber::GetPid(),saber::GetFiberId(),time(0),saber::GetElapse(),logger,"no name"))).getMsg()
+////deifferent log
+#define LOG_DEBUG(logger)\
+		LOG_LOG(logger,LogLevel::Level::DEBUG)
+#define LOG_INFO(logger)\
+		LOG_LOG(logger,LogLevel::Level::INFO)
+#define LOG_WARN(logger)\
+		LOG_LOG(logger,LogLevel::Level::WARN)
+#define LOG_ERROR(logger)\
+		LOG_LOG(logger,LogLevel::Level::ERROR)
+#define LOG_FATAL(logger)\
+		LOG_LOG(logger,LogLevel::Level::FATAL)
 	class Logger;
-
-	class LogEvent;
-
-
-	/*
-	 *@brief class LogLvel
-	 */
+	class LogFormatter;
 	class LogLevel{
 		public:
 				enum Level{
@@ -70,264 +44,185 @@ namespace saber{
 					FATAL=5
 				};
 	};
-	/*
+	/**
 	 *@brief class LogEvent
 	 */
 	class LogEvent{
-		public:
+	public:
 			typedef std::shared_ptr<LogEvent> ptr;
-			
-			LogEvent(std::string m_file,uint32_t line,
-					 LogLevel::Level level,uint32_t thread_id,
-					 uint32_t fiber_id,uint32_t elapse,
-					 time_t time,std::string thread_name,
-					 std::shared_ptr<Logger> logger);
-			
-			~LogEvent(){};
-			
-			const std::string getFile() const {return m_file;}
-
-			const uint32_t getThreadId() const {return m_threadId;}
-
-			const uint32_t getFiberId() const{return m_fiberId;}
-
-			const uint32_t getElapse() const {return m_elapse;}
-
-			time_t getTime() {return m_time;}
-
+			LogEvent(LogLevel::Level level,
+					 uint32_t line,
+					 const char* file,
+					 uint32_t thread_id,
+					 uint32_t fiber_id,
+					 uint64_t time,
+					 uint32_t elapse,
+					 std::shared_ptr<Logger> logger,
+					 std::string thread_name
+					 );
+			////gettter
+			const LogLevel::Level getLevel() const{return m_level;}
 			const uint32_t getLine() const {return m_line;}
-
+			const char* getFile() const {return m_file;}
+			const uint32_t getThreadId() const {return m_threadId;}
+			const uint32_t getFiberId() const {return m_FiberId;}
+			const uint64_t getTime()const{return m_time;}
+			const uint32_t getElapse()const{return m_elapse;}
+			std::stringstream& getMsg(){return m_msg;}
+			const std::shared_ptr<Logger> getLogger()const{return m_logger;}
 			const std::string getThreadName() const{return m_threadName;}
-
-			const std::shared_ptr<Logger> getLogger() const {return m_logger;}
-
-			const LogLevel::Level getLevel() const {return m_level;}
-
-			const std::string getMsg() const {return m_message;}
-
-			std::stringstream& getSS() {return m_ss;}
-
-			void setMsg(std::string& msg){m_message=msg;}
-			
-			const bool getHasPirnt() const {return hasPirnt;}
-
-			void setHasPrint(bool status){hasPirnt=status;}
-
-		private:
-
-			std::string m_file;		//file name
-			
-			uint32_t m_threadId=0;	//thread id
-			
-			uint32_t m_fiberId=0;	//fiber id
-			
-			uint32_t m_elapse=0;	//elapse
-			
-			time_t m_time=0;		//time 
-			
-			uint32_t m_line=0;		//line
-			
-			std::string m_threadName;//thread name
-			
-			std::shared_ptr<Logger> m_logger;//logger
-			
-			LogLevel::Level m_level=LogLevel::DEBUG;//log level
-			
-			std::string m_message;	//log content
-			
-			std::stringstream m_ss;
-
-			bool hasPirnt=false;
+	private:
+		LogLevel::Level m_level=LogLevel::Level::DEBUG;
+		uint32_t m_line=0;	////file line
+		const char* m_file=nullptr;	////file name
+		uint32_t m_threadId=0;	////thread id
+		uint32_t m_FiberId=0;	////fiber id
+		uint64_t m_time=0;		////timestamp 
+		uint32_t m_elapse=0;	////program  run time
+		std::stringstream m_msg; ////log message
+		std::shared_ptr<Logger> m_logger;
+		std::string m_threadName;
 	};
-	/*
-	 *@brief class LogFormatter
-	 */
-	class LogFormatter{
-		public:
-			typedef std::shared_ptr<LogFormatter> ptr;
 
-			LogFormatter()=default;
-
-			LogFormatter(std::string pattern);
-
-			~LogFormatter(){}
-
-			std::string format(std::shared_ptr<Logger> &logger,std::shared_ptr<LogEvent> &event);
-
-			std::string parsePattern(std::shared_ptr<LogEvent> &event,const std::string &pattern,std::shared_ptr<Logger> &logger);
-
-		public:
-			std::string pMsg(std::shared_ptr<LogEvent> &event);
-			std::string pLevel(std::shared_ptr<LogEvent> &event);
-			std::string pElapse(std::shared_ptr<LogEvent> &event);
-			std::string pLogName(std::shared_ptr<LogEvent> &event,std::shared_ptr<Logger> &logger);
-			std::string pthreadId(std::shared_ptr<LogEvent> &event);
-			std::string pNewLine(std::shared_ptr<LogEvent> &event);
-			std::string pTime(std::shared_ptr<LogEvent> &event,std::string &fmt);
-			std::string pFileName(std::shared_ptr<LogEvent> &event);
-			std::string pLine(std::shared_ptr<LogEvent> &event);
-			std::string pTab(std::shared_ptr<LogEvent> &event);
-			std::string pFiberId(std::shared_ptr<LogEvent> &event);
-			std::string pThreadName(std::shared_ptr<LogEvent> &event);
-
-		private:
-			std::string m_pattern="%d{%Y-%m-%d %H:%M:%S}%T%t%T%N%T%F%T[%p]%T[%c]%T%f:%l%T%m%n";
-	};
-	/*
+	/**
 	 *@brief class LogAppender
 	 */
+	////base class
 	class LogAppender{
 		public:
 				typedef std::shared_ptr<LogAppender> ptr;
-
-				LogAppender()=default;
-
-				LogAppender(LogLevel::Level level,LogFormatter::ptr formatter):m_level(level),m_formatter(formatter){}
-
+				LogAppender(){}
+				LogAppender(LogLevel::Level level,std::shared_ptr<LogFormatter> formatter):m_level(level),m_formatter(formatter){}
 				virtual ~LogAppender(){}
-
-				virtual void log(std::shared_ptr<Logger> &logger, LogLevel::Level level,LogEvent::ptr &event)=0;
-				
-				void setLevel(LogLevel::Level level){m_level=level;}
-
-				void setFormatter(LogFormatter::ptr &formatter){m_formatter=formatter;}
-
+				virtual void log(LogLevel::Level,LogEvent::ptr)=0;
+				////setter
+				void setFormatter(std::shared_ptr<LogFormatter>);
 		protected:
-				LogLevel::Level m_level=LogLevel::DEBUG;
-
-				LogFormatter::ptr m_formatter;
-
-				bool hasFormatter=false;
-
+				LogLevel::Level m_level=LogLevel::Level::DEBUG;	///loglevel
+				std::shared_ptr<LogFormatter> m_formatter;	////formatter
 	};
 
-	class StdOutAppender: public LogAppender{
+	////console appender
+	class StdOutAppender:public LogAppender{
 		public:
 				typedef std::shared_ptr<StdOutAppender> ptr;
-				////constrcutor
-				StdOutAppender(LogLevel::Level level,LogFormatter::ptr formatter):LogAppender(level,formatter){}
-
-				~StdOutAppender(){}
-
-				void log(std::shared_ptr<Logger> &logger,LogLevel::Level level, LogEvent::ptr &event) override;
-		private:
+				StdOutAppender():LogAppender(){}
+				void log(LogLevel::Level,LogEvent::ptr) override;
 	};
-
 	class FileAppender:public LogAppender{
-			public:
-					typedef std::shared_ptr<FileAppender> ptr;
-
-					FileAppender(LogLevel::Level level,LogFormatter::ptr formatter,std::string file);
-
-					FileAppender(std::string file);
-
-					~FileAppender(){}
-
-					void log(std::shared_ptr<Logger> &logger,LogLevel::Level level, LogEvent::ptr &event) override;
-
-			private:
-
-					std::string m_file="../log/dlogger.txt";
-
-					std::ofstream m_os;
+	public:
+		typedef std::shared_ptr<FileAppender> ptr;
+		FileAppender(LogLevel::Level level,std::string file);
+		FileAppender(std::string file);
+		void reopen();
+		void makeDirs();
+		void log(LogLevel::Level level, LogEvent::ptr event) override;
+	private:
+		std::string m_file="../log/default_logger.txt";
+		LogLevel::Level m_level=LogLevel::Level::DEBUG;
+		std::ofstream m_os;
 	};
-	/*
+
+	/**
+	 *@brief class LogFormatter
+	 *@describe 
+	 *	%m -- message
+	 *	%p -- level
+	 *	%r -- elapse
+	 *	%c -- log name
+	 *	%t -- thread id
+	 *	%n -- new line
+	 *	%d -- time
+	 *	%f -- file name
+	 *	%l -- line
+	 *	%T -- Tab
+	 *	%F -- fiber id
+	 *	%N -- thread name
+	 */
+	class LogFormatter{
+	public:
+			typedef std::shared_ptr<LogFormatter> ptr;
+			////constructor
+			LogFormatter(std::string pattern):m_pattern(pattern){}
+			LogFormatter(){}
+			////core funtions
+			std::string format(LogEvent::ptr);
+			std::string parsePattern(LogEvent::ptr,std::string&);
+			std::string timeString(LogEvent::ptr,std::string);
+			std::string msgString(LogEvent::ptr);
+			std::string levelString(LogEvent::ptr);
+			std::string elapseString(LogEvent::ptr);
+			std::string logNameString(LogEvent::ptr);
+			std::string threadIdString(LogEvent::ptr);
+			std::string newLineString(LogEvent::ptr);
+			std::string fileNameString(LogEvent::ptr);
+			std::string lineString(LogEvent::ptr);
+			std::string tabString(LogEvent::ptr);
+			std::string fiberIdString(LogEvent::ptr);
+			std::string threadNameString(LogEvent::ptr);
+	private:
+			std::string m_pattern="[%d{%y-%m-%d %H:%M:%S}] [%p] [thread id:%t] [%c] (%f\:%l) - %m%n";
+	};
+	/**
 	 *@brief class Logger
 	 */
-	class Logger:public std::enable_shared_from_this<Logger>{
-		public:
-				typedef std::shared_ptr<Logger> ptr;
+	class Logger{
+	public:
+		typedef std::shared_ptr<Logger> ptr;
+		Logger(std::string name):m_logName(name){}
+		Logger(std::string name,LogLevel::Level level):m_logName(name),m_level(level){}
+		Logger(std::string name,LogLevel::Level level,LogFormatter::ptr fmt):m_logName(name),m_level(level),m_formatter(fmt){}
+		const LogLevel::Level getLevel() const {return m_level;}
+		////core functions
+		void log(LogEvent::ptr,LogLevel::Level);
+		void addAppender(LogAppender::ptr);
+		void setFormatter(LogFormatter::ptr);
+		void debug(LogEvent::ptr);
+		void info(LogEvent::ptr);
+		void warn(LogEvent::ptr);
+		void error(LogEvent::ptr);
+		void fatal(LogEvent::ptr);
+		const std::string getName() const {return m_logName;}
 
-				Logger(std::string name):m_name(name){}
-
-				Logger(LogLevel::Level level,std::string name):m_level(level),m_name(name){}
-
-				const std::string getName() const {return m_name;}
-				
-				void addAppender(LogAppender::ptr &appender){
-					m_appenders.push_back(appender);
-				}
-
-				std::vector<LogAppender::ptr> getAppenders(){return m_appenders;}
-				
-				void delAppender();
-
-				void clearAppender();
-
-				void log(LogLevel::Level level,LogEvent::ptr &event);
-
-				void debug(LogEvent::ptr &event);
-
-				void info(LogEvent::ptr &event);
-
-				void warn(LogEvent::ptr &event);
-
-				void error(LogEvent::ptr &event);
-
-				void fatal(LogEvent::ptr &event);
-
-				const LogLevel::Level getLevel() const {return m_level;}
-
-				LogLevel::Level getLevel(){return m_level;}
-
-				std::string getName(){return m_name;}
-
-				Logger(const Logger::ptr logger):m_name(logger->getName()),m_appenders(logger->getAppenders()),m_level(logger->getLevel()){}
-				
-		private:
-			std::string m_name="root";
-
-			std::vector<LogAppender::ptr> m_appenders;
-
-			LogLevel::Level m_level=LogLevel::DEBUG;
+	private:
+		LogLevel::Level m_level=LogLevel::Level::DEBUG;
+		std::vector<LogAppender::ptr> m_appenders;	////appenders
+		LogFormatter::ptr m_formatter;
+		std::string m_logName;
 	};
-
+	/**
+	 *@brief LogEventWarp
+	 */
 	class LogEventWarp{
-	
-		public:
-
-			typedef	std::shared_ptr<LogEventWarp> ptr;
-
-			LogEventWarp(LogEvent::ptr event):m_event(event){}
-
+	public:
+			typedef std::shared_ptr<LogEventWarp> ptr;
+			////destruct and print log
 			~LogEventWarp(){
-					if(!m_event->getHasPirnt()){
-
-						m_event->getLogger()->log(m_event->getLevel(),m_event);
-						m_event->setHasPrint(true);
-					}
+					m_event->getLogger()->log(m_event,m_level);
 			}
-
-			std::stringstream& getSS(){return m_event->getSS();};
-			
-			LogEvent::ptr getEvent(){return m_event;}
-
-		private:
-
-			LogEvent::ptr m_event;
+			LogEventWarp(LogEvent::ptr e):m_event(e){}
+			LogEventWarp(LogEvent::ptr e,LogLevel::Level lvl):m_event(e),m_level(lvl){}
+			std::stringstream& getMsg(){return m_event->getMsg();}
+	private:
+		LogLevel::Level m_level=LogLevel::Level::DEBUG;
+		LogEvent::ptr m_event;
+	};
+	/**
+	 *@brief class LogManager
+	 */
+	class LogManager{
+	public:
+		typedef std::shared_ptr<LogManager> ptr;
+		void initRoot();
+		Logger::ptr getRoot();
+		Logger::ptr getLogger(std::string log_name);
+		void addLogger(std::string log_name);
+	private:
+		std::map<std::string,Logger::ptr> m_loggers;
+		Logger::ptr root_logger;
 	};
 
-	class LogConfig{
-		public:
-				typedef std::shared_ptr<LogConfig> ptr;
-
-				LogConfig(Logger::ptr logger):m_logger(logger){}
-
-				~LogConfig(){};
-				
-				Logger::ptr getLogger(){return m_logger;}
-
-				void addAppender(LogAppender::ptr &app){m_logger->addAppender(app);}
-				void setFormatter(LogFormatter::ptr &fmt);
-
-				Logger::ptr& getRootLogger();
-		private:
-				
-
-				Logger::ptr m_logger;
-
-
-	};
+	typedef saber::Singleton<LogManager> LogMng;
 
 };
 #endif

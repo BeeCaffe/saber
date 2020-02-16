@@ -4,10 +4,12 @@
 CMakeFiles/saber.dir/saber/json/json.cc.o: ../saber/json/json.cc
 CMakeFiles/saber.dir/saber/json/json.cc.o: ../saber/json/json.h
 CMakeFiles/saber.dir/saber/json/json.cc.o: ../saber/log.h
+CMakeFiles/saber.dir/saber/json/json.cc.o: ../saber/singleton.h
 CMakeFiles/saber.dir/saber/json/json.cc.o: ../saber/utils.h
 
 CMakeFiles/saber.dir/saber/log.cc.o: ../saber/log.cc
 CMakeFiles/saber.dir/saber/log.cc.o: ../saber/log.h
+CMakeFiles/saber.dir/saber/log.cc.o: ../saber/singleton.h
 CMakeFiles/saber.dir/saber/log.cc.o: ../saber/utils.h
 
 CMakeFiles/saber.dir/saber/utils.cc.o: ../saber/utils.cc
