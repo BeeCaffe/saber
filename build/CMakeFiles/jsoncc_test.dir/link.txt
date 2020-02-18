@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   CMakeFiles/jsoncc_test.dir/tests/jsoncc_test.cc.o  -o ../bin/jsoncc_test 

@@ -8,6 +8,7 @@
 #include<queue>
 #include<stack>
 #include<set>
+#include<fstream>
 namespace saber{
 	#define LOG_JSON\
 		LOG_NEW("JsonLog")
@@ -324,7 +325,7 @@ namespace saber{
 
 				void fromString(std::string &str);
 
-				void fromFile(std::string &file);
+				void fromFile(const std::string &file);
 				
 				bool checkString(std::string &str);
 

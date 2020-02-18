@@ -9633,3 +9633,19 @@
 [2020-2-16 16:39:9] [INFO] [thread id:2573] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:365) - JsonTree Build Done!
 [2020-2-16 16:39:9] [ERROR] [thread id:2573] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:546) - Node Not Found In JsonTree:[],Node Name Is:[objecs]
 [2020-2-16 16:39:9] [INFO] [thread id:2573] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:385) - Json Tree Release Done!
+[2020-2-16 19:33:33] [ERROR] [thread id:337] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:555) - can not open file : [../conf/json_test.txt]
+[2020-2-16 19:35:9] [ERROR] [thread id:384] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:499) - Json String Format Error! '"' Unpaired In Json String 
+[2020-2-16 19:39:13] [ERROR] [thread id:427] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:236) - Json Object String Format Uncorrect!
+[2020-2-16 19:39:13] [INFO] [thread id:427] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:365) - JsonTree Build Done!
+[2020-2-16 19:39:13] [INFO] [thread id:427] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:563) - Build JsonTree By File Done!
+[2020-2-16 19:39:13] [INFO] [thread id:427] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:385) - Json Tree Release Done!
+[2020-2-16 19:41:15] [ERROR] [thread id:491] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:236) - Json Object String Format Uncorrect!
+[2020-2-16 19:45:45] [INFO] [thread id:561] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:372) - JsonTree Build Done!
+[2020-2-16 19:45:45] [INFO] [thread id:561] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:570) - Build JsonTree By File Done!
+[2020-2-16 19:45:45] [INFO] [thread id:561] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:392) - Json Tree Release Done!
+[2020-2-16 19:53:20] [INFO] [thread id:643] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:372) - JsonTree Build Done!
+[2020-2-16 19:53:20] [INFO] [thread id:643] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:571) - Build JsonTree By File Done!
+[2020-2-16 19:53:20] [INFO] [thread id:643] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:392) - Json Tree Release Done!
+[2020-2-16 19:55:31] [INFO] [thread id:713] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:372) - JsonTree Build Done!
+[2020-2-16 19:55:31] [INFO] [thread id:713] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:571) - Build JsonTree By File Done!
+[2020-2-16 19:55:31] [INFO] [thread id:713] [JsonLog] (/home/beecaffe/src/saber/saber/json/json.cc:392) - Json Tree Release Done!

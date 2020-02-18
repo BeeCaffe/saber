@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/beecaffe/src/saber/saber/json/jsoncc.h
+iterator
+-
+stack
+-
+vector
+-
+
+/home/beecaffe/src/saber/tests/jsoncc_test.cc
+../saber/json/jsoncc.h
+/home/beecaffe/src/saber/saber/json/jsoncc.h
+iostream
+-
+

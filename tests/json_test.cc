@@ -30,6 +30,8 @@ int main(){
 		tree->delNode("object");
 		std::cout<<"test delNode :\n"<<tree->toString()<<std::endl;
 		tree->release();*/
+
+		/*test 2
 		JsonTree* tree=new JsonTree();
 		std::string str="{\"node1\"       :            10,\"node2\":\"hello world\",\"node3\":3.14,\"object\":{\"node4\":[1,2,3,4,5,6,7,8],\"node5\":[1,2.3232,2.006],\"node6\":[\"hello\",\"world\",\"this\",\"is\",\"my\",\"json\"]},\"objects\":[{\"object\":{\"node4\":[1,2,3,4,5,6,7,8],\"node5\":[1,2.3232,2.006],\"node6\":[\"hello\",\"world\",\"this\",\"is\",\"my\",\"json\"]}}]}";
 		tree->fromString(str);
@@ -41,6 +43,11 @@ int main(){
 		}catch(const char * msg){
 				std::cerr<<msg;
 		}
+		tree->release();*/
+		std::string file="../conf/json_test.txt";
+		JsonTree* tree=new JsonTree();
+		tree->fromFile(file);
+		std::cout<<tree->toString()<<std::endl;
 		tree->release();
 		return 0;
 }

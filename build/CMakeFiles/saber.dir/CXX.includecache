@@ -27,6 +27,8 @@ stack
 -
 set
 -
+fstream
+-
 
 /home/beecaffe/src/saber/saber/log.cc
 log.h

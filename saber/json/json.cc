@@ -229,11 +229,18 @@ std::string saber::JsonObject::parseObject(JsonObject* obj){
 
 void saber::JsonObject::fromString(std::string &obj_str){
 	////check json object string
-	if(obj_str[0]=='{'&&obj_str[obj_str.size()-1]=='}'){
+	if(obj_str[0]=='{'){
+		int pos=0;
+		for(int i=obj_str.size()-1;i>=0;--i){ 
+			if(obj_str[i]=='}'){
+				pos=i;break;
+			}
+		}
 		//// json object string without "{}"
-		obj_str=obj_str.substr(1,obj_str.size()-2);
+		obj_str=obj_str.substr(1,pos-1);
 	}else {
 		LOG_ERROR(LOG_JSON)<<"Json Object String Format Uncorrect!";
+		throw "Json Format Error,Unpaired \"{}\"";
 	}
 	////parse this string
 	int last_pos=0;
@@ -494,6 +501,7 @@ void saber::JsonTree::clearSpace(std::string &str){
 		int n=0;
 		for(int i=0;i<str.size();++i){
 			if(str[i]=='\"'){
+				//// is string, jump
 				int j=i+1;
 				while(j<str.size()&&str[j]!='\"') ++j;
 				if(j==str.size()){ LOG_ERROR(LOG_JSON)<<"Json String Format Error! '\"' Unpaired In Json String ";
@@ -502,7 +510,7 @@ void saber::JsonTree::clearSpace(std::string &str){
 				else i=j;
 				n+=2;
 			}else{
-				if(str[i]==' '){ 
+				if(str[i]==' '||str[i]=='\t'||str[i]=='\n'){ 
 					str.erase(i,1);
 					--i;
 				}
@@ -546,4 +554,19 @@ saber::JsonNode* saber::JsonTree::getNode(std::string &key){
 		LOG_ERROR(LOG_JSON)<<"Node Not Found In JsonTree:["<<this->getName()<<"],Node Name Is:"<<"["<<key<<"]";
 		throw "Node Not Found In JsonTree.\n";
 		return nullptr;
+}
+
+void saber::JsonTree::fromFile(const std::string &file){
+		std::ifstream is;
+		is.open(file,std::ios::in);
+		if(!is){
+			LOG_ERROR(LOG_JSON)<<"can not open file : "<<"["<<file<<"]";
+			throw "file can not be open";
+		}
+		std::stringstream buf;
+		buf<<is.rdbuf();
+		std::string json_str=buf.str();
+		fromString(json_str);
+		is.close();
+		LOG_INFO(LOG_JSON)<<"Build JsonTree By File Done!";
 }
