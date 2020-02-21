@@ -44,7 +44,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/saber_static.dir/DependInfo.cmake"
   "CMakeFiles/saber.dir/DependInfo.cmake"
-  "CMakeFiles/jsoncc_test.dir/DependInfo.cmake"
   "CMakeFiles/log_test.dir/DependInfo.cmake"
+  "CMakeFiles/config_test.dir/DependInfo.cmake"
   "CMakeFiles/json_test.dir/DependInfo.cmake"
   )

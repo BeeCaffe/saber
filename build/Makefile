@@ -137,19 +137,6 @@ saber/fast:
 .PHONY : saber/fast
 
 #=============================================================================
-# Target rules for targets named jsoncc_test
-
-# Build rule for target.
-jsoncc_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 jsoncc_test
-.PHONY : jsoncc_test
-
-# fast build rule for target.
-jsoncc_test/fast:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/build
-.PHONY : jsoncc_test/fast
-
-#=============================================================================
 # Target rules for targets named log_test
 
 # Build rule for target.
@@ -161,6 +148,19 @@ log_test: cmake_check_build_system
 log_test/fast:
 	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/build
 .PHONY : log_test/fast
+
+#=============================================================================
+# Target rules for targets named config_test
+
+# Build rule for target.
+config_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 config_test
+.PHONY : config_test
+
+# fast build rule for target.
+config_test/fast:
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/build
+.PHONY : config_test/fast
 
 #=============================================================================
 # Target rules for targets named json_test
@@ -265,6 +265,33 @@ saber/utils.cc.s:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/utils.cc.s
 .PHONY : saber/utils.cc.s
 
+tests/config_test.o: tests/config_test.cc.o
+
+.PHONY : tests/config_test.o
+
+# target to build an object file
+tests/config_test.cc.o:
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/tests/config_test.cc.o
+.PHONY : tests/config_test.cc.o
+
+tests/config_test.i: tests/config_test.cc.i
+
+.PHONY : tests/config_test.i
+
+# target to preprocess a source file
+tests/config_test.cc.i:
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/tests/config_test.cc.i
+.PHONY : tests/config_test.cc.i
+
+tests/config_test.s: tests/config_test.cc.s
+
+.PHONY : tests/config_test.s
+
+# target to generate assembly for a file
+tests/config_test.cc.s:
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/tests/config_test.cc.s
+.PHONY : tests/config_test.cc.s
+
 tests/json_test.o: tests/json_test.cc.o
 
 .PHONY : tests/json_test.o
@@ -291,33 +318,6 @@ tests/json_test.s: tests/json_test.cc.s
 tests/json_test.cc.s:
 	$(MAKE) -f CMakeFiles/json_test.dir/build.make CMakeFiles/json_test.dir/tests/json_test.cc.s
 .PHONY : tests/json_test.cc.s
-
-tests/jsoncc_test.o: tests/jsoncc_test.cc.o
-
-.PHONY : tests/jsoncc_test.o
-
-# target to build an object file
-tests/jsoncc_test.cc.o:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/tests/jsoncc_test.cc.o
-.PHONY : tests/jsoncc_test.cc.o
-
-tests/jsoncc_test.i: tests/jsoncc_test.cc.i
-
-.PHONY : tests/jsoncc_test.i
-
-# target to preprocess a source file
-tests/jsoncc_test.cc.i:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/tests/jsoncc_test.cc.i
-.PHONY : tests/jsoncc_test.cc.i
-
-tests/jsoncc_test.s: tests/jsoncc_test.cc.s
-
-.PHONY : tests/jsoncc_test.s
-
-# target to generate assembly for a file
-tests/jsoncc_test.cc.s:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/tests/jsoncc_test.cc.s
-.PHONY : tests/jsoncc_test.cc.s
 
 tests/log_test.o: tests/log_test.cc.o
 
@@ -355,8 +355,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... saber_static"
 	@echo "... saber"
-	@echo "... jsoncc_test"
 	@echo "... log_test"
+	@echo "... config_test"
 	@echo "... json_test"
 	@echo "... edit_cache"
 	@echo "... saber/json/json.o"
@@ -368,12 +368,12 @@ help:
 	@echo "... saber/utils.o"
 	@echo "... saber/utils.i"
 	@echo "... saber/utils.s"
+	@echo "... tests/config_test.o"
+	@echo "... tests/config_test.i"
+	@echo "... tests/config_test.s"
 	@echo "... tests/json_test.o"
 	@echo "... tests/json_test.i"
 	@echo "... tests/json_test.s"
-	@echo "... tests/jsoncc_test.o"
-	@echo "... tests/jsoncc_test.i"
-	@echo "... tests/jsoncc_test.s"
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"

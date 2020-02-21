@@ -24,7 +24,11 @@ add_executable(json_test tests/json_test.cc)
 add_dependencies(json_test saber)
 target_link_libraries(json_test saber)
 
-add_executable(jsoncc_test tests/jsoncc_test.cc)
+add_executable(config_test tests/config_test.cc)
+add_dependencies(config_test saber)
+target_link_libraries(config_test saber)
+
+#add_executable(jsoncc_test tests/jsoncc_test.cc)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${PROJECT_SOURCE_DIR}/lib)
 

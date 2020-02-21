@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   CMakeFiles/config_test.dir/tests/config_test.cc.o  -o ../bin/config_test -Wl,-rpath,/home/beecaffe/src/saber/lib ../lib/libsaber.so 

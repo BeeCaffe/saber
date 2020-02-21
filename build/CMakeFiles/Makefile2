@@ -134,43 +134,6 @@ clean: CMakeFiles/saber.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/jsoncc_test.dir
-
-# All Build rule for target.
-CMakeFiles/jsoncc_test.dir/all:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/depend
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=3,4 "Built target jsoncc_test"
-.PHONY : CMakeFiles/jsoncc_test.dir/all
-
-# Include target in all.
-all: CMakeFiles/jsoncc_test.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/jsoncc_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/beecaffe/src/saber/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/jsoncc_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/beecaffe/src/saber/build/CMakeFiles 0
-.PHONY : CMakeFiles/jsoncc_test.dir/rule
-
-# Convenience name for target.
-jsoncc_test: CMakeFiles/jsoncc_test.dir/rule
-
-.PHONY : jsoncc_test
-
-# clean rule for target.
-CMakeFiles/jsoncc_test.dir/clean:
-	$(MAKE) -f CMakeFiles/jsoncc_test.dir/build.make CMakeFiles/jsoncc_test.dir/clean
-.PHONY : CMakeFiles/jsoncc_test.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/jsoncc_test.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/log_test.dir
 
 # All Build rule for target.
@@ -208,13 +171,50 @@ clean: CMakeFiles/log_test.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/config_test.dir
+
+# All Build rule for target.
+CMakeFiles/config_test.dir/all: CMakeFiles/saber.dir/all
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/depend
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=1,2 "Built target config_test"
+.PHONY : CMakeFiles/config_test.dir/all
+
+# Include target in all.
+all: CMakeFiles/config_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/config_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/beecaffe/src/saber/build/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/config_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/beecaffe/src/saber/build/CMakeFiles 0
+.PHONY : CMakeFiles/config_test.dir/rule
+
+# Convenience name for target.
+config_test: CMakeFiles/config_test.dir/rule
+
+.PHONY : config_test
+
+# clean rule for target.
+CMakeFiles/config_test.dir/clean:
+	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/clean
+.PHONY : CMakeFiles/config_test.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/config_test.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/json_test.dir
 
 # All Build rule for target.
 CMakeFiles/json_test.dir/all: CMakeFiles/saber.dir/all
 	$(MAKE) -f CMakeFiles/json_test.dir/build.make CMakeFiles/json_test.dir/depend
 	$(MAKE) -f CMakeFiles/json_test.dir/build.make CMakeFiles/json_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=1,2 "Built target json_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=3,4 "Built target json_test"
 .PHONY : CMakeFiles/json_test.dir/all
 
 # Include target in all.
