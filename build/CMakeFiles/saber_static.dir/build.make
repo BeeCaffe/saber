@@ -129,11 +129,36 @@ CMakeFiles/saber_static.dir/saber/json/json.cc.o.provides: CMakeFiles/saber_stat
 CMakeFiles/saber_static.dir/saber/json/json.cc.o.provides.build: CMakeFiles/saber_static.dir/saber/json/json.cc.o
 
 
+CMakeFiles/saber_static.dir/saber/config.cc.o: CMakeFiles/saber_static.dir/flags.make
+CMakeFiles/saber_static.dir/saber/config.cc.o: ../saber/config.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/saber_static.dir/saber/config.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber_static.dir/saber/config.cc.o -c /home/beecaffe/src/saber/saber/config.cc
+
+CMakeFiles/saber_static.dir/saber/config.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber_static.dir/saber/config.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/config.cc > CMakeFiles/saber_static.dir/saber/config.cc.i
+
+CMakeFiles/saber_static.dir/saber/config.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber_static.dir/saber/config.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/config.cc -o CMakeFiles/saber_static.dir/saber/config.cc.s
+
+CMakeFiles/saber_static.dir/saber/config.cc.o.requires:
+
+.PHONY : CMakeFiles/saber_static.dir/saber/config.cc.o.requires
+
+CMakeFiles/saber_static.dir/saber/config.cc.o.provides: CMakeFiles/saber_static.dir/saber/config.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/config.cc.o.provides.build
+.PHONY : CMakeFiles/saber_static.dir/saber/config.cc.o.provides
+
+CMakeFiles/saber_static.dir/saber/config.cc.o.provides.build: CMakeFiles/saber_static.dir/saber/config.cc.o
+
+
 # Object files for target saber_static
 saber_static_OBJECTS = \
 "CMakeFiles/saber_static.dir/saber/log.cc.o" \
 "CMakeFiles/saber_static.dir/saber/utils.cc.o" \
-"CMakeFiles/saber_static.dir/saber/json/json.cc.o"
+"CMakeFiles/saber_static.dir/saber/json/json.cc.o" \
+"CMakeFiles/saber_static.dir/saber/config.cc.o"
 
 # External object files for target saber_static
 saber_static_EXTERNAL_OBJECTS =
@@ -141,9 +166,10 @@ saber_static_EXTERNAL_OBJECTS =
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/log.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/utils.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/json/json.cc.o
+../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/config.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/build.make
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ../lib/libsaber.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library ../lib/libsaber.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/saber_static.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/saber_static.dir/link.txt --verbose=$(VERBOSE)
 
@@ -155,6 +181,7 @@ CMakeFiles/saber_static.dir/build: ../lib/libsaber.a
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/log.cc.o.requires
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/utils.cc.o.requires
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/json/json.cc.o.requires
+CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/config.cc.o.requires
 
 .PHONY : CMakeFiles/saber_static.dir/requires
 

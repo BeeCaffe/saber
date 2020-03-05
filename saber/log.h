@@ -9,28 +9,30 @@
 #include"utils.h"
 #include<map>
 #include"singleton.h"
-namespace saber{
+
 ////get root logger, with only one instance
 #define LOG_ROOT\
-	LogMng::Instance()->getRoot()
+		saber::LogMng::Instance()->getRoot()
 ////get a new logger, with only one instance
 #define LOG_NEW(name)\
-	LogMng::Instance()->getLogger(name)
+	saber::LogMng::Instance()->getLogger(name)
 ////call logger
 #define LOG_LOG(logger,level)\
 	if(level>=logger->getLevel())\
-	LogEventWarp(LogEvent::ptr(new LogEvent(level,__LINE__,__FILE__,saber::GetPid(),saber::GetFiberId(),time(0),saber::GetElapse(),logger,"no name"))).getMsg()
+	saber::LogEventWarp(saber::LogEvent::ptr(new saber::LogEvent(level,__LINE__,__FILE__,saber::GetPid(),saber::GetFiberId(),time(0),saber::GetElapse(),logger,"no name"))).getMsg()
 ////deifferent log
 #define LOG_DEBUG(logger)\
-		LOG_LOG(logger,LogLevel::Level::DEBUG)
+		LOG_LOG(logger,saber::LogLevel::Level::DEBUG)
 #define LOG_INFO(logger)\
-		LOG_LOG(logger,LogLevel::Level::INFO)
+		LOG_LOG(logger,saber::LogLevel::Level::INFO)
 #define LOG_WARN(logger)\
-		LOG_LOG(logger,LogLevel::Level::WARN)
+		LOG_LOG(logger,saber::LogLevel::Level::WARN)
 #define LOG_ERROR(logger)\
-		LOG_LOG(logger,LogLevel::Level::ERROR)
+		LOG_LOG(logger,saber::LogLevel::Level::ERROR)
 #define LOG_FATAL(logger)\
-		LOG_LOG(logger,LogLevel::Level::FATAL)
+		LOG_LOG(logger,saber::LogLevel::Level::FATAL)
+
+namespace saber{
 	class Logger;
 	class LogFormatter;
 	class LogLevel{

@@ -7,26 +7,34 @@ cmake_minimum_required(VERSION 3.10)
 project(saber)
 
 set(CMAKE_CXX_STANDARD 14)
+include_directories(.)
+include_directories(/usr/local/soft/yaml-cpp/include/)
+link_directories(/usr/local/soft/yaml-cpp/lib/)
+find_library(YAMLCPP yaml-cpp)
 
 set(LIB_SRC
         saber/log.cc
 		saber/utils.cc
 		saber/json/json.cc
+		saber/config.cc
 	)
+
 add_library(saber SHARED ${LIB_SRC})
 add_library(saber_static STATIC ${LIB_SRC})
 SET_TARGET_PROPERTIES(saber_static PROPERTIES OUTPUT_NAME "saber")
 add_executable(log_test tests/log_test.cc)
 add_dependencies(log_test saber)
-target_link_libraries(log_test saber)
+target_link_libraries(log_test saber ${YAMLCPP})
 
 add_executable(json_test tests/json_test.cc)
 add_dependencies(json_test saber)
-target_link_libraries(json_test saber)
+target_link_libraries(json_test saber ${YAMLCPP})
 
 add_executable(config_test tests/config_test.cc)
 add_dependencies(config_test saber)
-target_link_libraries(config_test saber)
+#target_link_libraries(config_test saber -L/usr/local/soft/yaml-cpp/lib -lyaml-cpp)
+target_link_libraries(config_test saber ${YAMLCPP})
+
 
 #add_executable(jsoncc_test tests/jsoncc_test.cc)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)

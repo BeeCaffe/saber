@@ -175,6 +175,36 @@ json_test/fast:
 	$(MAKE) -f CMakeFiles/json_test.dir/build.make CMakeFiles/json_test.dir/build
 .PHONY : json_test/fast
 
+saber/config.o: saber/config.cc.o
+
+.PHONY : saber/config.o
+
+# target to build an object file
+saber/config.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/config.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/config.cc.o
+.PHONY : saber/config.cc.o
+
+saber/config.i: saber/config.cc.i
+
+.PHONY : saber/config.i
+
+# target to preprocess a source file
+saber/config.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/config.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/config.cc.i
+.PHONY : saber/config.cc.i
+
+saber/config.s: saber/config.cc.s
+
+.PHONY : saber/config.s
+
+# target to generate assembly for a file
+saber/config.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/config.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/config.cc.s
+.PHONY : saber/config.cc.s
+
 saber/json/json.o: saber/json/json.cc.o
 
 .PHONY : saber/json/json.o
@@ -359,6 +389,9 @@ help:
 	@echo "... config_test"
 	@echo "... json_test"
 	@echo "... edit_cache"
+	@echo "... saber/config.o"
+	@echo "... saber/config.i"
+	@echo "... saber/config.s"
 	@echo "... saber/json/json.o"
 	@echo "... saber/json/json.i"
 	@echo "... saber/json/json.s"

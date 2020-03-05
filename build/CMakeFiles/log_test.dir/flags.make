@@ -6,5 +6,5 @@ CXX_FLAGS =  -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/beecaffe/src/saber/. -I/usr/local/soft/yaml-cpp/include 
 

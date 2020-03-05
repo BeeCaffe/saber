@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/beecaffe/src/saber/tests/config_test.cc" "/home/beecaffe/src/saber/build/CMakeFiles/config_test.dir/tests/config_test.cc.o"
+  "/home/beecaffe/src/saber/tests/yaml_test.cc" "/home/beecaffe/src/saber/build/CMakeFiles/yaml_test.dir/tests/yaml_test.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

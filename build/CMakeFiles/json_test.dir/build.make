@@ -91,6 +91,7 @@ json_test_EXTERNAL_OBJECTS =
 ../bin/json_test: CMakeFiles/json_test.dir/tests/json_test.cc.o
 ../bin/json_test: CMakeFiles/json_test.dir/build.make
 ../bin/json_test: ../lib/libsaber.so
+../bin/json_test: /usr/local/lib/libyaml-cpp.a
 ../bin/json_test: CMakeFiles/json_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/json_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/json_test.dir/link.txt --verbose=$(VERBOSE)
