@@ -1,7 +1,6 @@
 #include"config.h"
 namespace saber{
 	
-	saber::Config::ConfigVarMap Config::s_datas;
 
 	/**
 	 *@brief ListAllMember
@@ -27,8 +26,10 @@ namespace saber{
 	 *@brief LookupBase
 	 */
 	ConfigVarBase::ptr Config::LookupBase(const std::string& name){
-		auto it=s_datas.find(name);
-		return it==s_datas.end() ? nullptr : it->second;
+
+		RWMutexType::ReadLock lock(GetMutex());
+		auto it=GetDatas().find(name);
+		return it==GetDatas().end() ? nullptr : it->second;
 
 	}
 
@@ -36,6 +37,7 @@ namespace saber{
 	 *@brief LoadFromYaml
 	 */
 	void saber::Config::LoadFromYaml(const YAML::Node& root){
+
 			std::list<std::pair<std::string, const YAML::Node>> all_nodes;
 			ListAllMember("",root,all_nodes);
 
@@ -60,4 +62,11 @@ namespace saber{
 	}
 };
 
+void saber::Config::Visit(std::function<void(ConfigVarBase::ptr)> cb){
+	RWMutexType::ReadLock lock(GetMutex());
+	ConfigVarMap& m=GetDatas();
+	for(auto it=m.begin();it!=m.end();++it){
+		cb(it->second);
+	}
+}
 

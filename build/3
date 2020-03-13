@@ -1,0 +1,33 @@
+#include"../saber/saber.h"
+#include<iostream>
+saber::Logger::ptr g_logger=LOG_ROOT;
+void func1(){
+	LOG_INFO(g_logger)<<"name: "<<saber::Thread::GetName()
+					  <<"this.name: "<<saber::Thread::GetThis()->getName()
+					  <<"pid: "<<saber::GetPid()
+					  <<"thread_id: "<<saber::Thread::GetThis()->getId();
+}
+
+void func2(){
+
+}
+
+int main(){
+	LOG_INFO(g_logger)<<"thread test begin";
+	std::vector<saber::Thread::ptr> threads;
+	for(int i=0;i<5;++i){
+		try{
+			saber::Thread::ptr thread(new saber::Thread(&func1,"name_"+std::to_string(i)));
+			threads.push_back(thread);
+		}catch(std::exception& e){
+			LOG_DEBUG(g_logger)<<"thread new error";
+		}
+	}
+
+	for(int i=0;i<5;++i){
+		threads[i]->join();
+	}
+
+	LOG_INFO(g_logger)<<"thread test end";
+	return 0;
+}

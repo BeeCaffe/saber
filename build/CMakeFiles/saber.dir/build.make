@@ -153,12 +153,87 @@ CMakeFiles/saber.dir/saber/config.cc.o.provides: CMakeFiles/saber.dir/saber/conf
 CMakeFiles/saber.dir/saber/config.cc.o.provides.build: CMakeFiles/saber.dir/saber/config.cc.o
 
 
+CMakeFiles/saber.dir/saber/thread.cc.o: CMakeFiles/saber.dir/flags.make
+CMakeFiles/saber.dir/saber/thread.cc.o: ../saber/thread.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/saber.dir/saber/thread.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber.dir/saber/thread.cc.o -c /home/beecaffe/src/saber/saber/thread.cc
+
+CMakeFiles/saber.dir/saber/thread.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber.dir/saber/thread.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/thread.cc > CMakeFiles/saber.dir/saber/thread.cc.i
+
+CMakeFiles/saber.dir/saber/thread.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber.dir/saber/thread.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/thread.cc -o CMakeFiles/saber.dir/saber/thread.cc.s
+
+CMakeFiles/saber.dir/saber/thread.cc.o.requires:
+
+.PHONY : CMakeFiles/saber.dir/saber/thread.cc.o.requires
+
+CMakeFiles/saber.dir/saber/thread.cc.o.provides: CMakeFiles/saber.dir/saber/thread.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/thread.cc.o.provides.build
+.PHONY : CMakeFiles/saber.dir/saber/thread.cc.o.provides
+
+CMakeFiles/saber.dir/saber/thread.cc.o.provides.build: CMakeFiles/saber.dir/saber/thread.cc.o
+
+
+CMakeFiles/saber.dir/saber/fiber.cc.o: CMakeFiles/saber.dir/flags.make
+CMakeFiles/saber.dir/saber/fiber.cc.o: ../saber/fiber.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/saber.dir/saber/fiber.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber.dir/saber/fiber.cc.o -c /home/beecaffe/src/saber/saber/fiber.cc
+
+CMakeFiles/saber.dir/saber/fiber.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber.dir/saber/fiber.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/fiber.cc > CMakeFiles/saber.dir/saber/fiber.cc.i
+
+CMakeFiles/saber.dir/saber/fiber.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber.dir/saber/fiber.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/fiber.cc -o CMakeFiles/saber.dir/saber/fiber.cc.s
+
+CMakeFiles/saber.dir/saber/fiber.cc.o.requires:
+
+.PHONY : CMakeFiles/saber.dir/saber/fiber.cc.o.requires
+
+CMakeFiles/saber.dir/saber/fiber.cc.o.provides: CMakeFiles/saber.dir/saber/fiber.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/fiber.cc.o.provides.build
+.PHONY : CMakeFiles/saber.dir/saber/fiber.cc.o.provides
+
+CMakeFiles/saber.dir/saber/fiber.cc.o.provides.build: CMakeFiles/saber.dir/saber/fiber.cc.o
+
+
+CMakeFiles/saber.dir/saber/scheduler.cc.o: CMakeFiles/saber.dir/flags.make
+CMakeFiles/saber.dir/saber/scheduler.cc.o: ../saber/scheduler.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/saber.dir/saber/scheduler.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber.dir/saber/scheduler.cc.o -c /home/beecaffe/src/saber/saber/scheduler.cc
+
+CMakeFiles/saber.dir/saber/scheduler.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber.dir/saber/scheduler.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/scheduler.cc > CMakeFiles/saber.dir/saber/scheduler.cc.i
+
+CMakeFiles/saber.dir/saber/scheduler.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber.dir/saber/scheduler.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/scheduler.cc -o CMakeFiles/saber.dir/saber/scheduler.cc.s
+
+CMakeFiles/saber.dir/saber/scheduler.cc.o.requires:
+
+.PHONY : CMakeFiles/saber.dir/saber/scheduler.cc.o.requires
+
+CMakeFiles/saber.dir/saber/scheduler.cc.o.provides: CMakeFiles/saber.dir/saber/scheduler.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/scheduler.cc.o.provides.build
+.PHONY : CMakeFiles/saber.dir/saber/scheduler.cc.o.provides
+
+CMakeFiles/saber.dir/saber/scheduler.cc.o.provides.build: CMakeFiles/saber.dir/saber/scheduler.cc.o
+
+
 # Object files for target saber
 saber_OBJECTS = \
 "CMakeFiles/saber.dir/saber/log.cc.o" \
 "CMakeFiles/saber.dir/saber/utils.cc.o" \
 "CMakeFiles/saber.dir/saber/json/json.cc.o" \
-"CMakeFiles/saber.dir/saber/config.cc.o"
+"CMakeFiles/saber.dir/saber/config.cc.o" \
+"CMakeFiles/saber.dir/saber/thread.cc.o" \
+"CMakeFiles/saber.dir/saber/fiber.cc.o" \
+"CMakeFiles/saber.dir/saber/scheduler.cc.o"
 
 # External object files for target saber
 saber_EXTERNAL_OBJECTS =
@@ -167,9 +242,12 @@ saber_EXTERNAL_OBJECTS =
 ../lib/libsaber.so: CMakeFiles/saber.dir/saber/utils.cc.o
 ../lib/libsaber.so: CMakeFiles/saber.dir/saber/json/json.cc.o
 ../lib/libsaber.so: CMakeFiles/saber.dir/saber/config.cc.o
+../lib/libsaber.so: CMakeFiles/saber.dir/saber/thread.cc.o
+../lib/libsaber.so: CMakeFiles/saber.dir/saber/fiber.cc.o
+../lib/libsaber.so: CMakeFiles/saber.dir/saber/scheduler.cc.o
 ../lib/libsaber.so: CMakeFiles/saber.dir/build.make
 ../lib/libsaber.so: CMakeFiles/saber.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library ../lib/libsaber.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared library ../lib/libsaber.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/saber.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -181,6 +259,9 @@ CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/log.cc.o.requires
 CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/utils.cc.o.requires
 CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/json/json.cc.o.requires
 CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/config.cc.o.requires
+CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/thread.cc.o.requires
+CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/fiber.cc.o.requires
+CMakeFiles/saber.dir/requires: CMakeFiles/saber.dir/saber/scheduler.cc.o.requires
 
 .PHONY : CMakeFiles/saber.dir/requires
 

@@ -11,6 +11,8 @@
 #include<unordered_map>
 #include<unordered_set>
 #include"yaml-cpp/yaml.h"
+#include<functional>
+#include"thread.h"
 
 namespace saber{
 	#define LOG_CONF\
@@ -285,7 +287,9 @@ namespace saber{
 			 class ToStr=LexicalCast<T,std::string>>	
 	class ConfigVar:public ConfigVarBase{
 	public:
+			typedef RWMutex RWMutexType;
 			typedef std::shared_ptr<ConfigVar> ptr;
+			typedef std::function<void (const T& old_value,const T& new_value)> on_change_call_back;
 			
 			/**
 			 *@brief constructor
@@ -293,6 +297,7 @@ namespace saber{
 			ConfigVar(const std::string &name,
 					  const T& default_val,
 					  const std::string &description=""):
+
 					ConfigVarBase(name,description),
 					m_val(default_val){}
 
@@ -302,6 +307,7 @@ namespace saber{
 			std::string toString() override {
 				try{
 					//return boost::lexical_cast<std::string>(m_val);	
+					RWMutexType::ReadLock lock(m_mutex);
 					return ToStr()(m_val);
 				}catch(std::exception &e){
 					LOG_ERROR(LOG_CONF)<<"ConfigVar::tostring exception"
@@ -321,7 +327,7 @@ namespace saber{
 					if(typeid(var)==typeid(std::map<std::string,int>)){
 						LOG_DEBUG(LOG_ROOT)<<"here is a map from string "<<val;
 					}
-					setValue(FromStr()(val));
+					setValue(var);
 				}catch(std::exception &e){
 					LOG_ERROR(LOG_CONF)<<"ConfigVar::tostring exception"
 							<<e.what()<<"convert string to "
@@ -333,10 +339,57 @@ namespace saber{
 			/**
 			 *@brief getter and setter
 			 */
-			const T getValue() const {return m_val;}
-			void setValue(const T& val){m_val=val;}
+			const T getValue(){
+				RWMutexType::ReadLock lock(m_mutex);
+				return m_val;				
+			}
+
+			void setValue(const T& v){
+				{
+						RWMutexType::ReadLock lock(m_mutex);
+						if(v==m_val){
+							return;
+						}
+						for(auto& i:m_cbs){
+							i.second(m_val,v);
+						}
+				}
+				RWMutexType::WriteLock lock(m_mutex);
+				m_val=v;
+
+			}
+
+			uint64_t addListener(on_change_call_back cbs){
+				static uint64_t s_fun_id=0;
+				RWMutexType::WriteLock lock(m_mutex);
+				++s_fun_id;
+				m_cbs[s_fun_id]=cbs;
+				return s_fun_id;
+			}
+
+			void delListener(uint64_t key){
+				RWMutexType::WriteLock lock(m_mutex);
+				m_cbs.erase(key);
+			}
+
+			void clearListener(){
+				RWMutexType::WriteLock lock(m_mutex);
+				m_cbs.clear();
+			}
+
+			on_change_call_back getListener(uint64_t key){
+				RWMutexType::ReadLock lock(m_mutex);
+				auto it = m_cbs.find(key);
+				return it==m_cbs.end() ? nullptr:it->second;
+			}
+
 	private:
+
+		 RWMutexType m_mutex;
+
 		 T m_val;
+		 //change call back funtions, uint64_t is key.generally is hash code
+		 std::map<uint64_t,on_change_call_back> m_cbs;
 	};
 	/********************************************************************
 	 *@brief Class Config
@@ -347,12 +400,23 @@ namespace saber{
 
 			typedef std::map<std::string,ConfigVarBase::ptr> ConfigVarMap;
 
-	private:
+			typedef RWMutex RWMutexType;
 
-			static std::map<std::string,ConfigVarBase::ptr> s_datas;
+	private:
+			static RWMutexType& GetMutex(){
+				static RWMutexType s_mutex;
+				return s_mutex;
+			} 
+			
+			static ConfigVarMap& GetDatas(){
+				static ConfigVarMap s_datas;
+				return s_datas;
+			}
+
 
 	public:
 			/**
+			 * 
 			 *@brief lookup 
 			 */
  			template<class T>
@@ -360,8 +424,9 @@ namespace saber{
 							const std::string& name,
 							const T& default_value,
 							const std::string &description=""){
-				auto it = s_datas.find(name);
-				if(it != s_datas.end()){
+				RWMutexType::WriteLock lock(GetMutex());
+				auto it = GetDatas().find(name);
+				if(it != GetDatas().end()){
 					auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
 					if(tmp){
 						LOG_ERROR(LOG_CONF)<<"lookup name= "<<name<<" exists";
@@ -376,7 +441,7 @@ namespace saber{
 					throw std::invalid_argument(name);
 				}
 				typename ConfigVar<T>::ptr v(new ConfigVar<T>(name,default_value,description));
-				s_datas[name]=v;
+				GetDatas()[name]=v;
 				return v;
 			}
 			
@@ -385,14 +450,17 @@ namespace saber{
 			 */
 			template<class T>
 			static typename ConfigVar<T>::ptr lookUp(const std::string &name){
-				auto iter=s_datas.find(name);
-				if(iter==s_datas.end()) return nullptr;
+				RWMutexType::ReadLock lock(GetMutex());
+				auto iter=GetDatas().find(name);
+				if(iter==GetDatas().end()) return nullptr;
 				return std::dynamic_pointer_cast<ConfigVar<T>>(iter->second);
 			}
 
 			static 	void LoadFromYaml(const YAML::Node& root);
 
 			static ConfigVarBase::ptr LookupBase(const std::string& name);
+
+			static void Visit(std::function<void(ConfigVarBase::ptr)> cb);
 	};
 
 };

@@ -3,8 +3,10 @@
 
 CMakeFiles/config_test.dir/tests/config_test.cc.o
  /home/beecaffe/src/saber/saber/config.h
+ /home/beecaffe/src/saber/saber/fiber.h
  /home/beecaffe/src/saber/saber/log.h
  /home/beecaffe/src/saber/saber/singleton.h
+ /home/beecaffe/src/saber/saber/thread.h
  /home/beecaffe/src/saber/saber/utils.h
  /home/beecaffe/src/saber/tests/config_test.cc
  /usr/local/soft/yaml-cpp/include/yaml-cpp/binary.h

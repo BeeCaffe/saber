@@ -1,0 +1,1 @@
+/usr/bin/c++   -rdynamic -o0 -ggdb -std=c++11 -Wall -Wno-deprecated   CMakeFiles/fiber_test.dir/tests/fiber_test.cc.o  -o ../bin/fiber_test  -L/usr/local/soft/yaml-cpp/lib -Wl,-rpath,/usr/local/soft/yaml-cpp/lib:/home/beecaffe/src/saber/lib ../lib/libsaber.so -lpthread /usr/local/lib/libyaml-cpp.a 

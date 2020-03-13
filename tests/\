@@ -1,0 +1,18 @@
+#include"../saber/fiber.h"
+#include<iostream>
+using namespace saber;
+
+static Logger::ptr g_logger=LOG_NEW("system");
+
+void func(){
+    LOG_INFO(g_logger)<<"hello world";
+}
+
+int main(){
+    Fiber::GetThis();
+    Fiber::ptr fbr(new Fiber(std::function<void()>(func),0));
+    fbr->swapIn();
+    fbr->YeildToHold();
+    std::cout<<"main function end!"<<std::endl;
+    return 0;
+}

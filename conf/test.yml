@@ -1,0 +1,38 @@
+log:
+    - name: root
+      level: info
+      #formatter: "[%d{%y-%m-%d %H:%M:%S}] [%p] [thread id:%t] [%c] (%f\:%l) - %m%n"
+      appender:
+              - type: FileLogAppender
+                path: log.txt
+              - type: StdOutAppender
+    - name: system
+      level: debug
+      #formatter: "[%d{%y-%m-%d %H:%M:%S}] [%p] [thread id:%t] [%c] (%f\:%l) - %m%n"
+      appender:
+              - type: FileLogAppender
+                path: log.txt
+              - type: StdOutAppender
+system:
+        port: 9900
+        value: 15
+        int_vec: [11,12,13]
+        int_list: [17,18,19]
+        int_set: [20,30,40]
+        int_unordered_set: [99,100,101]
+        int_map:
+            k: 30
+            k1: 20
+            k2: 10
+        int_umap:
+            k: 88
+            k2: 99
+            k3: 77
+class: 
+    person: 
+        name: "Lei Qinghua"
+        age: 23
+        sex: true
+
+
+   

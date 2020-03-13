@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/beecaffe/src/saber/saber/fiber.h
+functional
+-
+ucontext.h
+-
+memory
+-
+thread.h
+/home/beecaffe/src/saber/saber/thread.h
+
 /home/beecaffe/src/saber/saber/log.h
 iostream
 -
@@ -25,8 +35,28 @@ map
 -
 singleton.h
 /home/beecaffe/src/saber/saber/singleton.h
+thread.h
+/home/beecaffe/src/saber/saber/thread.h
 
 /home/beecaffe/src/saber/saber/singleton.h
+
+/home/beecaffe/src/saber/saber/thread.h
+thread
+-
+memory
+-
+functional
+-
+string
+-
+pthread.h
+-
+stdint.h
+-
+semaphore.h
+-
+exception
+-
 
 /home/beecaffe/src/saber/saber/utils.h
 sys/stat.h
@@ -41,6 +71,14 @@ iostream
 -
 fcntl.h
 -
+vector
+-
+execinfo.h
+-
+sstream
+-
+fiber.h
+/home/beecaffe/src/saber/saber/fiber.h
 
 /home/beecaffe/src/saber/tests/log_test.cc
 ../saber/log.h

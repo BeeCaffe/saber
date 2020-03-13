@@ -1,7 +1,11 @@
 /home/beecaffe/src/saber/build/CMakeFiles/rebuild_cache.dir
+/home/beecaffe/src/saber/build/CMakeFiles/edit_cache.dir
+/home/beecaffe/src/saber/build/CMakeFiles/scheduler_test.dir
+/home/beecaffe/src/saber/build/CMakeFiles/fiber_test.dir
+/home/beecaffe/src/saber/build/CMakeFiles/thread_test.dir
 /home/beecaffe/src/saber/build/CMakeFiles/saber_static.dir
 /home/beecaffe/src/saber/build/CMakeFiles/saber.dir
+/home/beecaffe/src/saber/build/CMakeFiles/marco_test.dir
 /home/beecaffe/src/saber/build/CMakeFiles/log_test.dir
 /home/beecaffe/src/saber/build/CMakeFiles/config_test.dir
 /home/beecaffe/src/saber/build/CMakeFiles/json_test.dir
-/home/beecaffe/src/saber/build/CMakeFiles/edit_cache.dir

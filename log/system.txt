@@ -1,0 +1,351 @@
+[2020-3-10 12:14:57] [INFO] [thread id:279] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:21:1] [INFO] [thread id:442] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:21:43] [INFO] [thread id:495] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:21:57] [INFO] [thread id:496] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:22:4] [INFO] [thread id:549] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:24:43] [INFO] [thread id:603] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 12:26:33] [INFO] [thread id:604] [system] (/home/beecaffe/src/saber/tests/config_test.cc:183) - hello system
+
+[2020-3-10 15:16:25] [INFO] [thread id:2136] [system] (/home/beecaffe/src/saber/tests/marco_test.cc:5) - 	/home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9BackTraceERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEii+0x64) [0x7f7b1bdbedc9]
+	/home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber17BackTraceToStringEiiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x61) [0x7f7b1bdbf14a]
+	../bin/marco_test(_Z11test_assertv+0x185) [0x7f7b1c46c690]
+	../bin/marco_test(main+0x9) [0x7f7b1c46c7ec]
+	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f7b1b191b97]
+	../bin/marco_test(_start+0x2a) [0x7f7b1c46c30a]
+
+[2020-3-10 15:19:2] [INFO] [thread id:2138] [system] (/home/beecaffe/src/saber/tests/marco_test.cc:5) - 	/home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9BackTraceERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEii+0x64) [0x7fdad51bedc9]
+	/home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber17BackTraceToStringEiiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x61) [0x7fdad51bf14a]
+	../bin/marco_test(_Z11test_assertv+0x185) [0x7fdad586c690]
+	../bin/marco_test(main+0x9) [0x7fdad586c7ec]
+	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fdad4591b97]
+	../bin/marco_test(_start+0x2a) [0x7fdad586c30a]
+
+[2020-3-10 15:21:48] [INFO] [thread id:2244] [system] (/home/beecaffe/src/saber/tests/marco_test.cc:5) - 	../bin/marco_test(_Z11test_assertv+0x185) [0x7f2110c6c690]
+	../bin/marco_test(main+0x9) [0x7f2110c6c7ec]
+	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f210f991b97]
+	../bin/marco_test(_start+0x2a) [0x7f2110c6c30a]
+
+[2020-3-10 15:36:23] [INFO] [thread id:2416] [system] (/home/beecaffe/src/saber/tests/marco_test.cc:5) - 	../bin/marco_test(_Z11test_assertv+0x185) [0x7f6f35e6c6f0]
+	../bin/marco_test(main+0x9) [0x7f6f35e6cb24]
+	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f6f34b91b97]
+	../bin/marco_test(_start+0x2a) [0x7f6f35e6c36a]
+
+[2020-3-10 15:38:46] [INFO] [thread id:2417] [system] (/home/beecaffe/src/saber/tests/marco_test.cc:5) - 	../bin/marco_test(_Z11test_assertv+0x185) [0x7f1eab26c6f0]
+	../bin/marco_test(main+0x9) [0x7f1eab26cb24]
+	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f1ea9f91b97]
+	../bin/marco_test(_start+0x2a) [0x7f1eab26c36a]
+
+[2020-3-12 11:22:14] [INFO] [thread id:1248] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 11:23:6] [INFO] [thread id:1322] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 11:26:9] [INFO] [thread id:1387] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 11:26:9] [INFO] [thread id:1387] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:1:9] [INFO] [thread id:1464] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:1:9] [INFO] [thread id:1464] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:20) - main fiber end!
+[2020-3-12 13:1:48] [INFO] [thread id:1529] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:1:48] [INFO] [thread id:1529] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:6:28] [DEBUG] [thread id:1642] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:6:28] [DEBUG] [thread id:1642] [system] (/home/beecaffe/src/saber/saber/fiber.cc:108) - Fiber::Fiber() id=1
+[2020-3-12 13:6:28] [INFO] [thread id:1642] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:6:28] [INFO] [thread id:1642] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:6:28] [DEBUG] [thread id:1642] [system] (/home/beecaffe/src/saber/saber/fiber.cc:126) - Fiber::Fiber() id=0
+[2020-3-12 13:10:46] [DEBUG] [thread id:1759] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:10:46] [DEBUG] [thread id:1759] [system] (/home/beecaffe/src/saber/saber/fiber.cc:108) - Fiber::Fiber() id=1
+[2020-3-12 13:10:46] [INFO] [thread id:1759] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:10:46] [INFO] [thread id:1759] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:20) - main fiber end!
+[2020-3-12 13:10:46] [DEBUG] [thread id:1759] [system] (/home/beecaffe/src/saber/saber/fiber.cc:126) - Fiber::~Fiber() id=0
+[2020-3-12 13:14:17] [DEBUG] [thread id:1871] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:14:17] [DEBUG] [thread id:1871] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:14:17] [INFO] [thread id:1871] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:14:17] [INFO] [thread id:1871] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:20) - main fiber end!
+[2020-3-12 13:14:17] [DEBUG] [thread id:1871] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:15:32] [DEBUG] [thread id:1989] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:15:32] [DEBUG] [thread id:1989] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:15:32] [INFO] [thread id:1989] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:15:32] [INFO] [thread id:1989] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:15:32] [INFO] [thread id:1989] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:15:32] [DEBUG] [thread id:1989] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:19:18] [DEBUG] [thread id:2197] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:19:18] [DEBUG] [thread id:2197] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:19:18] [INFO] [thread id:2197] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:19:18] [INFO] [thread id:2197] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:19:18] [INFO] [thread id:2197] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:19:18] [DEBUG] [thread id:2197] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:19:36] [DEBUG] [thread id:2198] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:19:36] [DEBUG] [thread id:2198] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:19:36] [INFO] [thread id:2198] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:19:36] [INFO] [thread id:2198] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:19:36] [INFO] [thread id:2198] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:19:36] [DEBUG] [thread id:2198] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:21:26] [DEBUG] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:21:26] [DEBUG] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:21:26] [INFO] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:21:26] [INFO] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:21:26] [INFO] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:21:26] [DEBUG] [thread id:2403] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:27:17] [DEBUG] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:27:17] [DEBUG] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:27:17] [INFO] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:27:17] [INFO] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:27:17] [INFO] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:27:17] [DEBUG] [thread id:2617] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:28:30] [DEBUG] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:28:30] [DEBUG] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:28:30] [INFO] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:28:30] [INFO] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:28:30] [INFO] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:28:30] [DEBUG] [thread id:2729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:31:23] [DEBUG] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:31:23] [DEBUG] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:31:23] [INFO] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:31:23] [INFO] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 13:31:23] [INFO] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:23) - main fiber end2!
+[2020-3-12 13:31:23] [DEBUG] [thread id:2862] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:33:28] [DEBUG] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:33:28] [DEBUG] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:33:28] [INFO] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:33:28] [INFO] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:33:28] [INFO] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:33:28] [INFO] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:33:28] [DEBUG] [thread id:2979] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:34:27] [DEBUG] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:34:27] [DEBUG] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:106) - Fiber::Fiber() id=1
+[2020-3-12 13:34:27] [INFO] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:34:27] [INFO] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:34:27] [INFO] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:34:27] [INFO] [thread id:3091] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:35:38] [DEBUG] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:35:38] [DEBUG] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:110) - Fiber::Fiber() id=1
+[2020-3-12 13:35:38] [INFO] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:35:38] [INFO] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:35:38] [INFO] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:35:38] [INFO] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:35:38] [DEBUG] [thread id:3204] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:128) - Fiber::~Fiber() id=0
+[2020-3-12 13:36:27] [DEBUG] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:36:27] [DEBUG] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:110) - Fiber::Fiber() id=1
+[2020-3-12 13:36:27] [INFO] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:36:27] [INFO] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:36:27] [INFO] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:36:27] [INFO] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:36:27] [DEBUG] [thread id:3316] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:128) - Fiber::~Fiber() id=0
+[2020-3-12 13:39:19] [DEBUG] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:39:19] [DEBUG] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:39:19] [INFO] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:39:19] [INFO] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:39:19] [INFO] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:39:19] [INFO] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:39:19] [DEBUG] [thread id:3508] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:40:18] [DEBUG] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:40:18] [DEBUG] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:40:18] [INFO] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:40:18] [INFO] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:40:18] [INFO] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:40:18] [INFO] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:40:18] [DEBUG] [thread id:3620] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:43:47] [DEBUG] [thread id:3824] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:43:47] [DEBUG] [thread id:3824] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:109) - Fiber::Fiber() id=1
+[2020-3-12 13:43:47] [INFO] [thread id:3824] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:43:47] [INFO] [thread id:3824] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:43:47] [INFO] [thread id:3824] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:43:47] [INFO] [thread id:3824] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:43:47] [DEBUG] [thread id:3824] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:127) - Fiber::~Fiber() id=0
+[2020-3-12 13:57:0] [DEBUG] [thread id:3947] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 13:57:0] [DEBUG] [thread id:3947] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:111) - Fiber::Fiber() id=1
+[2020-3-12 13:57:0] [INFO] [thread id:3947] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 13:57:0] [INFO] [thread id:3947] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 13:57:0] [INFO] [thread id:3947] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 13:57:0] [INFO] [thread id:3947] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 13:57:0] [DEBUG] [thread id:3947] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:129) - Fiber::~Fiber() id=0
+[2020-3-12 14:0:16] [DEBUG] [thread id:4064] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 14:0:16] [DEBUG] [thread id:4064] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-12 14:0:16] [INFO] [thread id:4064] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 14:0:16] [INFO] [thread id:4064] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:10) - hello world
+[2020-3-12 14:0:16] [INFO] [thread id:4064] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:19) - main fiber end!
+[2020-3-12 14:0:16] [INFO] [thread id:4064] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end2!
+[2020-3-12 14:0:16] [DEBUG] [thread id:4064] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-12 14:2:35] [DEBUG] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 14:2:35] [DEBUG] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-12 14:2:35] [INFO] [thread id:4130] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 14:2:35] [INFO] [thread id:4130] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:11) - hello world
+[2020-3-12 14:2:35] [INFO] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 14:2:35] [DEBUG] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=1
+[2020-3-12 14:2:35] [INFO] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:25) - main fiber end2!
+[2020-3-12 14:2:35] [DEBUG] [thread id:4130] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=3
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=2
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:1] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:11) - hello world
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:2] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:3] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:9) - hello world
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:3] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:11) - hello world
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=1
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:25) - main fiber end2!
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=3
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:25) - main fiber end2!
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:2] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:11) - hello world
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:21) - main fiber end!
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=2
+[2020-3-12 14:15:49] [INFO] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/tests/fiber_test.cc:25) - main fiber end2!
+[2020-3-12 14:15:49] [DEBUG] [thread id:4271] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-13 19:11:45] [DEBUG] [thread id:1183] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-13 19:11:45] [DEBUG] [thread id:1183] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-13 19:11:45] [INFO] [thread id:1183] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:72) - 0x7fffe460e120stopped
+[2020-3-13 19:11:45] [DEBUG] [thread id:1183] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=1
+[2020-3-13 19:11:45] [DEBUG] [thread id:1183] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-13 19:27:19] [DEBUG] [thread id:1313] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-13 19:27:19] [DEBUG] [thread id:1313] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-13 19:27:19] [DEBUG] [thread id:1313] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=2
+[2020-3-13 19:27:19] [INFO] [thread id:1313] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:205) - idle
+[2020-3-13 19:28:43] [DEBUG] [thread id:1463] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:37) - Fiber::Fiber() id=0
+[2020-3-13 19:28:43] [DEBUG] [thread id:1463] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=1
+[2020-3-13 19:28:43] [DEBUG] [thread id:1463] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:112) - Fiber::Fiber() id=2
+[2020-3-13 19:28:43] [INFO] [thread id:1463] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:205) - idle
+[2020-3-13 19:28:43] [DEBUG] [thread id:1463] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/fiber.cc:130) - Fiber::~Fiber() id=0
+[2020-3-13 20:6:37] [DEBUG] [thread id:1785] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 20:6:37] [DEBUG] [thread id:1785] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 20:6:37] [INFO] [thread id:1785] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:196) - tickle
+[2020-3-13 20:12:42] [DEBUG] [thread id:1920] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 20:12:42] [DEBUG] [thread id:1920] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 20:12:42] [ERROR] [thread id:1920] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:80) - Fiber Except: bad_function_call
+[2020-3-13 20:12:42] [DEBUG] [thread id:1920] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 20:12:42] [INFO] [thread id:1920] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:206) - idle
+[2020-3-13 20:43:53] [DEBUG] [thread id:2066] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 20:43:53] [DEBUG] [thread id:2066] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 20:43:53] [DEBUG] [thread id:2066] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 20:43:53] [INFO] [thread id:2066] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 20:49:20] [DEBUG] [thread id:2203] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 20:49:20] [DEBUG] [thread id:2203] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 20:49:20] [DEBUG] [thread id:2203] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 20:49:20] [INFO] [thread id:2203] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 20:58:1] [INFO] [thread id:2337] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 20:58:1] [INFO] [thread id:2337] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:181) - idle fiber term
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=2
+[2020-3-13 20:58:1] [INFO] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 20:58:1] [INFO] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:78) - 0x7ffffafe73e0stopped
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=1
+[2020-3-13 20:58:1] [DEBUG] [thread id:2337] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=0
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 21:1:3] [INFO] [thread id:2338] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 21:1:3] [INFO] [thread id:2338] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:181) - idle fiber term
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=2
+[2020-3-13 21:1:3] [INFO] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 21:1:3] [INFO] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:78) - 0x7fffc402cfe0stopped
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=1
+[2020-3-13 21:1:3] [DEBUG] [thread id:2338] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=0
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=1
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:113) - Fiber::Fiber() id=2
+[2020-3-13 21:2:0] [INFO] [thread id:2557] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 21:2:0] [INFO] [thread id:2557] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:181) - idle fiber term
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=2
+[2020-3-13 21:2:0] [INFO] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 21:2:0] [INFO] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:78) - 0x7fffc5409d70stopped
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=1
+[2020-3-13 21:2:0] [DEBUG] [thread id:2557] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:131) - Fiber::~Fiber() id=0
+[2020-3-13 21:15:2] [DEBUG] [thread id:2853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:15:2] [DEBUG] [thread id:2853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:137) - Fiber::Fiber() id=1
+[2020-3-13 21:15:2] [DEBUG] [thread id:2853] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:137) - Fiber::Fiber() id=2
+[2020-3-13 21:15:2] [INFO] [thread id:2853] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 21:15:2] [INFO] [thread id:2853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 21:15:2] [INFO] [thread id:2853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:15:12] [DEBUG] [thread id:2854] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:15:12] [DEBUG] [thread id:2854] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:137) - Fiber::Fiber() id=1
+[2020-3-13 21:15:12] [DEBUG] [thread id:2854] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:137) - Fiber::Fiber() id=2
+[2020-3-13 21:15:12] [INFO] [thread id:2854] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 21:15:12] [INFO] [thread id:2854] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 21:15:12] [INFO] [thread id:2854] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=1
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=2
+[2020-3-13 21:18:21] [INFO] [thread id:2980] [fiber id:2] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:207) - idle
+[2020-3-13 21:18:21] [INFO] [thread id:2980] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:181) - idle fiber term
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:1] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=2
+[2020-3-13 21:18:21] [INFO] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:68) - call out
+[2020-3-13 21:18:21] [INFO] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:78) - 0x7fffec2ce9c0stopped
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=1
+[2020-3-13 21:18:21] [DEBUG] [thread id:2980] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:23:47] [DEBUG] [thread id:3333] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:23:47] [DEBUG] [thread id:3333] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140569122277040
+[2020-3-13 21:24:43] [DEBUG] [thread id:3336] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:24:43] [DEBUG] [thread id:3336] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140737460668080
+[2020-3-13 21:25:14] [DEBUG] [thread id:3340] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:25:14] [DEBUG] [thread id:3340] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140737460668080
+[2020-3-13 21:25:24] [DEBUG] [thread id:3341] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:25:24] [DEBUG] [thread id:3341] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140737460668080
+[2020-3-13 21:32:17] [DEBUG] [thread id:3348] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:32:17] [DEBUG] [thread id:3348] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140737460668080
+[2020-3-13 21:32:31] [DEBUG] [thread id:3352] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:32:31] [DEBUG] [thread id:3352] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140737460668080
+[2020-3-13 21:34:19] [DEBUG] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:34:19] [DEBUG] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140339014370992
+[2020-3-13 21:34:19] [INFO] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:34:19] [INFO] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffd17451a0stopped
+[2020-3-13 21:34:19] [INFO] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:34:19] [DEBUG] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=140339014370992
+[2020-3-13 21:34:19] [DEBUG] [thread id:3477] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:36:19] [DEBUG] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:36:19] [DEBUG] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140158361503408
+[2020-3-13 21:36:19] [INFO] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:36:19] [INFO] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffc6921d90stopped
+[2020-3-13 21:36:19] [INFO] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:36:19] [DEBUG] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=140158361503408
+[2020-3-13 21:36:19] [DEBUG] [thread id:3479] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:36:55] [DEBUG] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:36:55] [DEBUG] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140367445460656
+[2020-3-13 21:36:55] [INFO] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:36:55] [INFO] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffe89a4710stopped
+[2020-3-13 21:36:55] [INFO] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:197) - tickle
+[2020-3-13 21:36:55] [DEBUG] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=140367445460656
+[2020-3-13 21:36:55] [DEBUG] [thread id:3480] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:38:0] [DEBUG] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:38:0] [DEBUG] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=140223442421424
+[2020-3-13 21:38:0] [INFO] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:38:0] [INFO] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffc6e2ffe0stopped
+[2020-3-13 21:38:0] [INFO] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:38:0] [DEBUG] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=140223442421424
+[2020-3-13 21:38:0] [DEBUG] [thread id:3605] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:41:57] [DEBUG] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:41:57] [DEBUG] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=139966811834032
+[2020-3-13 21:41:57] [INFO] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:41:57] [INFO] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffd4fc3b80stopped
+[2020-3-13 21:41:57] [INFO] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:41:57] [DEBUG] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=139966811834032
+[2020-3-13 21:41:57] [DEBUG] [thread id:3729] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:45:11] [DEBUG] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:45:11] [DEBUG] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=139793629021872
+[2020-3-13 21:45:11] [INFO] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:45:11] [INFO] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7ffffc0fc6a0stopped
+[2020-3-13 21:45:11] [INFO] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:45:11] [DEBUG] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=139793629021872
+[2020-3-13 21:45:11] [DEBUG] [thread id:3853] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:45:51] [DEBUG] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:45:51] [DEBUG] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=139802699204272
+[2020-3-13 21:45:51] [INFO] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffc7ef1e30stopped
+[2020-3-13 21:45:51] [INFO] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:45:51] [DEBUG] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=139802699204272
+[2020-3-13 21:45:51] [DEBUG] [thread id:3924] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0
+[2020-3-13 21:46:34] [DEBUG] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:38) - Fiber::Fiber() id=0
+[2020-3-13 21:46:34] [DEBUG] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:138) - Fiber::Fiber() id=139644095792816
+[2020-3-13 21:46:34] [INFO] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:46:34] [INFO] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:77) - 0x7fffe2c28580stopped
+[2020-3-13 21:46:34] [INFO] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/scheduler.cc:198) - tickle
+[2020-3-13 21:46:34] [DEBUG] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=139644095792816
+[2020-3-13 21:46:34] [DEBUG] [thread id:3995] [fiber id:0] [system] (/home/beecaffe/src/saber/saber/fiber.cc:156) - Fiber::~Fiber() id=0

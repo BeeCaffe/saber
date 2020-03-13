@@ -3,7 +3,7 @@
 #include<yaml-cpp/yaml.h>
 #include<vector>
 
-saber::ConfigVar<int>::ptr g_int_value_config=saber::Config::lookUp("system.port",(int)8080,"system_port");
+/*saber::ConfigVar<int>::ptr g_int_value_config=saber::Config::lookUp("system.port",(int)8080,"system_port");
 
 //saber::ConfigVar<float>::ptr g_int_valuex_config=saber::Config::lookUp("system.port",(float)8080,"system_port");
 
@@ -32,6 +32,15 @@ public:
 		std::stringstream ss;
 		ss<<"[Person name="<<m_name<<" age="<<m_age<<" sex="<<m_sex<<"]";
 		return ss.str();
+	}
+
+	bool operator==(const Person& p) const {
+		bool res=true;
+		if(p.m_name!=m_name) res=false;
+		if(p.m_age!=m_age) res=false;
+		if(p.m_sex!=m_sex) res=false;
+		return res;
+
 	}
 
 };
@@ -72,10 +81,15 @@ namespace saber{
 saber::ConfigVar<Person>::ptr g_person = saber::Config::lookUp("class.person",Person(),"system person");
 
 void test_class(){
-	
+
+	g_person->addListener(10,[](const Person& old_value,const Person& new_value ){
+		LOG_INFO(LOG_ROOT)<<"old value="<<old_value.toString();
+		LOG_INFO(LOG_ROOT)<<"new value="<<new_value.toString();
+	});
+
 	LOG_INFO(LOG_ROOT)<<"berfore: "<<g_person->getValue().toString()<<" - "<<g_person->toString();
 
-	YAML::Node root=YAML::LoadFile("/home/beecaffe/src/saber/conf/log.yml");
+	YAML::Node root=YAML::LoadFile("/home/beecaffe/src/saber/conf/test.yml");
 	saber::Config::LoadFromYaml(root);
 
 	LOG_INFO(LOG_ROOT)<<"after: "<<g_person->getValue().toString()<<" - "<<g_person->toString();
@@ -101,7 +115,7 @@ void print_yaml(const YAML::Node& node, int level){
 
 void test_yaml(){
 	//// load file from xx.yml file
-	YAML::Node root=YAML::LoadFile("/home/beecaffe/src/saber/conf/log.yml");
+	YAML::Node root=YAML::LoadFile("/home/beecaffe/src/saber/conf/test.yml");
 	print_yaml(root,0);
 	//LOG_INFO(LOG_ROOT)<<root;
 }
@@ -162,11 +176,46 @@ void test_config(){
 				LOG_INFO(LOG_ROOT)<<"int_umap "<<"after: "<<"key: "<<it->first<<"value: "<<it->second;
 			}
 	}
+}*/
+
+void test_logger(){
+	static saber::Logger::ptr system_log=FIND_LOG("system");
+	LOG_INFO(system_log)<<"hello system"<<std::endl;
+	std::cout<<saber::LogMng::Instance()->toYamlString()<<std::endl;
+	YAML::Node root=YAML::LoadFile("/home/beecaffe/src/saber/conf/test.yml");
+	
+	saber::Config::LoadFromYaml(root);
+	std::cout<<"====================================="<<std::endl;
+	std::cout<<saber::LogMng::Instance()->toYamlString()<<std::endl;
+	std::cout<<"====================================="<<std::endl;
+
+	std::cout<<system_log->toYamlString()<<std::endl;
+	LOG_INFO(LOG_ROOT)<<"hello system"<<std::endl;
+
+	std::cout<<"====================================="<<std::endl;
+	system_log->setFormatter("%d - %m%n");
+	std::cout<<system_log->toYamlString()<<std::endl;
+	LOG_INFO(LOG_ROOT)<<"hello system"<<std::endl;
+
 }
 
 int main(){
 		//test_yaml();
 		//test_config();
-		test_class();
+		//test_class();
+		test_logger();
+			saber::Config::Visit([](saber::ConfigVarBase::ptr var){
+				LOG_INFO(LOG_ROOT)<<"name="<<var->getName()
+								  <<" description="<<var->getDescription()
+								  <<" typename="<<var->getName()
+								  <<" value="<<var->toString();
+			});
+
 		return 0;
 }
+
+
+
+
+
+

@@ -111,6 +111,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named scheduler_test
+
+# Build rule for target.
+scheduler_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 scheduler_test
+.PHONY : scheduler_test
+
+# fast build rule for target.
+scheduler_test/fast:
+	$(MAKE) -f CMakeFiles/scheduler_test.dir/build.make CMakeFiles/scheduler_test.dir/build
+.PHONY : scheduler_test/fast
+
+#=============================================================================
+# Target rules for targets named fiber_test
+
+# Build rule for target.
+fiber_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fiber_test
+.PHONY : fiber_test
+
+# fast build rule for target.
+fiber_test/fast:
+	$(MAKE) -f CMakeFiles/fiber_test.dir/build.make CMakeFiles/fiber_test.dir/build
+.PHONY : fiber_test/fast
+
+#=============================================================================
+# Target rules for targets named thread_test
+
+# Build rule for target.
+thread_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 thread_test
+.PHONY : thread_test
+
+# fast build rule for target.
+thread_test/fast:
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/build
+.PHONY : thread_test/fast
+
+#=============================================================================
 # Target rules for targets named saber_static
 
 # Build rule for target.
@@ -135,6 +174,19 @@ saber: cmake_check_build_system
 saber/fast:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/build
 .PHONY : saber/fast
+
+#=============================================================================
+# Target rules for targets named marco_test
+
+# Build rule for target.
+marco_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 marco_test
+.PHONY : marco_test
+
+# fast build rule for target.
+marco_test/fast:
+	$(MAKE) -f CMakeFiles/marco_test.dir/build.make CMakeFiles/marco_test.dir/build
+.PHONY : marco_test/fast
 
 #=============================================================================
 # Target rules for targets named log_test
@@ -205,6 +257,36 @@ saber/config.cc.s:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/config.cc.s
 .PHONY : saber/config.cc.s
 
+saber/fiber.o: saber/fiber.cc.o
+
+.PHONY : saber/fiber.o
+
+# target to build an object file
+saber/fiber.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/fiber.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/fiber.cc.o
+.PHONY : saber/fiber.cc.o
+
+saber/fiber.i: saber/fiber.cc.i
+
+.PHONY : saber/fiber.i
+
+# target to preprocess a source file
+saber/fiber.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/fiber.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/fiber.cc.i
+.PHONY : saber/fiber.cc.i
+
+saber/fiber.s: saber/fiber.cc.s
+
+.PHONY : saber/fiber.s
+
+# target to generate assembly for a file
+saber/fiber.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/fiber.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/fiber.cc.s
+.PHONY : saber/fiber.cc.s
+
 saber/json/json.o: saber/json/json.cc.o
 
 .PHONY : saber/json/json.o
@@ -265,6 +347,66 @@ saber/log.cc.s:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/log.cc.s
 .PHONY : saber/log.cc.s
 
+saber/scheduler.o: saber/scheduler.cc.o
+
+.PHONY : saber/scheduler.o
+
+# target to build an object file
+saber/scheduler.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/scheduler.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/scheduler.cc.o
+.PHONY : saber/scheduler.cc.o
+
+saber/scheduler.i: saber/scheduler.cc.i
+
+.PHONY : saber/scheduler.i
+
+# target to preprocess a source file
+saber/scheduler.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/scheduler.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/scheduler.cc.i
+.PHONY : saber/scheduler.cc.i
+
+saber/scheduler.s: saber/scheduler.cc.s
+
+.PHONY : saber/scheduler.s
+
+# target to generate assembly for a file
+saber/scheduler.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/scheduler.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/scheduler.cc.s
+.PHONY : saber/scheduler.cc.s
+
+saber/thread.o: saber/thread.cc.o
+
+.PHONY : saber/thread.o
+
+# target to build an object file
+saber/thread.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/thread.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/thread.cc.o
+.PHONY : saber/thread.cc.o
+
+saber/thread.i: saber/thread.cc.i
+
+.PHONY : saber/thread.i
+
+# target to preprocess a source file
+saber/thread.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/thread.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/thread.cc.i
+.PHONY : saber/thread.cc.i
+
+saber/thread.s: saber/thread.cc.s
+
+.PHONY : saber/thread.s
+
+# target to generate assembly for a file
+saber/thread.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/thread.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/thread.cc.s
+.PHONY : saber/thread.cc.s
+
 saber/utils.o: saber/utils.cc.o
 
 .PHONY : saber/utils.o
@@ -322,6 +464,33 @@ tests/config_test.cc.s:
 	$(MAKE) -f CMakeFiles/config_test.dir/build.make CMakeFiles/config_test.dir/tests/config_test.cc.s
 .PHONY : tests/config_test.cc.s
 
+tests/fiber_test.o: tests/fiber_test.cc.o
+
+.PHONY : tests/fiber_test.o
+
+# target to build an object file
+tests/fiber_test.cc.o:
+	$(MAKE) -f CMakeFiles/fiber_test.dir/build.make CMakeFiles/fiber_test.dir/tests/fiber_test.cc.o
+.PHONY : tests/fiber_test.cc.o
+
+tests/fiber_test.i: tests/fiber_test.cc.i
+
+.PHONY : tests/fiber_test.i
+
+# target to preprocess a source file
+tests/fiber_test.cc.i:
+	$(MAKE) -f CMakeFiles/fiber_test.dir/build.make CMakeFiles/fiber_test.dir/tests/fiber_test.cc.i
+.PHONY : tests/fiber_test.cc.i
+
+tests/fiber_test.s: tests/fiber_test.cc.s
+
+.PHONY : tests/fiber_test.s
+
+# target to generate assembly for a file
+tests/fiber_test.cc.s:
+	$(MAKE) -f CMakeFiles/fiber_test.dir/build.make CMakeFiles/fiber_test.dir/tests/fiber_test.cc.s
+.PHONY : tests/fiber_test.cc.s
+
 tests/json_test.o: tests/json_test.cc.o
 
 .PHONY : tests/json_test.o
@@ -376,6 +545,87 @@ tests/log_test.cc.s:
 	$(MAKE) -f CMakeFiles/log_test.dir/build.make CMakeFiles/log_test.dir/tests/log_test.cc.s
 .PHONY : tests/log_test.cc.s
 
+tests/marco_test.o: tests/marco_test.cc.o
+
+.PHONY : tests/marco_test.o
+
+# target to build an object file
+tests/marco_test.cc.o:
+	$(MAKE) -f CMakeFiles/marco_test.dir/build.make CMakeFiles/marco_test.dir/tests/marco_test.cc.o
+.PHONY : tests/marco_test.cc.o
+
+tests/marco_test.i: tests/marco_test.cc.i
+
+.PHONY : tests/marco_test.i
+
+# target to preprocess a source file
+tests/marco_test.cc.i:
+	$(MAKE) -f CMakeFiles/marco_test.dir/build.make CMakeFiles/marco_test.dir/tests/marco_test.cc.i
+.PHONY : tests/marco_test.cc.i
+
+tests/marco_test.s: tests/marco_test.cc.s
+
+.PHONY : tests/marco_test.s
+
+# target to generate assembly for a file
+tests/marco_test.cc.s:
+	$(MAKE) -f CMakeFiles/marco_test.dir/build.make CMakeFiles/marco_test.dir/tests/marco_test.cc.s
+.PHONY : tests/marco_test.cc.s
+
+tests/scheduler_test.o: tests/scheduler_test.cc.o
+
+.PHONY : tests/scheduler_test.o
+
+# target to build an object file
+tests/scheduler_test.cc.o:
+	$(MAKE) -f CMakeFiles/scheduler_test.dir/build.make CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o
+.PHONY : tests/scheduler_test.cc.o
+
+tests/scheduler_test.i: tests/scheduler_test.cc.i
+
+.PHONY : tests/scheduler_test.i
+
+# target to preprocess a source file
+tests/scheduler_test.cc.i:
+	$(MAKE) -f CMakeFiles/scheduler_test.dir/build.make CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.i
+.PHONY : tests/scheduler_test.cc.i
+
+tests/scheduler_test.s: tests/scheduler_test.cc.s
+
+.PHONY : tests/scheduler_test.s
+
+# target to generate assembly for a file
+tests/scheduler_test.cc.s:
+	$(MAKE) -f CMakeFiles/scheduler_test.dir/build.make CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.s
+.PHONY : tests/scheduler_test.cc.s
+
+tests/thread_test.o: tests/thread_test.cc.o
+
+.PHONY : tests/thread_test.o
+
+# target to build an object file
+tests/thread_test.cc.o:
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread_test.cc.o
+.PHONY : tests/thread_test.cc.o
+
+tests/thread_test.i: tests/thread_test.cc.i
+
+.PHONY : tests/thread_test.i
+
+# target to preprocess a source file
+tests/thread_test.cc.i:
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread_test.cc.i
+.PHONY : tests/thread_test.cc.i
+
+tests/thread_test.s: tests/thread_test.cc.s
+
+.PHONY : tests/thread_test.s
+
+# target to generate assembly for a file
+tests/thread_test.cc.s:
+	$(MAKE) -f CMakeFiles/thread_test.dir/build.make CMakeFiles/thread_test.dir/tests/thread_test.cc.s
+.PHONY : tests/thread_test.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -383,33 +633,58 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... scheduler_test"
+	@echo "... fiber_test"
+	@echo "... thread_test"
 	@echo "... saber_static"
 	@echo "... saber"
+	@echo "... marco_test"
 	@echo "... log_test"
 	@echo "... config_test"
 	@echo "... json_test"
-	@echo "... edit_cache"
 	@echo "... saber/config.o"
 	@echo "... saber/config.i"
 	@echo "... saber/config.s"
+	@echo "... saber/fiber.o"
+	@echo "... saber/fiber.i"
+	@echo "... saber/fiber.s"
 	@echo "... saber/json/json.o"
 	@echo "... saber/json/json.i"
 	@echo "... saber/json/json.s"
 	@echo "... saber/log.o"
 	@echo "... saber/log.i"
 	@echo "... saber/log.s"
+	@echo "... saber/scheduler.o"
+	@echo "... saber/scheduler.i"
+	@echo "... saber/scheduler.s"
+	@echo "... saber/thread.o"
+	@echo "... saber/thread.i"
+	@echo "... saber/thread.s"
 	@echo "... saber/utils.o"
 	@echo "... saber/utils.i"
 	@echo "... saber/utils.s"
 	@echo "... tests/config_test.o"
 	@echo "... tests/config_test.i"
 	@echo "... tests/config_test.s"
+	@echo "... tests/fiber_test.o"
+	@echo "... tests/fiber_test.i"
+	@echo "... tests/fiber_test.s"
 	@echo "... tests/json_test.o"
 	@echo "... tests/json_test.i"
 	@echo "... tests/json_test.s"
 	@echo "... tests/log_test.o"
 	@echo "... tests/log_test.i"
 	@echo "... tests/log_test.s"
+	@echo "... tests/marco_test.o"
+	@echo "... tests/marco_test.i"
+	@echo "... tests/marco_test.s"
+	@echo "... tests/scheduler_test.o"
+	@echo "... tests/scheduler_test.i"
+	@echo "... tests/scheduler_test.s"
+	@echo "... tests/thread_test.o"
+	@echo "... tests/thread_test.i"
+	@echo "... tests/thread_test.s"
 .PHONY : help
 
 

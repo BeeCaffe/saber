@@ -6,6 +6,10 @@
 #include<string>
 #include<iostream>
 #include<fcntl.h>
+#include<vector>
+#include<execinfo.h>
+#include<sstream>
+#include"fiber.h"
 namespace saber{
 	/**
 	 *@brief file ralated functions
@@ -20,11 +24,14 @@ namespace saber{
 	 *@brief thread related function
 	 */
 	
-	pid_t GetPid();
+	pid_t GetThreadId();
 
 	uint32_t GetElapse();
 
-	uint32_t GetFiberId();
-
+	uint64_t GetFiberId();
+ 
+	
+	void BackTrace(std::vector<std::string>& bt,int size,int skip);
+	std::string BackTraceToString(int size,int skip,const std::string& prefix="	");
 };
 #endif

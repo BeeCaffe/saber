@@ -1,7 +1,43 @@
 #include"log.h"
-/**
- *@brief class LogEvent
- */
+#include"config.h"
+/*************************************************************************
+ *@brief class LogLevel functions
+ ************************************************************************/
+std::string saber::LogLevel::toString(LogLevel::Level level){
+	std::string str;
+	switch(level){
+		case LogLevel::LogLevel::DEBUG:
+			str="DEBUG";
+			break;
+		case LogLevel::LogLevel::INFO:
+			str="INFO";
+			break;
+		case LogLevel::LogLevel::WARN:
+			str="WARN";
+			break;
+		case LogLevel::LogLevel::ERROR:
+			str="ERROR";
+			break;
+		case LogLevel::LogLevel::FATAL:
+			str="FATAL";
+			break;
+		default:
+			str="UNKNOWN";
+			break;
+	}
+	return str;
+}
+
+typename saber::LogLevel::Level saber::LogLevel::fromString(const std::string& str){
+	if(str=="DEBUG"||str=="debug") return LogLevel::Level::DEBUG;
+	if(str=="INFO"||str=="info") return LogLevel::Level::INFO;
+	if(str=="ERROR"||str=="error") return LogLevel::Level::ERROR;
+	if(str=="FATAL"||str=="fatal") return LogLevel::Level::FATAL;
+	if(str=="WARN"||str=="warn") return LogLevel::Level::WARN;
+	if(str=="UNKNOWN"||str=="unknown") return LogLevel::Level::UNKNOWN;
+}
+/************************************************************************* *@brief class LogEvent
+ *************************************************************************/
 ////constructor
 saber::LogEvent::LogEvent(LogLevel::Level level,
 							 uint32_t line,
@@ -17,29 +53,33 @@ saber::LogEvent::LogEvent(LogLevel::Level level,
 							 m_file(file),
 							 m_threadId(thread_id),
 							 m_time(time),
+                             m_fiberId(fiber_id),
 							 m_elapse(elapse),
 							 m_logger(logger),
 						     m_threadName(thread_name){}
-/**
+/*************************************************************************
  *@brief class LogAppender
- */
-/// set formatter of log appender
-void saber::LogAppender::setFormatter(std::shared_ptr<LogFormatter> format){m_formatter=format; }
-
+ *************************************************************************/
 ////print log information to console
 void saber::StdOutAppender::log(LogLevel::Level level,LogEvent::ptr event){
 	if(level>=m_level){
 		std::cout<<m_formatter->format(event);
 	}
 }
+
 saber::FileAppender::FileAppender(LogLevel::Level level,std::string file):m_file(file),m_level(level){}
+
 saber::FileAppender::FileAppender(std::string file):m_file(file){}
+
 void saber::FileAppender::reopen(){
+	
+	MutexType::Lock lock(m_mutex);	
 	if(m_os.is_open()){
 		m_os.close();
 		m_os.open(m_file,std::ios::app);
 	}
 }
+
 void saber::FileAppender::makeDirs(){
 	int last_pos=0;
 	for(int i=m_file.size()-1;i>=0;--i){
@@ -52,7 +92,10 @@ void saber::FileAppender::makeDirs(){
 	saber::Mkdirs(dir);
 	saber::Creat(m_file);
 }
+
 void saber::FileAppender::log(LogLevel::Level level, LogEvent::ptr event) {
+	
+		MutexType::Lock lock(m_mutex);	
 		if(m_os.is_open()) reopen();
 		if(!m_os.is_open()){
 			makeDirs();
@@ -64,10 +107,36 @@ void saber::FileAppender::log(LogLevel::Level level, LogEvent::ptr event) {
 		m_os.close();
 }
 
+std::string saber::FileAppender::toYamlString(){
+		MutexType::Lock lock(m_mutex);
+		YAML::Node node;
+		node["type"]="FileAppender";
+		node["file"] = m_file;
+		node["level"]=LogLevel::toString(m_level);
+		if(m_hasFormatter&&m_formatter){
+			node["formatter"]=m_formatter->getPattern();
+		}
+		std::stringstream ss;
+		ss<<node;
+		return ss.str();
+}
 
-/**
+std::string saber::StdOutAppender::toYamlString(){
+		MutexType::Lock lock(m_mutex);
+		YAML::Node node;
+		node["type"] = "StdOutAppender";
+		node["level"] = LogLevel::toString(m_level);
+		if(m_hasFormatter&&m_formatter){
+			node["formatter"]=m_formatter->getPattern();
+		}
+		std::stringstream ss;
+		ss<<node;
+		return ss.str();
+}
+
+/*************************************************************************
  *@brief class LogFormatter
- */
+ ************************************************************************/
 
 std::string saber::LogFormatter::timeString(LogEvent::ptr event ,std::string pattern){
 	std::stringstream ss;
@@ -164,9 +233,33 @@ std::string saber::LogFormatter::levelString(LogEvent::ptr event){
 	}
 	return ss.str();
 }
+
+void saber::LogAppender::setFormatter(const std::string& pattern){
+	MutexType::Lock lock(m_mutex);
+	m_formatter.reset(new LogFormatter(pattern));
+	if(m_formatter){
+		m_hasFormatter=true;
+	}else{
+		m_hasFormatter=false;
+	}
+}
+
+void saber::LogAppender::setFormatter(const std::shared_ptr<LogFormatter>& fmt){
+	MutexType::Lock lock(m_mutex);
+	m_formatter=fmt;
+	if(m_formatter){
+		m_hasFormatter=true;
+	}else{
+		m_hasFormatter=false;
+	}
+}
+
+
+
 std::string saber::LogFormatter::format(LogEvent::ptr event){
 	return parsePattern(event,m_pattern);
 }
+
 std::string saber::LogFormatter::parsePattern(LogEvent::ptr event,std::string &pattern){
 	std::stringstream ss;
 	for(int i=0;i<pattern.size();++i){
@@ -216,42 +309,105 @@ std::string saber::LogFormatter::parsePattern(LogEvent::ptr event,std::string &p
 	}
 	return ss.str();
 }
-/**
+
+/*************************************************************************
  *@brief class Logger
- */
+ ************************************************************************/
 void saber::Logger::log(LogEvent::ptr event,LogLevel::Level level){
 	if(level>=m_level){
-		if(this==nullptr) std::cout<<"<<fatal>> logger should not be nullptr"<<std::endl;
+		if(this==nullptr) std::cout<<"<<fatal>> logger shouoth not be nullptr"<<std::endl;
+
+		MutexType::Lock lock(m_mutex);	
 		for(int i=0;i<m_appenders.size();++i){
 			m_appenders[i]->setFormatter(m_formatter);
 			m_appenders[i]->log(level,event);
 		}
 	}
 }
+
 void saber::Logger::addAppender(LogAppender::ptr appender){
+	MutexType::Lock lock(m_mutex);
+	if(!appender->getFormatter()){
+		MutexType::Lock ll(appender->m_mutex);
+		appender->m_formatter=m_formatter;
+	}
 	m_appenders.push_back(appender);
 }
-void saber::Logger::setFormatter(LogFormatter::ptr formatter){
-	m_formatter=formatter;
+
+void saber::Logger::delAppender(LogAppender::ptr appender){
+	MutexType::Lock lock(m_mutex);	
+	for(auto it=m_appenders.begin();
+			 it!=m_appenders.end();
+			 ++it){
+		if(*it==appender){
+			m_appenders.erase(it);
+			break;
+		}
+	}
 }
+
+std::string saber::Logger::toYamlString(){
+	MutexType::Lock lock(m_mutex);	
+	YAML::Node node;
+	node["name"]=m_logName;
+	node["level"]=LogLevel::toString(m_level);
+	if(m_formatter){
+		node["formatter"]=m_formatter->getPattern();
+	}
+	for(auto& i:m_appenders){
+		node["appenders"].push_back(YAML::Load(i->toYamlString()));
+	}
+	std::stringstream ss;
+	ss<<node;
+	return ss.str();
+}
+
+void saber::Logger::clearAppenders(){
+	
+	MutexType::Lock lock(m_mutex);	
+	m_appenders.clear();
+}
+
+void saber::Logger::setFormatter(LogFormatter::ptr formatter){
+	
+	MutexType::Lock lock(m_mutex);	
+	m_formatter=formatter;
+	for(auto& i:m_appenders){
+		MutexType::Lock ll(i->m_mutex);	
+		if(!i->m_hasFormatter){
+			i->m_formatter=formatter;
+			i->m_hasFormatter=true;
+		}
+	}
+}
+
+void saber::Logger::setFormatter(const std::string& fmt){
+	LogFormatter::ptr new_fmt(new saber::LogFormatter(fmt));
+	setFormatter(new_fmt);
+}
+
 void saber::Logger::debug(saber::LogEvent::ptr event){
 	log(event,saber::LogLevel::Level::DEBUG);
 }
+
 void saber::Logger::info(LogEvent::ptr event){
 	log(event,saber::LogLevel::Level::INFO);
 }
 void saber::Logger::warn(LogEvent::ptr event){
 	log(event,saber::LogLevel::Level::WARN);
 }
+
 void saber::Logger::error(LogEvent::ptr event){
 	log(event,saber::LogLevel::Level::ERROR);
 }
+
 void saber::Logger::fatal(LogEvent::ptr event){
 	log(event,saber::LogLevel::Level::FATAL);
 }
-/**
+
+/*************************************************************************
  *brief class LogManager
- */
+ ************************************************************************/
 void saber::LogManager::initRoot(){
 	root_logger.reset(new Logger("root"));
 	LogFormatter::ptr fmt(new LogFormatter());
@@ -264,16 +420,30 @@ void saber::LogManager::initRoot(){
 
 saber::Logger::ptr saber::LogManager::getRoot(){
 	if(root_logger==nullptr) initRoot();
+	m_loggers["root"]=root_logger;
 	return root_logger;
 }
 
-saber::Logger::ptr saber::LogManager::getLogger(std::string log_name){
+saber::Logger::ptr saber::LogManager::getLogger(const std::string& log_name){
+	
+	MutexType::Lock lock(m_mutex);	
 	if(m_loggers.find(log_name)!=m_loggers.end()) return m_loggers[log_name];
 	else {
-		LOG_INFO(LOG_ROOT)<<log_name<<" is not exist, but a new log is built";
 		addLogger(log_name);
 		return m_loggers[log_name];
 	} 
+}
+
+std::string saber::LogManager::toYamlString(){
+	
+	MutexType::Lock lock(m_mutex);	
+	YAML::Node	node;
+	for(auto &i:m_loggers){
+		node.push_back(YAML::Load(i.second->toYamlString()));
+	}
+	std::stringstream ss;
+	ss<<node;
+	return ss.str();
 }
 
 void saber::LogManager::addLogger(std::string log_name){
@@ -287,4 +457,198 @@ void saber::LogManager::addLogger(std::string log_name){
 	log->addAppender(file_app);
 	m_loggers[log_name]=log;
 }
+
+struct LogAppenderDefine{
+	int type=0;//1:file 2:stdout
+	saber::LogLevel::Level level=saber::LogLevel::Level::UNKNOWN;
+	std::string formatter;
+	std::string file;
+
+	bool operator==(const LogAppenderDefine& oth) const {
+		return  type==oth.type
+				&&level==oth.level 
+				&& formatter==oth.formatter 
+				&& file==oth.file;
+	}
+};
+
+struct LogDefine{
+		saber::LogLevel::Level level=saber::LogLevel::Level::UNKNOWN;
+		std::vector<LogAppenderDefine> appenders;
+		std::string formatter;
+		std::string name="";
+
+		bool operator==(const LogDefine& oth)const{
+			return level==oth.level 
+					&& appenders==oth.appenders 
+					&& formatter==oth.formatter 
+					&& name==oth.name;
+		}
+
+		bool operator<(const LogDefine& oth) const{
+			return name<oth.name;
+		}
+};
+
+template<>
+class saber::LexicalCast<std::string,std::set<LogDefine>>{
+public:
+	std::set<LogDefine> operator()(const std::string& v){
+			YAML::Node node=YAML::Load(v);
+			std::set<LogDefine> S;
+			std::stringstream ss;
+			for(size_t i=0;i<node.size();++i){
+				const auto n=node[i];
+				if(!n["name"].IsDefined()){
+					std::cout<<"log configure error: name is null, "<<n<<std::endl;
+					continue;
+				}
+				LogDefine ld;
+				ld.name = n["name"].as<std::string>();
+				ld.level = saber::LogLevel::fromString(n["level"].IsDefined() ? n["level"].as<std::string>():"");
+				if(n["formatter"].IsDefined()){
+					ld.formatter = n["formatter"].as<std::string>();
+				}
+				if(n["appenders"].IsDefined()){
+					for(size_t j=0;j<n["appenders"].size();++j){
+						auto a=n["appenders"][j];
+						if(!a["type"].IsDefined()){
+							std::cout<<"log configure error: appender type is null, "<<a<<std::endl;
+							continue;
+						}
+						std::string type=a["type"].as<std::string>();
+						LogAppenderDefine lad;
+						if(type=="FileAppender"){
+							lad.type=1;
+							if(!a["file"].IsDefined()){
+								std::cout<<"log configure error: file is null, "<<a<<std::endl;	
+								continue;
+
+							}
+							lad.file=a["file"].as<std::string>();
+							if(a["formatter"].IsDefined()){
+								lad.formatter = a["formatter"].as<std::string>();
+							}
+						}else if(type=="StdOutAppender"){
+							lad.type=2;
+						}else{
+							std::cout<<"log configure error: appender type is invalid, "<<a<<std::endl;
+							continue;
+						}
+						ld.appenders.push_back(lad);
+					}
+				}
+				S.insert(ld);
+			}
+			return S;
+}
+};
+
+template<>
+class saber::LexicalCast<std::set<LogDefine>,std::string>{
+public:
+		std::string operator()(const std::set<LogDefine>& s){
+			YAML::Node node;
+			std::stringstream ss;
+			for(auto& i:s){
+				YAML::Node n;
+				n["name"]=i.name;
+				n["level"]=LogLevel::toString(i.level);
+				if(i.formatter.empty()){
+					n["level"]=i.formatter;
+				}
+				for(auto& a: i.appenders){
+					YAML::Node na;
+					if(a.type==1){
+						na["type"]="FileAppender";
+						na["file"]=a.file;
+					}else if(a.type==2){
+						na["type"]="StdOutAppender";
+					}
+					na["level"]=saber::LogLevel::toString(a.level);
+					if(a.formatter.empty()){
+						na["formatter"]=a.formatter;
+					}
+					na["appenders"].push_back(na);
+				}
+				node.push_back(n);
+			}
+			ss<<node;
+			return ss.str();
+		}
+};
+
+saber::ConfigVar<std::set<LogDefine>>::ptr g_log_defines=
+	saber::Config::lookUp("logs",std::set<LogDefine>(),"logs config");
+
+struct LogIniter{
+	LogIniter(){
+
+			std::cout<<"LogIniter executed"<<std::endl;
+
+		g_log_defines->addListener(
+						[](const std::set<LogDefine>& old_value, 
+						   const std::set<LogDefine>& new_value){
+			std::cout<<"on_logger_conf_changed"<<std::endl;
+			saber::Logger::ptr logger;
+			for(auto& i:new_value){
+
+				auto it=old_value.find(i);
+				if(it == old_value.end()){
+					//add new logger
+					logger=LOG_NEW(i.name);
+				}else{
+					if(i==*it){
+						//modify logger
+						logger=LOG_NEW(i.name);
+					}else{	
+						continue;	
+					}
+				}
+				logger->setLevel(i.level);
+				if(!i.formatter.empty()){
+					logger->setFormatter(i.formatter);
+				}
+
+				logger->clearAppenders();
+				for(auto & a:i.appenders){
+					saber::LogAppender::ptr ap;
+					if(a.type==1){
+						ap.reset(new saber::FileAppender(a.file));
+					}else if(a.type==2){
+						ap.reset(new saber::StdOutAppender());
+					}
+				
+				ap->setLevel(a.level);
+				if(!a.formatter.empty()){
+						saber::LogFormatter::ptr fmt(new saber::LogFormatter(a.formatter));
+						ap->setFormatter(fmt);
+					}
+				logger->addAppender(ap);
+				}
+
+				LOG_INFO(LOG_ROOT)<<"b2";
+			}
+
+			LOG_INFO(LOG_ROOT)<<"b3";
+			//delete logger
+			for(auto& i:old_value){
+				auto it=new_value.find(i);
+				if(it==new_value.end()){
+					auto logger=LOG_NEW(i.name);
+					logger->setLevel(saber::LogLevel::Level(100));
+					logger->clearAppenders();
+				}
+			}
+			LOG_INFO(LOG_ROOT)<<"b4";
+		});
+	} 
+};
+
+static LogIniter __log_init;
+
+void saber::LogManager::init(){
+	
+}
+
 
