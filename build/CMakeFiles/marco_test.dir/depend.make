@@ -4,7 +4,7 @@
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/config.h
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/fiber.h
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/log.h
-CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/marco.h
+CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/macro.h
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/saber.h
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/scheduler.h
 CMakeFiles/marco_test.dir/tests/marco_test.cc.o: ../saber/singleton.h

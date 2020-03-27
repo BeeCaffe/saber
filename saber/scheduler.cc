@@ -1,6 +1,6 @@
 #include"scheduler.h"
 #include"log.h"
-#include"marco.h"
+#include"macro.h"
 static saber::Logger::ptr g_logger=LOG_NEW("system");
 //main scheduler
 static thread_local saber::Scheduler* t_scheduler=nullptr;
@@ -10,11 +10,11 @@ namespace saber{
 /************************************************************************
  *Class Scheduler
  ************************************************************************/
-    Scheduler::Scheduler(size_t threads,bool use_caller,const std::string &name):m_name(name){
+    Scheduler::Scheduler(size_t threads,bool use_caller,const std::string &name):m_threadCount(threads),m_name(name){
     ASSERT(threads>0);
     if(use_caller){
         saber::Fiber::GetThis();
-        --threads;
+        //--threads;
 
         ASSERT(GetThis()==nullptr);
         t_scheduler=this;
@@ -72,8 +72,7 @@ void Scheduler::stop(){
     m_autoStop=true;
     if(m_rootFiber
                 &&m_threadCount==0
-                &&(m_rootFiber->getState()==Fiber::TERM
-                ||m_rootFiber->getState()==Fiber::INIT)){
+                &&(m_rootFiber->getState()==Fiber::TERM || m_rootFiber->getState()==Fiber::INIT)){
         LOG_INFO(g_logger)<<this<<"stopped";
        m_stopping=true; 
        if(stopping()){
@@ -109,6 +108,7 @@ void Scheduler::setThis(){
 
 void Scheduler::run(){
     setThis();
+    GetThis();
     if(saber::GetThreadId()!=m_rootThread){
         t_fiber=Fiber::GetThis().get();
     }
@@ -187,7 +187,6 @@ void Scheduler::run(){
                 if(idle_fiber->getState()!=Fiber::TERM
                    && idle_fiber->getState()!=Fiber::EXCEPT){
                     idle_fiber->m_state=Fiber::HOLD;
-                    //--m_idleThreadCount;
                 }
             }
         }

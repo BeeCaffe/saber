@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named io_test
+
+# Build rule for target.
+io_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 io_test
+.PHONY : io_test
+
+# fast build rule for target.
+io_test/fast:
+	$(MAKE) -f CMakeFiles/io_test.dir/build.make CMakeFiles/io_test.dir/build
+.PHONY : io_test/fast
+
+#=============================================================================
 # Target rules for targets named scheduler_test
 
 # Build rule for target.
@@ -287,6 +300,36 @@ saber/fiber.cc.s:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/fiber.cc.s
 .PHONY : saber/fiber.cc.s
 
+saber/iomanager.o: saber/iomanager.cc.o
+
+.PHONY : saber/iomanager.o
+
+# target to build an object file
+saber/iomanager.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/iomanager.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/iomanager.cc.o
+.PHONY : saber/iomanager.cc.o
+
+saber/iomanager.i: saber/iomanager.cc.i
+
+.PHONY : saber/iomanager.i
+
+# target to preprocess a source file
+saber/iomanager.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/iomanager.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/iomanager.cc.i
+.PHONY : saber/iomanager.cc.i
+
+saber/iomanager.s: saber/iomanager.cc.s
+
+.PHONY : saber/iomanager.s
+
+# target to generate assembly for a file
+saber/iomanager.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/iomanager.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/iomanager.cc.s
+.PHONY : saber/iomanager.cc.s
+
 saber/json/json.o: saber/json/json.cc.o
 
 .PHONY : saber/json/json.o
@@ -407,6 +450,36 @@ saber/thread.cc.s:
 	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/thread.cc.s
 .PHONY : saber/thread.cc.s
 
+saber/timer.o: saber/timer.cc.o
+
+.PHONY : saber/timer.o
+
+# target to build an object file
+saber/timer.cc.o:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/timer.cc.o
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/timer.cc.o
+.PHONY : saber/timer.cc.o
+
+saber/timer.i: saber/timer.cc.i
+
+.PHONY : saber/timer.i
+
+# target to preprocess a source file
+saber/timer.cc.i:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/timer.cc.i
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/timer.cc.i
+.PHONY : saber/timer.cc.i
+
+saber/timer.s: saber/timer.cc.s
+
+.PHONY : saber/timer.s
+
+# target to generate assembly for a file
+saber/timer.cc.s:
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/timer.cc.s
+	$(MAKE) -f CMakeFiles/saber.dir/build.make CMakeFiles/saber.dir/saber/timer.cc.s
+.PHONY : saber/timer.cc.s
+
 saber/utils.o: saber/utils.cc.o
 
 .PHONY : saber/utils.o
@@ -490,6 +563,33 @@ tests/fiber_test.s: tests/fiber_test.cc.s
 tests/fiber_test.cc.s:
 	$(MAKE) -f CMakeFiles/fiber_test.dir/build.make CMakeFiles/fiber_test.dir/tests/fiber_test.cc.s
 .PHONY : tests/fiber_test.cc.s
+
+tests/io_test.o: tests/io_test.cc.o
+
+.PHONY : tests/io_test.o
+
+# target to build an object file
+tests/io_test.cc.o:
+	$(MAKE) -f CMakeFiles/io_test.dir/build.make CMakeFiles/io_test.dir/tests/io_test.cc.o
+.PHONY : tests/io_test.cc.o
+
+tests/io_test.i: tests/io_test.cc.i
+
+.PHONY : tests/io_test.i
+
+# target to preprocess a source file
+tests/io_test.cc.i:
+	$(MAKE) -f CMakeFiles/io_test.dir/build.make CMakeFiles/io_test.dir/tests/io_test.cc.i
+.PHONY : tests/io_test.cc.i
+
+tests/io_test.s: tests/io_test.cc.s
+
+.PHONY : tests/io_test.s
+
+# target to generate assembly for a file
+tests/io_test.cc.s:
+	$(MAKE) -f CMakeFiles/io_test.dir/build.make CMakeFiles/io_test.dir/tests/io_test.cc.s
+.PHONY : tests/io_test.cc.s
 
 tests/json_test.o: tests/json_test.cc.o
 
@@ -634,6 +734,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... io_test"
 	@echo "... scheduler_test"
 	@echo "... fiber_test"
 	@echo "... thread_test"
@@ -649,6 +750,9 @@ help:
 	@echo "... saber/fiber.o"
 	@echo "... saber/fiber.i"
 	@echo "... saber/fiber.s"
+	@echo "... saber/iomanager.o"
+	@echo "... saber/iomanager.i"
+	@echo "... saber/iomanager.s"
 	@echo "... saber/json/json.o"
 	@echo "... saber/json/json.i"
 	@echo "... saber/json/json.s"
@@ -661,6 +765,9 @@ help:
 	@echo "... saber/thread.o"
 	@echo "... saber/thread.i"
 	@echo "... saber/thread.s"
+	@echo "... saber/timer.o"
+	@echo "... saber/timer.i"
+	@echo "... saber/timer.s"
 	@echo "... saber/utils.o"
 	@echo "... saber/utils.i"
 	@echo "... saber/utils.s"
@@ -670,6 +777,9 @@ help:
 	@echo "... tests/fiber_test.o"
 	@echo "... tests/fiber_test.i"
 	@echo "... tests/fiber_test.s"
+	@echo "... tests/io_test.o"
+	@echo "... tests/io_test.i"
+	@echo "... tests/io_test.s"
 	@echo "... tests/json_test.o"
 	@echo "... tests/json_test.i"
 	@echo "... tests/json_test.s"

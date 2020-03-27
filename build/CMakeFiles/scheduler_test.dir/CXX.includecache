@@ -66,7 +66,7 @@ singleton.h
 thread.h
 /home/beecaffe/src/saber/saber/thread.h
 
-/home/beecaffe/src/saber/saber/marco.h
+/home/beecaffe/src/saber/saber/macro.h
 string.h
 -
 assert.h
@@ -83,8 +83,8 @@ config.h
 /home/beecaffe/src/saber/saber/config.h
 thread.h
 /home/beecaffe/src/saber/saber/thread.h
-marco.h
-/home/beecaffe/src/saber/saber/marco.h
+macro.h
+/home/beecaffe/src/saber/saber/macro.h
 scheduler.h
 /home/beecaffe/src/saber/saber/scheduler.h
 
@@ -147,6 +147,10 @@ fiber.h
 /home/beecaffe/src/saber/tests/scheduler_test.cc
 ../saber/saber.h
 /home/beecaffe/src/saber/saber/saber.h
+../saber/scheduler.h
+/home/beecaffe/src/saber/saber/scheduler.h
+iostream
+-
 
 /usr/local/soft/yaml-cpp/include/yaml-cpp/binary.h
 string

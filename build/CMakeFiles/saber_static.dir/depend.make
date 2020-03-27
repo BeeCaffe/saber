@@ -44,7 +44,7 @@ CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/config.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/fiber.cc
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/fiber.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/log.h
-CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/marco.h
+CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/macro.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/scheduler.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/singleton.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: ../saber/thread.h
@@ -80,6 +80,17 @@ CMakeFiles/saber_static.dir/saber/fiber.cc.o: /usr/local/soft/yaml-cpp/include/y
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: /usr/local/soft/yaml-cpp/include/yaml-cpp/stlemitter.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: /usr/local/soft/yaml-cpp/include/yaml-cpp/traits.h
 CMakeFiles/saber_static.dir/saber/fiber.cc.o: /usr/local/soft/yaml-cpp/include/yaml-cpp/yaml.h
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/fiber.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/iomanager.cc
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/iomanager.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/log.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/macro.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/scheduler.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/singleton.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/thread.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/timer.h
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/utils.h
 
 CMakeFiles/saber_static.dir/saber/json/json.cc.o: ../saber/fiber.h
 CMakeFiles/saber_static.dir/saber/json/json.cc.o: ../saber/json/json.cc
@@ -130,7 +141,7 @@ CMakeFiles/saber_static.dir/saber/log.cc.o: /usr/local/soft/yaml-cpp/include/yam
 
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/fiber.h
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/log.h
-CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/marco.h
+CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/macro.h
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/scheduler.cc
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/scheduler.h
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o: ../saber/singleton.h
@@ -143,6 +154,12 @@ CMakeFiles/saber_static.dir/saber/thread.cc.o: ../saber/singleton.h
 CMakeFiles/saber_static.dir/saber/thread.cc.o: ../saber/thread.cc
 CMakeFiles/saber_static.dir/saber/thread.cc.o: ../saber/thread.h
 CMakeFiles/saber_static.dir/saber/thread.cc.o: ../saber/utils.h
+
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/fiber.h
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/thread.h
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/timer.cc
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/timer.h
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/utils.h
 
 CMakeFiles/saber_static.dir/saber/utils.cc.o: ../saber/fiber.h
 CMakeFiles/saber_static.dir/saber/utils.cc.o: ../saber/log.h

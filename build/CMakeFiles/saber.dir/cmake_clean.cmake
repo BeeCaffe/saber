@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/saber.dir/saber/thread.cc.o"
   "CMakeFiles/saber.dir/saber/fiber.cc.o"
   "CMakeFiles/saber.dir/saber/scheduler.cc.o"
+  "CMakeFiles/saber.dir/saber/iomanager.cc.o"
+  "CMakeFiles/saber.dir/saber/timer.cc.o"
   "../lib/libsaber.pdb"
   "../lib/libsaber.so"
 )

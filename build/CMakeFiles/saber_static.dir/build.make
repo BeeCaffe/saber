@@ -225,6 +225,54 @@ CMakeFiles/saber_static.dir/saber/scheduler.cc.o.provides: CMakeFiles/saber_stat
 CMakeFiles/saber_static.dir/saber/scheduler.cc.o.provides.build: CMakeFiles/saber_static.dir/saber/scheduler.cc.o
 
 
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: CMakeFiles/saber_static.dir/flags.make
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o: ../saber/iomanager.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/saber_static.dir/saber/iomanager.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber_static.dir/saber/iomanager.cc.o -c /home/beecaffe/src/saber/saber/iomanager.cc
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber_static.dir/saber/iomanager.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/iomanager.cc > CMakeFiles/saber_static.dir/saber/iomanager.cc.i
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber_static.dir/saber/iomanager.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/iomanager.cc -o CMakeFiles/saber_static.dir/saber/iomanager.cc.s
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o.requires:
+
+.PHONY : CMakeFiles/saber_static.dir/saber/iomanager.cc.o.requires
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o.provides: CMakeFiles/saber_static.dir/saber/iomanager.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/iomanager.cc.o.provides.build
+.PHONY : CMakeFiles/saber_static.dir/saber/iomanager.cc.o.provides
+
+CMakeFiles/saber_static.dir/saber/iomanager.cc.o.provides.build: CMakeFiles/saber_static.dir/saber/iomanager.cc.o
+
+
+CMakeFiles/saber_static.dir/saber/timer.cc.o: CMakeFiles/saber_static.dir/flags.make
+CMakeFiles/saber_static.dir/saber/timer.cc.o: ../saber/timer.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/saber_static.dir/saber/timer.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/saber_static.dir/saber/timer.cc.o -c /home/beecaffe/src/saber/saber/timer.cc
+
+CMakeFiles/saber_static.dir/saber/timer.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/saber_static.dir/saber/timer.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beecaffe/src/saber/saber/timer.cc > CMakeFiles/saber_static.dir/saber/timer.cc.i
+
+CMakeFiles/saber_static.dir/saber/timer.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/saber_static.dir/saber/timer.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beecaffe/src/saber/saber/timer.cc -o CMakeFiles/saber_static.dir/saber/timer.cc.s
+
+CMakeFiles/saber_static.dir/saber/timer.cc.o.requires:
+
+.PHONY : CMakeFiles/saber_static.dir/saber/timer.cc.o.requires
+
+CMakeFiles/saber_static.dir/saber/timer.cc.o.provides: CMakeFiles/saber_static.dir/saber/timer.cc.o.requires
+	$(MAKE) -f CMakeFiles/saber_static.dir/build.make CMakeFiles/saber_static.dir/saber/timer.cc.o.provides.build
+.PHONY : CMakeFiles/saber_static.dir/saber/timer.cc.o.provides
+
+CMakeFiles/saber_static.dir/saber/timer.cc.o.provides.build: CMakeFiles/saber_static.dir/saber/timer.cc.o
+
+
 # Object files for target saber_static
 saber_static_OBJECTS = \
 "CMakeFiles/saber_static.dir/saber/log.cc.o" \
@@ -233,7 +281,9 @@ saber_static_OBJECTS = \
 "CMakeFiles/saber_static.dir/saber/config.cc.o" \
 "CMakeFiles/saber_static.dir/saber/thread.cc.o" \
 "CMakeFiles/saber_static.dir/saber/fiber.cc.o" \
-"CMakeFiles/saber_static.dir/saber/scheduler.cc.o"
+"CMakeFiles/saber_static.dir/saber/scheduler.cc.o" \
+"CMakeFiles/saber_static.dir/saber/iomanager.cc.o" \
+"CMakeFiles/saber_static.dir/saber/timer.cc.o"
 
 # External object files for target saber_static
 saber_static_EXTERNAL_OBJECTS =
@@ -245,9 +295,11 @@ saber_static_EXTERNAL_OBJECTS =
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/thread.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/fiber.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/scheduler.cc.o
+../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/iomanager.cc.o
+../lib/libsaber.a: CMakeFiles/saber_static.dir/saber/timer.cc.o
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/build.make
 ../lib/libsaber.a: CMakeFiles/saber_static.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library ../lib/libsaber.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beecaffe/src/saber/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library ../lib/libsaber.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/saber_static.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/saber_static.dir/link.txt --verbose=$(VERBOSE)
 
@@ -263,6 +315,8 @@ CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/config.c
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/thread.cc.o.requires
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/fiber.cc.o.requires
 CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/scheduler.cc.o.requires
+CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/iomanager.cc.o.requires
+CMakeFiles/saber_static.dir/requires: CMakeFiles/saber_static.dir/saber/timer.cc.o.requires
 
 .PHONY : CMakeFiles/saber_static.dir/requires
 

@@ -4,7 +4,7 @@
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/config.h
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/fiber.h
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/log.h
-CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/marco.h
+CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/macro.h
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/saber.h
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/scheduler.h
 CMakeFiles/thread_test.dir/tests/thread_test.cc.o: ../saber/singleton.h

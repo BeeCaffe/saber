@@ -6,7 +6,6 @@ logs:
       appenders:
               - type: FileAppender
                 file: log.txt
-              - type: StdOutAppender
     - name: system
       level: debug
       formatter: '[%d{%y-%m-%d %H:%M:%S}] [%p] [thread id:%t] [fiber id:%F] [%c] (%f\:%l) - %m%n'

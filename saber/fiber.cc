@@ -1,7 +1,7 @@
 #include"fiber.h"
 #include<atomic>
 #include"config.h"
-#include"marco.h"
+#include"macro.h"
 #include"scheduler.h"
 #include"log.h"
 namespace saber{
@@ -116,6 +116,10 @@ uint64_t Fiber::GetFiberId(){
     return 0;
 }
 
+const uint64_t Fiber::GetFiberCount(){
+    return s_fiber_count;
+}
+
 Fiber::Fiber(std::function<void()> cb,size_t stack_size,bool use_caller):
     m_id(++s_fiber_id),
     m_cb(cb){
@@ -135,7 +139,7 @@ Fiber::Fiber(std::function<void()> cb,size_t stack_size,bool use_caller):
     }else{
         makecontext(&m_ctx,&Fiber::CallerMainFunc,0);
     }
-    LOG_DEBUG(g_logger)<<"Fiber::Fiber() id="<<this->getId();
+    LOG_DEBUG(g_logger)<<"Fiber::Fiber() fiber id="<<this->getId();
 }
 
 Fiber::~Fiber(){
@@ -153,7 +157,7 @@ Fiber::~Fiber(){
             SetThis(nullptr);
         }
     }
-    LOG_DEBUG(g_logger)<<"Fiber::~Fiber() id="<<m_id;
+    LOG_DEBUG(g_logger)<<"Fiber::~Fiber() fiber id="<<m_id;
 }
 
 void Fiber::reset(std::function<void()> cb){
@@ -190,14 +194,14 @@ void Fiber::swapIn(){
     SetThis(this);
     ASSERT(m_state!=EXEC);
     m_state=EXEC;
-    if(swapcontext(&Scheduler::GetMainFiber()->m_ctx,&m_ctx)){
+    if(swapcontext(&Scheduler::GetMainFiber()->m_ctx,&m_ctx)==-1){
         ASSERT2(false,"swapcontext error");
     }
 }
 
 void Fiber::swapOut(){
     SetThis(Scheduler::GetMainFiber());
-    if(swapcontext(&m_ctx,&Scheduler::GetMainFiber()->m_ctx)){
+    if(swapcontext(&m_ctx,&Scheduler::GetMainFiber()->m_ctx)==-1){
         ASSERT2(false,"swapcontext error");
     }
 }

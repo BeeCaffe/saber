@@ -42,6 +42,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/io_test.dir/DependInfo.cmake"
   "CMakeFiles/scheduler_test.dir/DependInfo.cmake"
   "CMakeFiles/fiber_test.dir/DependInfo.cmake"
   "CMakeFiles/thread_test.dir/DependInfo.cmake"

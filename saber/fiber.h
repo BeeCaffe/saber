@@ -31,6 +31,7 @@ class Fiber:public std::enable_shared_from_this<Fiber>{
         static void MainFunc();
         static void CallerMainFunc();
         static uint64_t GetFiberId();
+        static const uint64_t GetFiberCount();
     public:
         Fiber(std::function<void()> cb,size_t stack_size=0,bool use_caller=false);
         ~Fiber();
@@ -46,12 +47,12 @@ class Fiber:public std::enable_shared_from_this<Fiber>{
     private:
         Fiber();
     private:
-        ucontext_t m_ctx;
-        void *m_stack=nullptr;
-        uint64_t m_stacksize=0;
-        std::function<void()> m_cb;
-        uint64_t m_id=0;
-        State m_state=INIT;
+        ucontext_t m_ctx;           //ucontext
+        void *m_stack=nullptr;      //stack pointer
+        uint64_t m_stacksize=0;     //stack size
+        std::function<void()> m_cb; //callback function
+        uint64_t m_id=0;            //the fiber id
+        State m_state=INIT;         //fiber status
 };
 };
  

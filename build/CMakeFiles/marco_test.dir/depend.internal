@@ -5,7 +5,7 @@ CMakeFiles/marco_test.dir/tests/marco_test.cc.o
  /home/beecaffe/src/saber/saber/config.h
  /home/beecaffe/src/saber/saber/fiber.h
  /home/beecaffe/src/saber/saber/log.h
- /home/beecaffe/src/saber/saber/marco.h
+ /home/beecaffe/src/saber/saber/macro.h
  /home/beecaffe/src/saber/saber/saber.h
  /home/beecaffe/src/saber/saber/scheduler.h
  /home/beecaffe/src/saber/saber/singleton.h

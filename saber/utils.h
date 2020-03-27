@@ -33,5 +33,8 @@ namespace saber{
 	
 	void BackTrace(std::vector<std::string>& bt,int size,int skip);
 	std::string BackTraceToString(int size,int skip,const std::string& prefix="	");
+    //time ms
+    uint64_t GetCurrentMS();
+    uint64_t GetCurrentUS();
 };
 #endif

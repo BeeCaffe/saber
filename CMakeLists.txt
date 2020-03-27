@@ -20,6 +20,8 @@ set(LIB_SRC
 		saber/thread.cc
         saber/fiber.cc
         saber/scheduler.cc
+        saber/iomanager.cc
+        saber/timer.cc
 	)
 add_library(saber SHARED ${LIB_SRC})
 add_library(saber_static STATIC ${LIB_SRC})
@@ -60,6 +62,9 @@ add_executable(scheduler_test tests/scheduler_test.cc)
 add_dependencies(scheduler_test saber)
 target_link_libraries(scheduler_test ${LIB_LIB})
 
+add_executable(io_test tests/io_test.cc)
+add_dependencies(io_test saber)
+target_link_libraries(io_test ${LIB_LIB})
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH  ${PROJECT_SOURCE_DIR}/lib)

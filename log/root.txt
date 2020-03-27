@@ -10690,3 +10690,147 @@ backtrace:
 [2020-3-13 21:45:51] [INFO] [thread id:3924] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:14) - over
 [2020-3-13 21:46:34] [INFO] [thread id:3995] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
 [2020-3-13 21:46:34] [INFO] [thread id:3995] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:14) - over
+[2020-3-24 10:36:51] [ERROR] [thread id:703] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:18) -  ASSERTION: rt
+pipe creat error
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x576) [0x7f9f507cfd96]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7f9f50e6e8f8]
+    ../bin/io_test(main+0x14) [0x7f9f50e6e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f9f4fb61b97]
+    ../bin/io_test(_start+0x2a) [0x7f9f50e6e45a]
+
+[2020-3-24 10:37:38] [ERROR] [thread id:840] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:18) -  ASSERTION: rt==-1
+pipe creat error
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x577) [0x7fb0fa5cfd97]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7fb0fac6e8f8]
+    ../bin/io_test(main+0x14) [0x7fb0fac6e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fb0f9961b97]
+    ../bin/io_test(_start+0x2a) [0x7fb0fac6e45a]
+
+[2020-3-24 10:41:6] [ERROR] [thread id:997] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:17) -  ASSERTION: rt==-1
+pipe creat error
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x577) [0x7fd04cfcfd97]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7fd04d66e8f8]
+    ../bin/io_test(main+0x14) [0x7fd04d66e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fd04c361b97]
+    ../bin/io_test(_start+0x2a) [0x7fd04d66e45a]
+
+[2020-3-24 10:43:7] [ERROR] [thread id:1136] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:24) -  ASSERTION: rt
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x83f) [0x7f01173d005f]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7f0117a6e8f8]
+    ../bin/io_test(main+0x14) [0x7f0117a6e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f0116761b97]
+    ../bin/io_test(_start+0x2a) [0x7f0117a6e45a]
+
+[2020-3-24 10:45:32] [ERROR] [thread id:1273] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:24) -  ASSERTION: rt
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x5b7) [0x7fb4c5bcfdd7]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7fb4c626e8f8]
+    ../bin/io_test(main+0x14) [0x7fb4c626e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fb4c4f61b97]
+    ../bin/io_test(_start+0x2a) [0x7fb4c626e45a]
+
+[2020-3-24 10:46:53] [ERROR] [thread id:1410] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:24) -  ASSERTION: rt
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x841) [0x7f71ca7d0061]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7f71cae6e8f8]
+    ../bin/io_test(main+0x14) [0x7f71cae6e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f71c9b61b97]
+    ../bin/io_test(_start+0x2a) [0x7f71cae6e45a]
+
+[2020-3-24 10:47:12] [ERROR] [thread id:1411] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:24) -  ASSERTION: rt
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0x841) [0x7f7a749d0061]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7f7a7506e8f8]
+    ../bin/io_test(main+0x14) [0x7f7a7506e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7f7a73d61b97]
+    ../bin/io_test(_start+0x2a) [0x7f7a7506e45a]
+
+[2020-3-24 10:47:23] [ERROR] [thread id:1547] [fiber id:0] [root] (/home/beecaffe/src/saber/saber/iomanager.cc:27) -  ASSERTION: rt
+backtrace:
+    /home/beecaffe/src/saber/lib/libsaber.so(_ZN5saber9IOManagerC2EmbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE+0xae0) [0x7fb7fc9d0300]
+    ../bin/io_test(_Z5test1v+0x6a) [0x7fb7fd06e8f8]
+    ../bin/io_test(main+0x14) [0x7fb7fd06e9c3]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fb7fbd61b97]
+    ../bin/io_test(_start+0x2a) [0x7fb7fd06e45a]
+
+[2020-3-27 21:21:36] [INFO] [thread id:1164] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
+[2020-3-27 21:21:36] [INFO] [thread id:1164] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:14) - over
+[2020-3-27 21:22:42] [INFO] [thread id:1168] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
+[2020-3-27 21:25:7] [INFO] [thread id:1174] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
+[2020-3-27 21:25:23] [INFO] [thread id:1178] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
+[2020-3-27 21:25:23] [INFO] [thread id:1178] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:14) - over
+[2020-3-27 21:26:36] [INFO] [thread id:1242] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:8) - start
+[2020-3-27 21:38:0] [INFO] [thread id:1715] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:38:0] [INFO] [thread id:1715] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:39:5] [INFO] [thread id:1796] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:39:5] [INFO] [thread id:1796] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:39:21] [INFO] [thread id:1802] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:40:24] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:26] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:28] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:37] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:37] [INFO] [thread id:1802] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:40:46] [INFO] [thread id:1802] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:40:56] [INFO] [thread id:1810] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:40:56] [INFO] [thread id:1810] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:42:2] [INFO] [thread id:1814] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:42:2] [INFO] [thread id:1814] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:4] [INFO] [thread id:1818] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:36] [INFO] [thread id:1822] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:42:37] [INFO] [thread id:1826] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:42:38] [INFO] [thread id:1826] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:9) - start
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:5) - test in fiber
+[2020-3-27 21:42:39] [INFO] [thread id:1830] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:15) - over
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:11) - start
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:4] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:7) - test in fiber
+[2020-3-27 21:45:46] [INFO] [thread id:1991] [fiber id:0] [root] (/home/beecaffe/src/saber/tests/scheduler_test.cc:19) - over

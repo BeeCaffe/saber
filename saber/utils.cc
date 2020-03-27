@@ -1,5 +1,6 @@
 #include"utils.h"
 #include"log.h"
+#include<sys/time.h>
 
 saber::Logger::ptr g_logger=FIND_LOG("system");
 /**
@@ -76,6 +77,18 @@ std::string saber::BackTraceToString(int size,int skip=2,const std::string& pref
 	return ss.str();
 }
 
+uint64_t saber::GetCurrentMS(){
+    struct timeval tv;
+    gettimeofday(&tv,NULL);
+    return tv.tv_sec*1000ul+tv.tv_usec/1000;
+}
+
+uint64_t saber::GetCurrentUS(){
+    struct timeval tv;
+    gettimeofday(&tv,NULL);
+    return tv.tv_sec*1000*1000ul+tv.tv_usec;
+
+}
 
 
 

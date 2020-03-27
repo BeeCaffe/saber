@@ -18,7 +18,7 @@ class Scheduler{
 public:
     typedef std::shared_ptr<Scheduler> ptr;
     typedef Mutex MutexType;
-    Scheduler(size_t threads=1,bool use_caller=true,const std::string &name="");
+    Scheduler(size_t threads=1,bool use_caller=true,const std::string &name="unknown");
     virtual ~Scheduler();
 
     const std::string getName() const {return m_name;}
@@ -45,7 +45,7 @@ public:
         {
             MutexType::Lock lock(m_mutex);
             while(begin!=end){
-                need_tickle=scheduleNoLock(&*begin||need_tickle);
+                need_tickle=scheduleNoLock(&*begin,-1) || need_tickle;
                 ++begin;
             }
         }
@@ -59,6 +59,9 @@ protected:
     virtual bool stopping();
     void setThis();
     virtual void idle();
+    bool hasIdelThreads(){
+        return m_idleThreadCount>0;
+    }
 private:
     template<class FiberOrCb>
     bool scheduleNoLock(FiberOrCb fc,int thread){
@@ -108,7 +111,7 @@ private:
     Fiber::ptr m_rootFiber;
 protected:
     std::vector<int> m_threadIds;
-    size_t m_threadCount=0;
+    size_t m_threadCount=1;
     std::atomic<size_t> m_activeThreadCount = {0};
     std::atomic<size_t> m_idleThreadCount = {0};
     bool m_stopping=true;

@@ -4,7 +4,7 @@
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/config.h
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/fiber.h
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/log.h
-CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/marco.h
+CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/macro.h
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/saber.h
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/scheduler.h
 CMakeFiles/scheduler_test.dir/tests/scheduler_test.cc.o: ../saber/singleton.h
